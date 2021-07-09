@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GroupMonthTimetable {
-    private List<GroupDayTimetable> classes;
+    private final List<GroupDayTimetable> classes;
 
     public GroupMonthTimetable(List<GroupDayTimetable> dayClasses) {
         this.classes = dayClasses;

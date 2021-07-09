@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Faculty {    
-    private String name;
-    private List<Group> groups;
+    private final String name;
+    private final List<Group> groups;
     
     public Faculty(String name) {
         this.name = name;

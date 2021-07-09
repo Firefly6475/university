@@ -1,14 +1,12 @@
 package ua.com.foxminded.university.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 public class TeacherClass extends Class {
-    private Group group;
+    private final Group group;
     
     public TeacherClass(Builder builder) {
-        super(builder.discipline, builder.audience, builder.classType, builder.date, builder.timeStart, builder.timeEnd);
+        super(builder);
         this.group = builder.group;
     }
 
@@ -21,7 +19,7 @@ public class TeacherClass extends Class {
     }
     
     public static Builder builder (TeacherClass teacherClass) {
-        return new Builder();
+        return new Builder(teacherClass);
     }
 
     @Override
@@ -49,13 +47,7 @@ public class TeacherClass extends Class {
         return "TeacherClass [group=" + group + "]";
     }
     
-    public static class Builder {
-        private Discipline discipline;
-        private Audience audience;
-        private ClassType classType;
-        private LocalDate date;
-        private LocalTime timeStart;
-        private LocalTime timeEnd;
+    public static class Builder extends Class.Builder<Builder> {
         private Group group;
         
         private Builder() {
@@ -63,42 +55,11 @@ public class TeacherClass extends Class {
         }
         
         private Builder(TeacherClass teacherClass) {
-            this.discipline = teacherClass.getDiscipline();
-            this.audience = teacherClass.getAudience();
-            this.classType = teacherClass.getClassType();
-            this.date = teacherClass.getDate();
-            this.timeStart = teacherClass.getTimeStart();
-            this.timeEnd = teacherClass.getTimeEnd();
-            this.group = teacherClass.getGroup();
+            this.group = teacherClass.group;
         }
         
-        public Builder withDiscipline(Discipline discipline) {
-            this.discipline = discipline;
-            return this;
-        }
-        
-        public Builder withAudience(Audience audience) {
-            this.audience = audience;
-            return this;
-        }
-        
-        public Builder withClassType(ClassType classType) {
-            this.classType = classType;
-            return this;
-        }
-        
-        public Builder withDate(LocalDate date) {
-            this.date = date;
-            return this;
-        }
-        
-        public Builder withTimeStart(LocalTime timeStart) {
-            this.timeStart = timeStart;
-            return this;
-        }
-        
-        public Builder withTimeEnd(LocalTime timeEnd) {
-            this.timeEnd = timeEnd;
+        @Override
+        public Builder getThis() {
             return this;
         }
         
@@ -107,6 +68,7 @@ public class TeacherClass extends Class {
             return this;
         }
         
+        @Override
         public TeacherClass build() {
             return new TeacherClass(this);
         }

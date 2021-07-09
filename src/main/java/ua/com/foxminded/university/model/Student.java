@@ -3,15 +3,23 @@ package ua.com.foxminded.university.model;
 import java.util.Objects;
 
 public class Student extends Person {    
-    private Integer course;
+    private final Integer course;
     
-    public Student(String name, String birthday) {
-        super(name, birthday);
-        this.course = 1;
+    public Student(Builder builder) {
+        super(builder);
+        this.course = builder.course;
     }
 
     public Integer getCourse() {
         return course;
+    }
+    
+    public static Builder builder() {
+        return new Builder();
+    }
+    
+    public static Builder builder(Student student) {
+        return new Builder(student);
     }
 
     @Override
@@ -37,5 +45,32 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Student [course=" + course + "]";
-    }    
+    }
+    
+    public static class Builder extends Person.Builder<Builder> {
+        private Integer course;
+        
+        private Builder() {
+            
+        }
+        
+        private Builder(Student student) {
+            this.course = student.course;
+        }
+        
+        @Override
+        public Builder getThis() {
+            return this;
+        }
+        
+        public Builder withCourse(Integer course) {
+            this.course = course;
+            return this;
+        }
+        
+        @Override
+        public Student build() {
+            return new Student(this);
+        }
+    }
 }

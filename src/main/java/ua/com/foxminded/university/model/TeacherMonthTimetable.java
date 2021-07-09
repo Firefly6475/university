@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class TeacherMonthTimetable {
-    private List<TeacherDayTimetable> classes;
+    private final List<TeacherDayTimetable> classes;
     
     public TeacherMonthTimetable(List<TeacherDayTimetable> dayClasses) {
         this.classes = dayClasses;
@@ -35,6 +35,4 @@ public class TeacherMonthTimetable {
     public String toString() {
         return "TeacherMonthTimetable [classes=" + classes + "]";
     }
-    
-    
 }

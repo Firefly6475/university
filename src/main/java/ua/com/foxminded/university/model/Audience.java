@@ -3,8 +3,8 @@ package ua.com.foxminded.university.model;
 import java.util.Objects;
 
 public class Audience {    
-    private Integer number;
-    private Integer floor;
+    private final Integer number;
+    private final Integer floor;
     
     public Audience(Integer number, Integer floor) {
         this.number = number;

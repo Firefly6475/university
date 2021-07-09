@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Discipline {    
-    private String name;
-    private List<Teacher> teachers;
+    private final String name;
+    private final List<Teacher> teachers;
     
     public Discipline(String name) {
         this.name = name;

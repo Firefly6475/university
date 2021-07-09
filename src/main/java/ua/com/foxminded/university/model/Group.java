@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Group {    
-    private String id;
-    private List<Student> students;
+    private final String id;
+    private final List<Student> students;
     
     public Group(String id) {
         this.id = id;

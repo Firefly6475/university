@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class TeacherDayTimetable {
-    private List<TeacherClass> classes;
+    private final List<TeacherClass> classes;
     
     public TeacherDayTimetable() {
         this.classes = new ArrayList<>();

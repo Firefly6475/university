@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class GroupDayTimetable {
-    private List<GroupClass> classes;
+    private final List<GroupClass> classes;
     
     public GroupDayTimetable() {
         this.classes = new ArrayList<>();

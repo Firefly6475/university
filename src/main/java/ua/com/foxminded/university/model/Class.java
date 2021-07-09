@@ -4,22 +4,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public abstract class Class {
-    private Discipline discipline;
-    private Audience audience;
-    private ClassType classType;
-    private LocalDate date;
-    private LocalTime timeStart;
-    private LocalTime timeEnd;
+public class Class {
+    private final Discipline discipline;
+    private final Audience audience;
+    private final ClassType classType;
+    private final LocalDate date;
+    private final LocalTime timeStart;
+    private final LocalTime timeEnd;
 
-    protected Class(Discipline discipline, Audience audience, ClassType classType, LocalDate date,
-            LocalTime timeStart, LocalTime timeEnd) {
-        this.discipline = discipline;
-        this.audience = audience;
-        this.classType = classType;
-        this.date = date;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
+    protected Class(Builder<?> builder) {
+        this.discipline = builder.discipline;
+        this.audience = builder.audience;
+        this.classType = builder.classType;
+        this.date = builder.date;
+        this.timeStart = builder.timeStart;
+        this.timeEnd = builder.timeEnd;
     }
 
     public Discipline getDiscipline() {
@@ -44,6 +43,24 @@ public abstract class Class {
 
     public LocalTime getTimeEnd() {
         return timeEnd;
+    }
+    
+    public static Builder builder() {
+        return new Builder() {
+            @Override
+            public Builder getThis() {
+                return this;
+            }
+        };
+    }
+    
+    public static Builder builder (Class thisClass) {
+        return new Builder(thisClass) {
+            @Override
+            public Builder getThis() {
+                return this;
+            }
+        };
     }
 
     @Override
@@ -71,5 +88,58 @@ public abstract class Class {
         return "Class [discipline=" + discipline + ", audience=" + audience + ", classType="
                 + classType + ", date=" + date + ", timeStart=" + timeStart + ", timeEnd=" + timeEnd
                 + "]";
+    }
+    
+    public abstract static class Builder<T extends Builder<T>> {
+        private Discipline discipline;
+        private Audience audience;
+        private ClassType classType;
+        private LocalDate date;
+        private LocalTime timeStart;
+        private LocalTime timeEnd;
+        
+        protected Builder() {
+            
+        }
+        
+        protected Builder(Class myClass) {
+            this.discipline = myClass.discipline;
+            this.audience = myClass.audience;
+            this.classType = myClass.classType;
+            this.date = myClass.date;
+            this.timeStart = myClass.timeStart;
+            this.timeEnd = myClass.timeEnd;
+        }
+        
+        public abstract T getThis();
+        
+        public T withDiscipline(Discipline discipline) {
+            this.discipline = discipline;
+            return this.getThis();
+        }
+        
+        public T withAudience(Audience audience) {
+            this.audience = audience;
+            return this.getThis();
+        }
+        
+        public T withClassType(ClassType classType) {
+            this.classType = classType;
+            return this.getThis();
+        }
+        
+        public T withDate(LocalDate date) {
+            this.date = date;
+            return this.getThis();
+        }
+        
+        public T withTimeStart(LocalTime timeStart) {
+            this.timeStart = timeStart;
+            return this.getThis();
+        }
+        
+        public Class build() {
+            return new Class(this); 
+        }
     }
 }
