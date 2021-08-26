@@ -1,22 +1,17 @@
 package ua.com.foxminded.university.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Person {
+    private final String id;
     private final String name;
-    private final String birthday;
+    private final LocalDate birthday;
 
     protected Person(Builder<?> builder) {
+        this.id = builder.id;
         this.name = builder.name;
         this.birthday = builder.birthday;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBirthday() {
-        return birthday;
     }
 
     public static Builder builder() {
@@ -28,7 +23,7 @@ public class Person {
         };
     }
 
-    public static Builder builder (Person person) {
+    public static Builder builder(Person person) {
         return new Builder(person) {
             @Override
             public Builder getThis() {
@@ -37,9 +32,21 @@ public class Person {
         };
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
     @Override
     public int hashCode() {
-        return Objects.hash(birthday, name);
+        return Objects.hash(birthday, id, name);
     }
 
     @Override
@@ -51,35 +58,48 @@ public class Person {
             return false;
         }
         Person other = (Person) obj;
-        return Objects.equals(birthday, other.birthday) && Objects.equals(name, other.name);
+        return Objects.equals(birthday, other.birthday)
+                && Objects.equals(id, other.id)
+                && Objects.equals(name, other.name);
     }
 
     @Override
     public String toString() {
-        return "Person [name=" + name + ", birthday=" + birthday + "]";
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                '}';
     }
 
     public abstract static class Builder<T extends Builder<T>> {
+        private String id;
         private String name;
-        private String birthday;
-        
+        private LocalDate birthday;
+
         protected Builder() {
-            
+
         }
-        
+
         protected Builder(Person person) {
+            this.id = person.id;
             this.name = person.name;
             this.birthday = person.birthday;
         }
-        
+
         public abstract T getThis();
+
+        public T withId(String id) {
+            this.id = id;
+            return this.getThis();
+        }
 
         public T withName(String name) {
             this.name = name;
             return this.getThis();
         }
 
-        public T withBirthday(String birthday) {
+        public T withBirthday(LocalDate birthday) {
             this.birthday = birthday;
             return this.getThis();
         }

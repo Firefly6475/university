@@ -44,9 +44,11 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student [course=" + course + "]";
+        return "Student{" +
+                "course=" + course +
+                "} " + super.toString();
     }
-    
+
     public static class Builder extends Person.Builder<Builder> {
         private Integer course;
         

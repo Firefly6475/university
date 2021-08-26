@@ -44,9 +44,11 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return "Teacher [salary=" + salary + "]";
+        return "Teacher{" +
+                "salary=" + salary +
+                "} " + super.toString();
     }
-    
+
     public static class Builder extends Person.Builder<Builder> {
         private Integer salary;
         
