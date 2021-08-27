@@ -26,9 +26,9 @@ public class AudienceDaoImplTest {
     @Test
     void saveShouldInsertAudienceInDB() {
         Audience expectedAudience = Audience.builder()
-                .withId(UUID.randomUUID().toString())
-                .withFloor(5)
-                .withNumber(505)
+                .id(UUID.randomUUID().toString())
+                .floor(5)
+                .number(505)
                 .build();
         audienceDao.save(expectedAudience);
         Audience actualAudience = audienceDao.findById(expectedAudience.getId()).get();
@@ -39,14 +39,14 @@ public class AudienceDaoImplTest {
     @Test
     void saveAllShouldInsertListOfAudiencesInDB() {
         Audience audience1 = Audience.builder()
-                .withId(UUID.randomUUID().toString())
-                .withFloor(6)
-                .withNumber(605)
+                .id(UUID.randomUUID().toString())
+                .floor(6)
+                .number(605)
                 .build();
         Audience audience2 = Audience.builder()
-                .withId(UUID.randomUUID().toString())
-                .withFloor(5)
-                .withNumber(505)
+                .id(UUID.randomUUID().toString())
+                .floor(5)
+                .number(505)
                 .build();
         List<Audience> expectedAudiences = new ArrayList<>();
         expectedAudiences.add(audience1);
@@ -61,9 +61,9 @@ public class AudienceDaoImplTest {
     void updateShouldChangeAudienceField() {
         Audience audience = audienceDao.findById("aabb").get();
         Audience expectedAudience = Audience.builder()
-                .withId("aabb")
-                .withFloor(2)
-                .withNumber(261)
+                .id("aabb")
+                .floor(2)
+                .number(261)
                 .build();
         assertFalse(audience.getNumber().equals(expectedAudience.getNumber()));
 

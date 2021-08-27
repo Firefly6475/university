@@ -24,9 +24,9 @@ public class FacultyMapper extends AbstractCollectingRowMapper<Faculty> {
     protected Faculty mapRow(ResultSet rs, Faculty partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Faculty.builder()
-                    .withId(rs.getString("faculty_id"))
-                    .withName(rs.getString("faculty_name"))
-                    .withGroups(new ArrayList<>())
+                    .id(rs.getString("faculty_id"))
+                    .name(rs.getString("faculty_name"))
+                    .groups(new ArrayList<>())
                     .build();
             partialResult.getGroups().add(groupMapper.mapRow(rs, null, rowNum));
 

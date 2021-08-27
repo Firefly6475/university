@@ -32,9 +32,9 @@ public class FacultyDaoImplTest {
     void saveShouldInsertFacultyInDB() {
         List<Group> group = groupDao.findAll();
         Faculty expectedFaculty = Faculty.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new faculty")
-                .withGroups(group)
+                .id(UUID.randomUUID().toString())
+                .name("new faculty")
+                .groups(group)
                 .build();
         facultyDao.save(expectedFaculty);
         facultyDao.addAllGroupsToFaculty(expectedFaculty);
@@ -47,14 +47,14 @@ public class FacultyDaoImplTest {
     void saveAllShouldInsertListOfFacultiesInDB() {
         List<Group> groups = groupDao.findAll();
         Faculty faculty1 = Faculty.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new faculty")
-                .withGroups(groups)
+                .id(UUID.randomUUID().toString())
+                .name("new faculty")
+                .groups(groups)
                 .build();
         Faculty faculty2 = Faculty.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("super faculty")
-                .withGroups(groups)
+                .id(UUID.randomUUID().toString())
+                .name("super faculty")
+                .groups(groups)
                 .build();
         List<Faculty> expectedFaculties = new ArrayList<>();
         expectedFaculties.add(faculty2);
@@ -74,9 +74,9 @@ public class FacultyDaoImplTest {
         groups.add(group);
 
         Faculty expectedFaculty = Faculty.builder()
-                .withId("bbcc")
-                .withName("super faculty")
-                .withGroups(groups)
+                .id("bbcc")
+                .name("super faculty")
+                .groups(groups)
                 .build();
         assertFalse(expectedFaculty.getName().equals(facultyDao.findById("bbcc")));
 

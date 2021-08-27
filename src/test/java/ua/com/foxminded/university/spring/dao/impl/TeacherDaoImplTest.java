@@ -27,10 +27,10 @@ public class TeacherDaoImplTest {
     @Test
     void saveShouldInsertTeacherInDB() {
         Teacher expectedTeacher = Teacher.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("Alexey")
-                .withSalary(1000)
-                .withBirthday(LocalDate.parse("1998-01-01"))
+                .id(UUID.randomUUID().toString())
+                .name("Alexey")
+                .salary(1000)
+                .birthday(LocalDate.parse("1998-01-01"))
                 .build();
         teacherDao.save(expectedTeacher);
         Teacher actualTeacher = teacherDao.findById(expectedTeacher.getId()).get();
@@ -40,16 +40,16 @@ public class TeacherDaoImplTest {
     @Test
     void saveAllShouldInsertListOfTeachersInDB() {
         Teacher teacher1 = Teacher.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("Alexey")
-                .withSalary(200)
-                .withBirthday(LocalDate.parse("1998-01-01"))
+                .id(UUID.randomUUID().toString())
+                .name("Alexey")
+                .salary(200)
+                .birthday(LocalDate.parse("1998-01-01"))
                 .build();
         Teacher teacher2 = Teacher.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("Ivan")
-                .withSalary(500)
-                .withBirthday(LocalDate.parse("1999-01-01"))
+                .id(UUID.randomUUID().toString())
+                .name("Ivan")
+                .salary(500)
+                .birthday(LocalDate.parse("1999-01-01"))
                 .build();
         List<Teacher> expectedTeachers = new ArrayList<>();
         expectedTeachers.add(teacher1);
@@ -64,10 +64,10 @@ public class TeacherDaoImplTest {
     void updateShouldChangeTeacherField() {
         Teacher teacher = teacherDao.findById("aabb").get();
         Teacher expectedTeacher = Teacher.builder()
-                .withName("Konstantine")
-                .withId("aabb")
-                .withBirthday(LocalDate.parse("2010-01-01"))
-                .withSalary(500)
+                .id("aabb")
+                .name("Konstantine")
+                .birthday(LocalDate.parse("2010-01-01"))
+                .salary(500)
                 .build();
         assertFalse(teacher.getName().equals(expectedTeacher.getName()));
 

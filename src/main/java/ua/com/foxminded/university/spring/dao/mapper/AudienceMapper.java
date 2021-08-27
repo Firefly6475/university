@@ -13,9 +13,9 @@ public class AudienceMapper extends AbstractCollectingRowMapper<Audience> {
     protected Audience mapRow(ResultSet rs, Audience partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Audience.builder()
-                    .withId(rs.getString("audience_id"))
-                    .withNumber(rs.getInt("audience_number"))
-                    .withFloor(rs.getInt("audience_floor"))
+                    .id(rs.getString("audience_id"))
+                    .number(rs.getInt("audience_number"))
+                    .floor(rs.getInt("audience_floor"))
                     .build();
         }
 

@@ -30,9 +30,9 @@ public class DisciplineDaoImplTest {
     void saveShouldInsertDisciplineInDB() {
         List<Teacher> teachers = teacherDao.findAll();
         Discipline expectedDiscipline = Discipline.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new Discipline")
-                .withTeachers(teachers)
+                .id(UUID.randomUUID().toString())
+                .name("new Discipline")
+                .teachers(teachers)
                 .build();
         disciplineDao.save(expectedDiscipline);
         disciplineDao.addAllTeachersToDiscipline(expectedDiscipline);
@@ -45,14 +45,14 @@ public class DisciplineDaoImplTest {
     void saveAllShouldInsertListOfDisciplinesInDB() {
         List<Teacher> teachers = teacherDao.findAll();
         Discipline discipline1 = Discipline.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("super Discipline")
-                .withTeachers(teachers)
+                .id(UUID.randomUUID().toString())
+                .name("super Discipline")
+                .teachers(teachers)
                 .build();
         Discipline discipline2 = Discipline.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new Discipline")
-                .withTeachers(teachers)
+                .id(UUID.randomUUID().toString())
+                .name("new Discipline")
+                .teachers(teachers)
                 .build();
         List<Discipline> expectedDisciplines = new ArrayList<>();
         expectedDisciplines.add(discipline1);
@@ -71,9 +71,9 @@ public class DisciplineDaoImplTest {
     void updateShouldChangeDisciplineField() {
         Discipline discipline = disciplineDao.findById("aabb").get();
         Discipline expectedDiscipline = Discipline.builder()
-                .withName("super discipline")
-                .withId("aabb")
-                .withTeachers(discipline.getTeachers())
+                .id("aabb")
+                .name("super discipline")
+                .teachers(discipline.getTeachers())
                 .build();
         assertTrue(!discipline.getName().equals(expectedDiscipline.getName()));
 

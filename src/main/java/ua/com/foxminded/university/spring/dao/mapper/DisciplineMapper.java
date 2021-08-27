@@ -21,9 +21,9 @@ public class DisciplineMapper extends AbstractCollectingRowMapper<Discipline> {
     protected Discipline mapRow(ResultSet rs, Discipline partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Discipline.builder()
-                    .withId(rs.getString("discipline_id"))
-                    .withName(rs.getString("discipline_name"))
-                    .withTeachers(new ArrayList<>())
+                    .id(rs.getString("discipline_id"))
+                    .name(rs.getString("discipline_name"))
+                    .teachers(new ArrayList<>())
                     .build();
         }
         partialResult.getTeachers().add(teacherMapper.mapRow(rs, null, rowNum));

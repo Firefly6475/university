@@ -1,6 +1,6 @@
 package ua.com.foxminded.university.model;
 
-public enum LessonType {    
+public enum LessonType {
     LECTURE,
     PRACTICE,
     LAB

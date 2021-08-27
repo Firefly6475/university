@@ -30,9 +30,9 @@ public class GroupDaoImplTest {
     void saveShouldInsertGroupInDB() {
         List<Student> students = studentDao.findAll();
         Group expectedGroup = Group.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new Group")
-                .withStudents(students)
+                .id(UUID.randomUUID().toString())
+                .name("new Group")
+                .students(students)
                 .build();
         groupDao.save(expectedGroup);
         groupDao.addAllStudentsToGroup(expectedGroup);
@@ -45,14 +45,14 @@ public class GroupDaoImplTest {
     void saveAllShouldInsertListOfGroupsInDB() {
         List<Student> students = studentDao.findAll();
         Group group1 = Group.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("super Group")
-                .withStudents(students)
+                .id(UUID.randomUUID().toString())
+                .name("super Group")
+                .students(students)
                 .build();
         Group group2 = Group.builder()
-                .withId(UUID.randomUUID().toString())
-                .withName("new Group")
-                .withStudents(students)
+                .id(UUID.randomUUID().toString())
+                .name("new Group")
+                .students(students)
                 .build();
         List<Group> expectedGroups = new ArrayList<>();
         expectedGroups.add(group1);
@@ -71,9 +71,9 @@ public class GroupDaoImplTest {
     void updateShouldChangeGroupField() {
         Group group = groupDao.findById("aabb").get();
         Group expectedGroup = Group.builder()
-                .withName("super group")
-                .withId("aabb")
-                .withStudents(group.getStudents())
+                .id("aabb")
+                .name("super group")
+                .students(group.getStudents())
                 .build();
         assertFalse(group.getName().equals(expectedGroup.getName()));
 

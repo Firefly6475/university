@@ -13,10 +13,10 @@ public class TeacherMapper extends AbstractCollectingRowMapper<Teacher> {
     protected Teacher mapRow(ResultSet rs, Teacher partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Teacher.builder()
-                    .withId(rs.getString("teacher_id"))
-                    .withName(rs.getString("teacher_name"))
-                    .withBirthday(rs.getDate("teacher_birthday").toLocalDate())
-                    .withSalary(rs.getInt("teacher_salary"))
+                    .id(rs.getString("teacher_id"))
+                    .name(rs.getString("teacher_name"))
+                    .birthday(rs.getDate("teacher_birthday").toLocalDate())
+                    .salary(rs.getInt("teacher_salary"))
                     .build();
         }
 
@@ -30,10 +30,10 @@ public class TeacherMapper extends AbstractCollectingRowMapper<Teacher> {
 
     public Teacher mapTeacherLessonRow(ResultSet rs, int rowNum) throws SQLException {
         return Teacher.builder()
-                .withId(rs.getString("lesson_teacher_id"))
-                .withName(rs.getString("lesson_teacher_name"))
-                .withBirthday(rs.getDate("lesson_teacher_birthday").toLocalDate())
-                .withSalary(rs.getInt("lesson_teacher_salary"))
+                .id(rs.getString("lesson_teacher_id"))
+                .name(rs.getString("lesson_teacher_name"))
+                .birthday(rs.getDate("lesson_teacher_birthday").toLocalDate())
+                .salary(rs.getInt("lesson_teacher_salary"))
                 .build();
     }
 }

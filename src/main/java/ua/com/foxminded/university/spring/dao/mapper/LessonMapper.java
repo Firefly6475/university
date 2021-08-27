@@ -39,15 +39,15 @@ public class LessonMapper extends AbstractCollectingRowMapper<Lesson> {
             Group group = groupMapper.mapRow(rs, null, rowNum);
             Teacher lessonTeacher = teacherMapper.mapTeacherLessonRow(rs, rowNum);
             partialResult = Lesson.builder()
-                    .withId(rs.getString("lesson_id"))
-                    .withDiscipline(discipline)
-                    .withAudience(audience)
-                    .withLessonType(LessonType.valueOf(rs.getString("lesson_type")))
-                    .withGroup(group)
-                    .withTeacher(lessonTeacher)
-                    .withDate(rs.getDate("date").toLocalDate())
-                    .withTimeStart(rs.getTime("time_start").toLocalTime())
-                    .withTimeEnd(rs.getTime("time_end").toLocalTime())
+                    .id(rs.getString("lesson_id"))
+                    .discipline(discipline)
+                    .audience(audience)
+                    .lessonType(LessonType.valueOf(rs.getString("lesson_type")))
+                    .group(group)
+                    .teacher(lessonTeacher)
+                    .date(rs.getDate("date").toLocalDate())
+                    .timeStart(rs.getTime("time_start").toLocalTime())
+                    .timeEnd(rs.getTime("time_end").toLocalTime())
                     .build();
         }
         populateDisciplineGroupLists(partialResult.getDiscipline(), partialResult.getGroup(), rs, rowNum);
