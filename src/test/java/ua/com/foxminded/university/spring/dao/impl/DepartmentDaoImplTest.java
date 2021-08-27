@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Department;
 import ua.com.foxminded.university.model.Teacher;
-import ua.com.foxminded.university.spring.dao.mapper.DepartmentMapper;
-import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.DepartmentDao;
 import ua.com.foxminded.university.spring.dao.TeacherDao;
+import ua.com.foxminded.university.spring.dao.mapper.DepartmentMapper;
+import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DepartmentDaoImplTest {
@@ -75,7 +76,7 @@ public class DepartmentDaoImplTest {
                 .name("super department")
                 .teachers(department.getTeachers())
                 .build();
-        assertTrue(!department.getName().equals(expectedDepartment.getName()));
+        assertNotEquals(department.getName(), expectedDepartment.getName());
 
         departmentDao.update(expectedDepartment);
         Department actualDepartment = departmentDao.findById("aabb").get();

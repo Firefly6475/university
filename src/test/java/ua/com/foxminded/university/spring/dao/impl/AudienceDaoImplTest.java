@@ -3,10 +3,10 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Audience;
-import ua.com.foxminded.university.spring.dao.mapper.AudienceMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.AudienceDao;
 import ua.com.foxminded.university.spring.dao.Page;
+import ua.com.foxminded.university.spring.dao.mapper.AudienceMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AudienceDaoImplTest {
@@ -65,7 +66,7 @@ public class AudienceDaoImplTest {
                 .floor(2)
                 .number(261)
                 .build();
-        assertFalse(audience.getNumber().equals(expectedAudience.getNumber()));
+        assertNotEquals(audience.getNumber(), expectedAudience.getNumber());
 
         audienceDao.update(expectedAudience);
         Audience actualAudience = audienceDao.findById("aabb").get();

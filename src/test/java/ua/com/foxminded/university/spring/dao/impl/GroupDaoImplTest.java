@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Group;
 import ua.com.foxminded.university.model.Student;
-import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
-import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.GroupDao;
 import ua.com.foxminded.university.spring.dao.StudentDao;
+import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
+import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GroupDaoImplTest {
@@ -75,7 +76,7 @@ public class GroupDaoImplTest {
                 .name("super group")
                 .students(group.getStudents())
                 .build();
-        assertFalse(group.getName().equals(expectedGroup.getName()));
+        assertNotEquals(group.getName(), expectedGroup.getName());
 
         groupDao.update(expectedGroup);
         Group actualGroup = groupDao.findById("aabb").get();

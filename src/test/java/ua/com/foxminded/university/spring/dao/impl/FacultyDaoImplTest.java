@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Faculty;
 import ua.com.foxminded.university.model.Group;
-import ua.com.foxminded.university.spring.dao.mapper.FacultyMapper;
-import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
-import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.FacultyDao;
 import ua.com.foxminded.university.spring.dao.GroupDao;
+import ua.com.foxminded.university.spring.dao.mapper.FacultyMapper;
+import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
+import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +17,14 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FacultyDaoImplTest {
     private final StudentMapper studentMapper = new StudentMapper();
     private final GroupMapper groupMapper = new GroupMapper(studentMapper);
-    private final JdbcConfigTest jdbcConfigTest = new JdbcConfigTest();
     private final FacultyMapper facultyMapper = new FacultyMapper(groupMapper, studentMapper);
+    private final JdbcConfigTest jdbcConfigTest = new JdbcConfigTest();
     private final JdbcTemplate jdbcTemplate = new JdbcTemplate(jdbcConfigTest.getTestDataSource());
     private final GroupDao groupDao = new GroupDaoImpl(jdbcTemplate, groupMapper);
     private final FacultyDao facultyDao = new FacultyDaoImpl(jdbcTemplate, facultyMapper);
@@ -42,7 +43,7 @@ public class FacultyDaoImplTest {
 
         assertEquals(expectedFaculty, actualFaculty);
     }
-    
+
     @Test
     void saveAllShouldInsertListOfFacultiesInDB() {
         List<Group> groups = groupDao.findAll();
@@ -70,6 +71,7 @@ public class FacultyDaoImplTest {
     @Test
     void updateShouldChangeFacultyField() {
         Group group = groupDao.findById("bbcc").get();
+        Faculty faculty = facultyDao.findById("bbcc").get();
         List<Group> groups = new ArrayList<>();
         groups.add(group);
 
@@ -78,7 +80,7 @@ public class FacultyDaoImplTest {
                 .name("super faculty")
                 .groups(groups)
                 .build();
-        assertFalse(expectedFaculty.getName().equals(facultyDao.findById("bbcc")));
+        assertNotEquals(expectedFaculty.getName(), faculty.getName());
 
         facultyDao.update(expectedFaculty);
         Faculty actualFaculty = facultyDao.findById("bbcc").get();

@@ -1,16 +1,15 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.spring.dao.CrudDao;
 import ua.com.foxminded.university.spring.dao.Page;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
 public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
 
     protected final JdbcTemplate jdbcTemplate;
@@ -28,26 +28,9 @@ public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
     private final String updateQuery;
     private final String deleteByIdQuery;
 
-    public AbstractCrudDaoImpl(JdbcTemplate jdbcTemplate, String saveQuery, String findByIdQuery,
-                               String findAllQuery, String findAllPagedQuery, String updateQuery,
-                               String deleteByIdQuery) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.saveQuery = saveQuery;
-        this.findByIdQuery = findByIdQuery;
-        this.findAllQuery = findAllQuery;
-        this.findAllPagedQuery = findAllPagedQuery;
-        this.updateQuery = updateQuery;
-        this.deleteByIdQuery = deleteByIdQuery;
-    }
-
     @Override
     public void save(E entity) {
-        jdbcTemplate.update(saveQuery, new PreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                insert(ps, entity);
-            }
-        });
+        jdbcTemplate.update(saveQuery, ps -> insert(ps, entity));
     }
 
     @Override
@@ -55,7 +38,7 @@ public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
         jdbcTemplate.batchUpdate(saveQuery, new BatchPreparedStatementSetter() {
 
             @Override
-            public void setValues(PreparedStatement ps, int i) throws SQLException {
+            public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
                 insertAll(ps, i, entities);
             }
 
@@ -69,7 +52,7 @@ public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
     @Override
     public Optional<E> findById(String id) {
         try {
-            return Optional.of(jdbcTemplate.queryForObject(findByIdQuery, rowMapper(), id));
+            return Optional.ofNullable(jdbcTemplate.queryForObject(findByIdQuery, rowMapper(), id));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
@@ -77,39 +60,26 @@ public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
 
     @Override
     public List<E> findAll() {
-        return jdbcTemplate.query(new PreparedStatementCreator() {
-
-            @Override
-            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                return con.prepareStatement(findAllQuery, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            }
-        }, rowMapper());
+        return jdbcTemplate.query(con -> con.prepareStatement(findAllQuery, ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE), rowMapper());
     }
 
     @Override
     public List<E> findAll(Page page) {
         int amountOnPage = page.getAmountOnPage();
         int pageNumber = page.getPageNumber();
-        return jdbcTemplate.query(new PreparedStatementCreator() {
-            @Override
-            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement preparedStatement = con.prepareStatement(findAllPagedQuery, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                preparedStatement.setInt(1, amountOnPage);
-                preparedStatement.setInt(2, (pageNumber - 1) * amountOnPage);
-                return preparedStatement;
-            }
+        return jdbcTemplate.query(con -> {
+            PreparedStatement preparedStatement = con.prepareStatement(findAllPagedQuery,
+                    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            preparedStatement.setInt(1, amountOnPage);
+            preparedStatement.setInt(2, (pageNumber - 1) * amountOnPage);
+            return preparedStatement;
         }, rowMapper());
     }
 
     @Override
     public void update(E entity) {
-        jdbcTemplate.update(updateQuery, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                update(ps, entity);
-            }
-        });
+        jdbcTemplate.update(updateQuery, ps -> update(ps, entity));
     }
 
     @Override

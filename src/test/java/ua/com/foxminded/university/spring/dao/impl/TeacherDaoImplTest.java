@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TeacherDaoImplTest {
@@ -69,7 +70,7 @@ public class TeacherDaoImplTest {
                 .birthday(LocalDate.parse("2010-01-01"))
                 .salary(500)
                 .build();
-        assertFalse(teacher.getName().equals(expectedTeacher.getName()));
+        assertNotEquals(teacher.getName(), expectedTeacher.getName());
 
         teacherDao.update(expectedTeacher);
         Teacher actualTeacher = teacherDao.findById("aabb").get();
