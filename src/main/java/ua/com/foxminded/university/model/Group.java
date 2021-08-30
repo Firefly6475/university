@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @ToString
 @EqualsAndHashCode
-@Builder
+@Builder(setterPrefix = "with")
 public class Group {
     @NonNull
     private final String id;

@@ -31,9 +31,9 @@ public class DepartmentDaoImplTest {
     void saveShouldInsertDepartmentInDB() {
         List<Teacher> teachers = teacherDao.findAll();
         Department department = Department.builder()
-                .id(UUID.randomUUID().toString())
-                .name("new Department")
-                .teachers(teachers)
+                .withId(UUID.randomUUID().toString())
+                .withName("new Department")
+                .withTeachers(teachers)
                 .build();
         departmentDao.save(department);
         departmentDao.addAllTeachersToDepartment(department);
@@ -46,14 +46,14 @@ public class DepartmentDaoImplTest {
     void saveAllShouldInsertListOfDepartmentsInDB() {
         List<Teacher> teachers = teacherDao.findAll();
         Department department1 = Department.builder()
-                .id(UUID.randomUUID().toString())
-                .name("super Department")
-                .teachers(teachers)
+                .withId(UUID.randomUUID().toString())
+                .withName("super Department")
+                .withTeachers(teachers)
                 .build();
         Department department2 = Department.builder()
-                .id(UUID.randomUUID().toString())
-                .name("new Department")
-                .teachers(teachers)
+                .withId(UUID.randomUUID().toString())
+                .withName("new Department")
+                .withTeachers(teachers)
                 .build();
         List<Department> expectedDepartments = new ArrayList<>();
         expectedDepartments.add(department1);
@@ -72,9 +72,9 @@ public class DepartmentDaoImplTest {
     void updateShouldChangeDepartmentField() {
         Department department = departmentDao.findById("aabb").get();
         Department expectedDepartment = Department.builder()
-                .id("aabb")
-                .name("super department")
-                .teachers(department.getTeachers())
+                .withId("aabb")
+                .withName("super department")
+                .withTeachers(department.getTeachers())
                 .build();
         assertNotEquals(department.getName(), expectedDepartment.getName());
 

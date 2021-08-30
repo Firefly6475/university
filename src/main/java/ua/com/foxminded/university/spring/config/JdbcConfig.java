@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan("ua.com.foxminded.university.spring")
-@ComponentScan("ua.com.foxminded.university.spring.dao.mapper")
+@ComponentScan("ua.com.foxminded.university.service")
 public class JdbcConfig {
 
     @Value("${url}")

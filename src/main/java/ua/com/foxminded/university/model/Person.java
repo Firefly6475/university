@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @ToString
 @EqualsAndHashCode
-@SuperBuilder
+@SuperBuilder(setterPrefix = "with")
 public class Person {
     @NonNull
     private final String id;

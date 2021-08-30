@@ -54,15 +54,15 @@ public class LessonDaoImplTest {
         Group group = groupDao.findById("aabb").get();
 
         Lesson expectedLesson = Lesson.builder()
-                .id("eeff")
-                .audience(audience)
-                .discipline(discipline)
-                .lessonType(LessonType.LECTURE)
-                .date(LocalDate.parse("2001-01-01"))
-                .timeStart(LocalTime.parse("12:00:00"))
-                .timeEnd(LocalTime.parse("13:00:00"))
-                .teacher(teacher)
-                .group(group)
+                .withId("eeff")
+                .withAudience(audience)
+                .withDiscipline(discipline)
+                .withLessonType(LessonType.LECTURE)
+                .withDate(LocalDate.parse("2001-01-01"))
+                .withTimeStart(LocalTime.parse("12:00:00"))
+                .withTimeEnd(LocalTime.parse("13:00:00"))
+                .withTeacher(teacher)
+                .withGroup(group)
                 .build();
         lessonDao.save(expectedLesson);
         Lesson actualLesson = lessonDao.findById("eeff").get();
@@ -78,26 +78,26 @@ public class LessonDaoImplTest {
         Group group = groupDao.findById("aabb").get();
 
         Lesson lesson1 = Lesson.builder()
-                .id("eeff")
-                .audience(audience)
-                .discipline(discipline)
-                .lessonType(LessonType.LECTURE)
-                .date(LocalDate.parse("2001-01-01"))
-                .timeStart(LocalTime.parse("12:00:00"))
-                .timeEnd(LocalTime.parse("13:00:00"))
-                .teacher(teacher)
-                .group(group)
+                .withId("eeff")
+                .withAudience(audience)
+                .withDiscipline(discipline)
+                .withLessonType(LessonType.LECTURE)
+                .withDate(LocalDate.parse("2001-01-01"))
+                .withTimeStart(LocalTime.parse("12:00:00"))
+                .withTimeEnd(LocalTime.parse("13:00:00"))
+                .withTeacher(teacher)
+                .withGroup(group)
                 .build();
         Lesson lesson2 = Lesson.builder()
-                .id("ffgg")
-                .audience(audience)
-                .discipline(discipline)
-                .lessonType(LessonType.LAB)
-                .date(LocalDate.parse("2001-01-01"))
-                .timeStart(LocalTime.parse("14:00:00"))
-                .timeEnd(LocalTime.parse("15:00:00"))
-                .teacher(teacher)
-                .group(group)
+                .withId("ffgg")
+                .withAudience(audience)
+                .withDiscipline(discipline)
+                .withLessonType(LessonType.LAB)
+                .withDate(LocalDate.parse("2001-01-01"))
+                .withTimeStart(LocalTime.parse("14:00:00"))
+                .withTimeEnd(LocalTime.parse("15:00:00"))
+                .withTeacher(teacher)
+                .withGroup(group)
                 .build();
         List<Lesson> expectedLessons = new ArrayList<>();
         expectedLessons.add(lesson1);
@@ -113,15 +113,15 @@ public class LessonDaoImplTest {
     void updateLessonShouldChangeLessonFieldInDB() {
         Lesson lesson = lessonDao.findById("aabb").get();
         Lesson expectedLesson = Lesson.builder()
-                .id(lesson.getId())
-                .audience(lesson.getAudience())
-                .discipline(lesson.getDiscipline())
-                .lessonType(LessonType.PRACTICE)
-                .date(LocalDate.parse("2002-01-01"))
-                .timeStart(LocalTime.parse("08:00:00"))
-                .timeEnd(LocalTime.parse("09:30:00"))
-                .teacher(lesson.getTeacher())
-                .group(lesson.getGroup())
+                .withId(lesson.getId())
+                .withAudience(lesson.getAudience())
+                .withDiscipline(lesson.getDiscipline())
+                .withLessonType(LessonType.PRACTICE)
+                .withDate(LocalDate.parse("2002-01-01"))
+                .withTimeStart(LocalTime.parse("08:00:00"))
+                .withTimeEnd(LocalTime.parse("09:30:00"))
+                .withTeacher(lesson.getTeacher())
+                .withGroup(lesson.getGroup())
                 .build();
         assertNotEquals(expectedLesson, lesson);
 

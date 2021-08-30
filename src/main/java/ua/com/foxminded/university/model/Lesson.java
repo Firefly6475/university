@@ -12,7 +12,7 @@ import java.time.LocalTime;
 @Getter
 @ToString
 @EqualsAndHashCode
-@Builder
+@Builder(setterPrefix = "with")
 public class Lesson {
     @NonNull
     private final String id;

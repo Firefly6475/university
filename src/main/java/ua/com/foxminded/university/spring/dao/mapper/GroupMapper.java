@@ -21,9 +21,9 @@ public class GroupMapper extends AbstractCollectingRowMapper<Group> {
     protected Group mapRow(ResultSet rs, Group partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Group.builder()
-                    .id(rs.getString("group_id"))
-                    .name(rs.getString("group_name"))
-                    .students(new ArrayList<>())
+                    .withId(rs.getString("group_id"))
+                    .withName(rs.getString("group_name"))
+                    .withStudents(new ArrayList<>())
                     .build();
         }
         partialResult.getStudents().add(studentMapper.mapRow(rs, null, rowNum));

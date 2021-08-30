@@ -28,10 +28,10 @@ public class StudentDaoImplTest {
     @Test
     void saveShouldInsertStudentInDB() {
         Student expectedStudent = Student.builder()
-                .id(UUID.randomUUID().toString())
-                .name("Alexey")
-                .course(2)
-                .birthday(LocalDate.parse("1998-01-01"))
+                .withId(UUID.randomUUID().toString())
+                .withName("Alexey")
+                .withCourse(2)
+                .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         studentDao.save(expectedStudent);
         Student actualStudent = studentDao.findById(expectedStudent.getId()).get();
@@ -42,16 +42,16 @@ public class StudentDaoImplTest {
     @Test
     void saveAllShouldInsertListOfStudentsInDB() {
         Student student1 = Student.builder()
-                .id(UUID.randomUUID().toString())
-                .name("Alexey")
-                .course(2)
-                .birthday(LocalDate.parse("1998-01-01"))
+                .withId(UUID.randomUUID().toString())
+                .withName("Alexey")
+                .withCourse(2)
+                .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         Student student2 = Student.builder()
-                .id(UUID.randomUUID().toString())
-                .name("Ivan")
-                .course(2)
-                .birthday(LocalDate.parse("1999-01-01"))
+                .withId(UUID.randomUUID().toString())
+                .withName("Ivan")
+                .withCourse(2)
+                .withBirthday(LocalDate.parse("1999-01-01"))
                 .build();
         List<Student> expectedStudents = new ArrayList<>();
         expectedStudents.add(student1);
@@ -66,10 +66,10 @@ public class StudentDaoImplTest {
     void updateShouldChangeStudentField() {
         Student student = studentDao.findById("aabb").get();
         Student expectedStudent = Student.builder()
-                .id("aabb")
-                .name("Konstantine")
-                .birthday(LocalDate.parse("2010-01-01"))
-                .course(2)
+                .withId("aabb")
+                .withName("Konstantine")
+                .withBirthday(LocalDate.parse("2010-01-01"))
+                .withCourse(2)
                 .build();
         assertNotEquals(student.getName(), expectedStudent.getName());
 

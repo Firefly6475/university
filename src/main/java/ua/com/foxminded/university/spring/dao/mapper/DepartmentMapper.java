@@ -21,9 +21,9 @@ public class DepartmentMapper extends AbstractCollectingRowMapper<Department> {
     protected Department mapRow(ResultSet rs, Department partialResult, int rowNum) throws SQLException {
         if (partialResult == null) {
             partialResult = Department.builder()
-                    .id(rs.getString("department_id"))
-                    .name(rs.getString("department_name"))
-                    .teachers(new ArrayList<>())
+                    .withId(rs.getString("department_id"))
+                    .withName(rs.getString("department_name"))
+                    .withTeachers(new ArrayList<>())
                     .build();
         }
         partialResult.getTeachers().add(teacherMapper.mapRow(rs, null, rowNum));

@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-@Builder
+@Builder(setterPrefix = "with")
 public class Audience {
     @NonNull
     private final String id;

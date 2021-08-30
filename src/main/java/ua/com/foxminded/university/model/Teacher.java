@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@SuperBuilder
+@SuperBuilder(setterPrefix = "with")
 public class Teacher extends Person {
     private final Integer salary;
 }
