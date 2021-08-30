@@ -1,14 +1,15 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.model.Audience;
-import ua.com.foxminded.university.spring.dao.mapper.AudienceMapper;
 import ua.com.foxminded.university.spring.dao.AudienceDao;
+import ua.com.foxminded.university.spring.dao.mapper.AudienceMapper;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements AudienceDao {
@@ -29,7 +30,7 @@ public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements Au
                 UPDATE_QUERY, DELETE_BY_ID_QUERY);
         this.audienceMapper = audienceMapper;
     }
-    
+
     @Override
     protected void insert(PreparedStatement preparedStatement, Audience entity)
             throws SQLException {
@@ -37,7 +38,7 @@ public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements Au
         preparedStatement.setInt(2, entity.getNumber());
         preparedStatement.setInt(3, entity.getFloor());
     }
-    
+
     @Override
     protected void insertAll(PreparedStatement preparedStatement, int i, List<Audience> entities)
             throws SQLException {
@@ -45,12 +46,12 @@ public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements Au
         preparedStatement.setInt(2, entities.get(i).getNumber());
         preparedStatement.setInt(3, entities.get(i).getFloor());
     }
-    
+
     @Override
     protected RowMapper<Audience> rowMapper() {
         return audienceMapper;
     }
-    
+
     @Override
     protected void update(PreparedStatement preparedStatement, Audience entity)
             throws SQLException {

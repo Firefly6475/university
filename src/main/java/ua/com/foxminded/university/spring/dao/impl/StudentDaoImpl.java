@@ -1,14 +1,15 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.model.Student;
-import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import ua.com.foxminded.university.spring.dao.StudentDao;
+import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements StudentDao {

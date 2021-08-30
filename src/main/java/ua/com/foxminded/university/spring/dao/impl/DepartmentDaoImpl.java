@@ -1,13 +1,13 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.model.Department;
-import ua.com.foxminded.university.spring.dao.mapper.DepartmentMapper;
 import ua.com.foxminded.university.spring.dao.DepartmentDao;
+import ua.com.foxminded.university.spring.dao.mapper.DepartmentMapper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -77,13 +77,9 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
 
     @Override
     public void addTeacherToDepartment(String departmentId, String teacherId) {
-        jdbcTemplate.update(ADD_TEACHER_TO_DEPARTMENT_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, departmentId);
-                ps.setString(2, teacherId);
-            }
+        jdbcTemplate.update(ADD_TEACHER_TO_DEPARTMENT_QUERY, ps -> {
+            ps.setString(1, departmentId);
+            ps.setString(2, teacherId);
         });
     }
 
@@ -93,7 +89,7 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
                 new BatchPreparedStatementSetter() {
 
                     @Override
-                    public void setValues(PreparedStatement ps, int i) throws SQLException {
+                    public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
                         ps.setString(1, department.getId());
                         ps.setString(2, department.getTeachers().get(i).getId());
                     }
@@ -107,13 +103,9 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
 
     @Override
     public void removeTeacherFromDepartment(String departmentId, String teacherId) {
-        jdbcTemplate.update(DELETE_TEACHER_FROM_DEPARTMENT_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, departmentId);
-                ps.setString(2, teacherId);
-            }
+        jdbcTemplate.update(DELETE_TEACHER_FROM_DEPARTMENT_QUERY, ps -> {
+            ps.setString(1, departmentId);
+            ps.setString(2, teacherId);
         });
     }
 }

@@ -1,13 +1,13 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.model.Discipline;
-import ua.com.foxminded.university.spring.dao.mapper.DisciplineMapper;
 import ua.com.foxminded.university.spring.dao.DisciplineDao;
+import ua.com.foxminded.university.spring.dao.mapper.DisciplineMapper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -79,13 +79,9 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
 
     @Override
     public void addTeacherToDiscipline(String disciplineId, String teacherId) {
-        jdbcTemplate.update(ADD_TEACHER_TO_DISCIPLINE_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, disciplineId);
-                ps.setString(2, teacherId);
-            }
+        jdbcTemplate.update(ADD_TEACHER_TO_DISCIPLINE_QUERY, ps -> {
+            ps.setString(1, disciplineId);
+            ps.setString(2, teacherId);
         });
     }
 
@@ -95,7 +91,7 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
                 new BatchPreparedStatementSetter() {
 
                     @Override
-                    public void setValues(PreparedStatement ps, int i) throws SQLException {
+                    public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
                         ps.setString(1, discipline.getId());
                         ps.setString(2, discipline.getTeachers().get(i).getId());
                     }
@@ -109,13 +105,9 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
 
     @Override
     public void removeTeacherFromDiscipline(String disciplineId, String teacherId) {
-        jdbcTemplate.update(DELETE_TEACHER_FROM_DISCIPLINE_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, disciplineId);
-                ps.setString(2, teacherId);
-            }
+        jdbcTemplate.update(DELETE_TEACHER_FROM_DISCIPLINE_QUERY, ps -> {
+            ps.setString(1, disciplineId);
+            ps.setString(2, teacherId);
         });
     }
 }

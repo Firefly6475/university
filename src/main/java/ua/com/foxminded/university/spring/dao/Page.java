@@ -1,19 +1,11 @@
 package ua.com.foxminded.university.spring.dao;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public class Page {
-    private int pageNumber;
-    private int amountOnPage;
-
-    public Page(int pageNumber, int amountOnPage) {
-        this.pageNumber = pageNumber;
-        this.amountOnPage = amountOnPage;
-    }
-
-    public int getPageNumber() {
-        return pageNumber;
-    }
-
-    public int getAmountOnPage() {
-        return amountOnPage;
-    }
+    private final int pageNumber;
+    private final int amountOnPage;
 }

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Discipline;
 import ua.com.foxminded.university.model.Teacher;
-import ua.com.foxminded.university.spring.dao.mapper.DisciplineMapper;
-import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.DisciplineDao;
 import ua.com.foxminded.university.spring.dao.TeacherDao;
+import ua.com.foxminded.university.spring.dao.mapper.DisciplineMapper;
+import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DisciplineDaoImplTest {
@@ -71,11 +72,11 @@ public class DisciplineDaoImplTest {
     void updateShouldChangeDisciplineField() {
         Discipline discipline = disciplineDao.findById("aabb").get();
         Discipline expectedDiscipline = Discipline.builder()
-                .withName("super discipline")
                 .withId("aabb")
+                .withName("super discipline")
                 .withTeachers(discipline.getTeachers())
                 .build();
-        assertTrue(!discipline.getName().equals(expectedDiscipline.getName()));
+        assertNotEquals(discipline.getName(), expectedDiscipline.getName());
 
         disciplineDao.update(expectedDiscipline);
         Discipline actualDiscipline = disciplineDao.findById("aabb").get();

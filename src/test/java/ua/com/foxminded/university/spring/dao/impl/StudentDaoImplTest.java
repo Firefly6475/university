@@ -3,10 +3,10 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Student;
-import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.StudentDao;
+import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StudentDaoImplTest {
@@ -65,12 +66,12 @@ public class StudentDaoImplTest {
     void updateShouldChangeStudentField() {
         Student student = studentDao.findById("aabb").get();
         Student expectedStudent = Student.builder()
-                .withName("Konstantine")
                 .withId("aabb")
+                .withName("Konstantine")
                 .withBirthday(LocalDate.parse("2010-01-01"))
                 .withCourse(2)
                 .build();
-        assertFalse(student.getName().equals(expectedStudent.getName()));
+        assertNotEquals(student.getName(), expectedStudent.getName());
 
         studentDao.update(expectedStudent);
         Student actualStudent = studentDao.findById("aabb").get();

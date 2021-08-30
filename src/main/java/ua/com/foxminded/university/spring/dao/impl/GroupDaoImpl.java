@@ -1,13 +1,13 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.com.foxminded.university.model.Group;
-import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
 import ua.com.foxminded.university.spring.dao.GroupDao;
+import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -74,13 +74,9 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
 
     @Override
     public void addStudentToGroup(String groupId, String studentId) {
-        jdbcTemplate.update(ADD_STUDENT_TO_GROUP_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, groupId);
-                ps.setString(2, studentId);
-            }
+        jdbcTemplate.update(ADD_STUDENT_TO_GROUP_QUERY, ps -> {
+            ps.setString(1, groupId);
+            ps.setString(2, studentId);
         });
     }
 
@@ -89,7 +85,7 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
         jdbcTemplate.batchUpdate(ADD_STUDENT_TO_GROUP_QUERY, new BatchPreparedStatementSetter() {
 
             @Override
-            public void setValues(PreparedStatement ps, int i) throws SQLException {
+            public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
                 ps.setString(1, group.getId());
                 ps.setString(2, group.getStudents().get(i).getId());
             }
@@ -103,13 +99,9 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
 
     @Override
     public void removeStudentFromGroup(String groupId, String studentId) {
-        jdbcTemplate.update(DELETE_STUDENT_FROM_GROUP_QUERY, new PreparedStatementSetter() {
-
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, groupId);
-                ps.setString(2, studentId);
-            }
+        jdbcTemplate.update(DELETE_STUDENT_FROM_GROUP_QUERY, ps -> {
+            ps.setString(1, groupId);
+            ps.setString(2, studentId);
         });
     }
 }
