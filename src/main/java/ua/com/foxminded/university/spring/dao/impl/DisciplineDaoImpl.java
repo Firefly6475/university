@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,20 +18,20 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
     private static final String SAVE_QUERY = "INSERT INTO discipline (discipline_id, discipline_name) VALUES (?,?)";
     private static final String FIND_BY_ID_QUERY =
             "SELECT discipline.discipline_id, discipline.discipline_name, "
-                    + "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, "
-                    + "teacher.teacher_salary FROM discipline "
+                    + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
+                    + "FROM discipline "
                     + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
                     + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id WHERE discipline.discipline_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT discipline.discipline_id, discipline.discipline_name, "
-                    + "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, "
-                    + "teacher.teacher_salary FROM discipline "
+                    + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
+                    + "FROM discipline "
                     + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
                     + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id ORDER BY discipline_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT discipline.discipline_id, discipline.discipline_name, "
-                    + "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, "
-                    + "teacher.teacher_salary FROM discipline "
+                    + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
+                    + "FROM discipline "
                     + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
                     + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE discipline SET discipline_name = ? WHERE discipline_id = ?";
@@ -91,7 +90,7 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
                 new BatchPreparedStatementSetter() {
 
                     @Override
-                    public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
+                    public void setValues(PreparedStatement ps, int i) throws SQLException {
                         ps.setString(1, discipline.getId());
                         ps.setString(2, discipline.getTeachers().get(i).getId());
                     }

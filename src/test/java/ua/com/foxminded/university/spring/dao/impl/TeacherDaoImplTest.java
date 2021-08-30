@@ -29,8 +29,9 @@ public class TeacherDaoImplTest {
     void saveShouldInsertTeacherInDB() {
         Teacher expectedTeacher = Teacher.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("hello@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Alexey")
-                .withSalary(1000)
                 .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         teacherDao.save(expectedTeacher);
@@ -42,14 +43,16 @@ public class TeacherDaoImplTest {
     void saveAllShouldInsertListOfTeachersInDB() {
         Teacher teacher1 = Teacher.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("hello@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Alexey")
-                .withSalary(200)
                 .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         Teacher teacher2 = Teacher.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("hello@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Ivan")
-                .withSalary(500)
                 .withBirthday(LocalDate.parse("1999-01-01"))
                 .build();
         List<Teacher> expectedTeachers = new ArrayList<>();
@@ -66,9 +69,10 @@ public class TeacherDaoImplTest {
         Teacher teacher = teacherDao.findById("aabb").get();
         Teacher expectedTeacher = Teacher.builder()
                 .withId("aabb")
+                .withEmail("hello@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Konstantine")
                 .withBirthday(LocalDate.parse("2010-01-01"))
-                .withSalary(500)
                 .build();
         assertNotEquals(teacher.getName(), expectedTeacher.getName());
 
@@ -98,5 +102,19 @@ public class TeacherDaoImplTest {
         teacherDao.deleteById("ffgg");
 
         assertFalse(teacherDao.findById("ffgg").isPresent());
+    }
+
+    @Test
+    void findByEmailShouldReturnTeacherWithSpecifiedEmail() {
+        Teacher expectedTeacher = Teacher.builder()
+                .withId(UUID.randomUUID().toString())
+                .withEmail("mynameis@gmail.com")
+                .withPassword("mY.P@$$w0rd")
+                .withName("Nikolay")
+                .withBirthday(LocalDate.parse("1998-04-09"))
+                .build();
+        teacherDao.save(expectedTeacher);
+        Teacher actualTeacher = teacherDao.findByEmail("mynameis@gmail.com").get();
+        assertEquals(expectedTeacher, actualTeacher);
     }
 }

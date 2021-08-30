@@ -17,12 +17,12 @@ public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements Stud
     protected final StudentMapper studentMapper;
 
     private static final String SAVE_QUERY =
-            "INSERT INTO student (student_id, student_name, student_birthday, student_course) VALUES (?,?,?,?)";
+            "INSERT INTO student (student_id, student_email, student_password, student_name, student_birthday) VALUES (?,?,?,?,?)";
     private static final String FIND_BY_ID_QUERY = "SELECT * FROM student WHERE student_id = ?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM student ORDER BY student_id ASC ";
     private static final String FIND_ALL_PAGED_QUERY = "SELECT * FROM student LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY =
-            "UPDATE student SET student_name = ?, student_birthday = ?, student_course = ? WHERE student_id = ?";
+            "UPDATE student SET student_email = ?, student_password = ?, student_name = ?, student_birthday = ? WHERE student_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM student WHERE student_id = ?";
 
     public StudentDaoImpl(JdbcTemplate jdbcTemplate, StudentMapper studentMapper) {
@@ -34,19 +34,20 @@ public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements Stud
     @Override
     protected void insert(PreparedStatement preparedStatement, Student entity) throws SQLException {
         preparedStatement.setString(1, entity.getId());
-        preparedStatement.setString(2, entity.getName());
-        preparedStatement.setObject(3, entity.getBirthday());
-        preparedStatement.setInt(4, entity.getCourse());
+        preparedStatement.setString(2, entity.getEmail());
+        preparedStatement.setString(3, entity.getPassword());
+        preparedStatement.setString(4, entity.getName());
+        preparedStatement.setObject(5, entity.getBirthday());
     }
 
     @Override
     protected void insertAll(PreparedStatement preparedStatement, int i, List<Student> entities)
             throws SQLException {
         preparedStatement.setString(1, entities.get(i).getId());
-        preparedStatement.setString(2, entities.get(i).getName());
-        preparedStatement.setObject(3, entities.get(i).getBirthday());
-        preparedStatement.setInt(4, entities.get(i).getCourse());
-
+        preparedStatement.setString(2, entities.get(i).getEmail());
+        preparedStatement.setString(3, entities.get(i).getPassword());
+        preparedStatement.setString(4, entities.get(i).getName());
+        preparedStatement.setObject(5, entities.get(i).getBirthday());
     }
 
     @Override
@@ -56,9 +57,10 @@ public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements Stud
 
     @Override
     protected void update(PreparedStatement preparedStatement, Student entity) throws SQLException {
-        preparedStatement.setString(1, entity.getName());
-        preparedStatement.setObject(2, entity.getBirthday());
-        preparedStatement.setInt(3, entity.getCourse());
-        preparedStatement.setString(4, entity.getId());
+        preparedStatement.setString(1, entity.getEmail());
+        preparedStatement.setString(2, entity.getPassword());
+        preparedStatement.setString(3, entity.getName());
+        preparedStatement.setObject(4, entity.getBirthday());
+        preparedStatement.setString(5, entity.getId());
     }
 }

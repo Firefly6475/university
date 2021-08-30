@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,24 +18,24 @@ public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements Facu
     private static final String SAVE_QUERY = "INSERT INTO faculty (faculty_id, faculty_name) VALUES (?,?)";
     private static final String FIND_BY_ID_QUERY =
             "SELECT faculty.faculty_id, faculty.faculty_name, \"group\".group_id, "
-                    + "\"group\".group_name, student.student_id, student.student_name, "
-                    + "student.student_birthday, student.student_course "
+                    + "\"group\".group_name, \"group\".group_course,  student.student_id, student.student_email, "
+                    + "student.student_password, student.student_name, student.student_birthday, "
                     + "FROM faculty INNER JOIN faculty_group ON faculty.faculty_id = faculty_group.faculty "
                     + "INNER JOIN \"group\" ON faculty_group.\"group\" = \"group\".group_id "
                     + "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
                     + "INNER JOIN student ON group_student.student = student.student_id WHERE faculty_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT faculty.faculty_id, faculty.faculty_name, \"group\".group_id, "
-                    + "\"group\".group_name, student.student_id, student.student_name, "
-                    + "student.student_birthday, student.student_course "
+                    + "\"group\".group_name, \"group\".group_course, student.student_id, student.student_email, "
+                    + "student.student_password, student.student_name, student.student_birthday, "
                     + "FROM faculty INNER JOIN faculty_group ON faculty.faculty_id = faculty_group.faculty "
                     + "INNER JOIN \"group\" ON faculty_group.\"group\" = \"group\".group_id "
                     + "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
                     + "INNER JOIN student ON group_student.student = student.student_id ORDER BY faculty_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT faculty.faculty_id, faculty.faculty_name, \"group\".group_id, "
-                    + "\"group\".group_name, student.student_id, student.student_name, "
-                    + "student.student_birthday, student.student_course "
+                    + "\"group\".group_name, \"group\".group_course, student.student_id, student.student_email, "
+                    + "student.student_password, student.student_name, student.student_birthday, "
                     + "FROM faculty INNER JOIN faculty_group ON faculty.faculty_id = faculty_group.faculty "
                     + "INNER JOIN \"group\" ON faculty_group.\"group\" = \"group\".group_id "
                     + "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
@@ -92,7 +91,7 @@ public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements Facu
         jdbcTemplate.batchUpdate(ADD_GROUP_TO_FACULTY_QUERY, new BatchPreparedStatementSetter() {
 
             @Override
-            public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setString(1, faculty.getId());
                 ps.setString(2, faculty.getGroups().get(i).getId());
             }

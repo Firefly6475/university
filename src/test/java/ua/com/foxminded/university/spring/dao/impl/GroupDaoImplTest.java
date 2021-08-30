@@ -33,6 +33,7 @@ public class GroupDaoImplTest {
         Group expectedGroup = Group.builder()
                 .withId(UUID.randomUUID().toString())
                 .withName("new Group")
+                .withCourse(2)
                 .withStudents(students)
                 .build();
         groupDao.save(expectedGroup);
@@ -48,11 +49,13 @@ public class GroupDaoImplTest {
         Group group1 = Group.builder()
                 .withId(UUID.randomUUID().toString())
                 .withName("super Group")
+                .withCourse(2)
                 .withStudents(students)
                 .build();
         Group group2 = Group.builder()
                 .withId(UUID.randomUUID().toString())
                 .withName("new Group")
+                .withCourse(2)
                 .withStudents(students)
                 .build();
         List<Group> expectedGroups = new ArrayList<>();
@@ -74,6 +77,7 @@ public class GroupDaoImplTest {
         Group expectedGroup = Group.builder()
                 .withId("aabb")
                 .withName("super group")
+                .withCourse(2)
                 .withStudents(group.getStudents())
                 .build();
         assertNotEquals(group.getName(), expectedGroup.getName());

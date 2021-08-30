@@ -23,6 +23,7 @@ public class GroupMapper extends AbstractCollectingRowMapper<Group> {
             partialResult = Group.builder()
                     .withId(rs.getString("group_id"))
                     .withName(rs.getString("group_name"))
+                    .withCourse(rs.getInt("group_course"))
                     .withStudents(new ArrayList<>())
                     .build();
         }
