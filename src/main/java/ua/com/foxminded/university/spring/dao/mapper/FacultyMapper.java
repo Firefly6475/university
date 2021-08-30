@@ -28,7 +28,7 @@ public class FacultyMapper extends AbstractCollectingRowMapper<Faculty> {
                     .withName(rs.getString("faculty_name"))
                     .withGroups(new ArrayList<>())
                     .build();
-            partialResult.getGroups().add(groupMapper.mapRow(rs, null, rowNum));
+            partialResult.addGroup(groupMapper.mapRow(rs, null, rowNum));
 
             return partialResult;
         }
