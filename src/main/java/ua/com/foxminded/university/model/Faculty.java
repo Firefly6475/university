@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Singular;
 import lombok.ToString;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Faculty {
     @NonNull
     private final String id;
     private final String name;
+    @Singular
     private final List<Group> groups;
 
     public void addGroup(Group group) {
