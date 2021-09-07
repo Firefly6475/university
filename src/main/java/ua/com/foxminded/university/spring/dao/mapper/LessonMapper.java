@@ -37,7 +37,7 @@ public class LessonMapper extends AbstractCollectingRowMapper<Lesson> {
             Discipline discipline = disciplineMapper.mapRow(rs, null, rowNum);
             Audience audience = audienceMapper.mapRow(rs, null, rowNum);
             Group group = groupMapper.mapRow(rs, null, rowNum);
-            Teacher lessonTeacher = teacherMapper.mapTeacherLessonRow(rs, rowNum);
+            Teacher lessonTeacher = teacherMapper.mapTeacherLessonRow(rs);
             partialResult = Lesson.builder()
                     .withId(rs.getString("lesson_id"))
                     .withDiscipline(discipline)

@@ -17,7 +17,6 @@ public class Discipline {
     @NonNull
     private final String id;
     private final String name;
-    @Singular
     private final List<Teacher> teachers;
 
     public void addTeacher(Teacher teacher) {

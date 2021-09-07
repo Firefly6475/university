@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,18 +18,18 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
 
     private static final String SAVE_QUERY = "INSERT INTO department (department_id, department_name) VALUES (?,?)";
     private static final String FIND_BY_ID_QUERY =
-            "SELECT department.department_id, department.department_name, teacher.teacher_id , "
-                    + "teacher.teacher_name, teacher.teacher_birthday, teacher.teacher_salary "
+            "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
+                    + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM department INNER JOIN department_teacher ON department.department_id = department_teacher.department "
                     + "INNER JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department.department_id = ?";
     private static final String FIND_ALL_QUERY =
-            "SELECT department.department_id, department.department_name, teacher.teacher_id , "
-                    + "teacher.teacher_name, teacher.teacher_birthday, teacher.teacher_salary "
+            "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
+                    + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM department INNER JOIN department_teacher ON department.department_id = department_teacher.department "
                     + "INNER JOIN teacher ON department_teacher.teacher = teacher.teacher_id ORDER BY department_id";
     private static final String FIND_ALL_PAGED_QUERY =
-            "SELECT department.department_id, department.department_name, teacher.teacher_id , "
-                    + "teacher.teacher_name, teacher.teacher_birthday, teacher.teacher_salary "
+            "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
+                    + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM department INNER JOIN department_teacher ON department.department_id = department_teacher.department "
                     + "INNER JOIN teacher ON department_teacher.teacher = teacher.teacher_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE department SET department_name = ? WHERE department_id = ?";
@@ -89,7 +88,7 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
                 new BatchPreparedStatementSetter() {
 
                     @Override
-                    public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
+                    public void setValues(PreparedStatement ps, int i) throws SQLException {
                         ps.setString(1, department.getId());
                         ps.setString(2, department.getTeachers().get(i).getId());
                     }

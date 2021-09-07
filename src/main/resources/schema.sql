@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS lesson, audience, department_teacher, discipline_teacher, department, discipline, teacher, faculty_group, faculty, group_student, "group", student;
-CREATE TABLE IF NOT EXISTS student(student_id varchar(255), student_name varchar(255), student_birthday date, student_course integer, PRIMARY KEY (student_id));
-CREATE TABLE IF NOT EXISTS teacher(teacher_id varchar(255), teacher_name varchar(255), teacher_birthday date, teacher_salary integer, PRIMARY KEY (teacher_id));
-CREATE TABLE IF NOT EXISTS "group"(group_id varchar(255), group_name varchar(255), PRIMARY KEY(group_id));
+CREATE TABLE IF NOT EXISTS student(student_id varchar(255), student_email varchar(255), student_password varchar(255), student_name varchar(255), student_birthday date, PRIMARY KEY (student_id));
+CREATE TABLE IF NOT EXISTS teacher(teacher_id varchar(255), teacher_email varchar(255), teacher_password varchar(255), teacher_name varchar(255), teacher_birthday date, PRIMARY KEY (teacher_id));
+CREATE TABLE IF NOT EXISTS "group"(group_id varchar(255), group_name varchar(255), group_course integer, PRIMARY KEY(group_id));
 CREATE TABLE IF NOT EXISTS faculty(faculty_id varchar(255), faculty_name varchar(255), PRIMARY KEY (faculty_id));
 CREATE TABLE IF NOT EXISTS department(department_id varchar(255), department_name varchar(255), PRIMARY KEY (department_id));
 CREATE TABLE IF NOT EXISTS discipline(discipline_id varchar(255), discipline_name varchar(255), PRIMARY KEY (discipline_id));

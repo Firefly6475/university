@@ -14,9 +14,10 @@ public class StudentMapper extends AbstractCollectingRowMapper<Student> {
         if (partialResult == null) {
             partialResult = Student.builder()
                     .withId(rs.getString("student_id"))
+                    .withEmail(rs.getString("student_email"))
+                    .withPassword(rs.getString("student_password"))
                     .withName(rs.getString("student_name"))
                     .withBirthday(rs.getDate("student_birthday").toLocalDate())
-                    .withCourse(rs.getInt("student_course"))
                     .build();
         }
 

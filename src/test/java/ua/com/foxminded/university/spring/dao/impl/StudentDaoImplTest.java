@@ -29,8 +29,9 @@ public class StudentDaoImplTest {
     void saveShouldInsertStudentInDB() {
         Student expectedStudent = Student.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("myemail@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Alexey")
-                .withCourse(2)
                 .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         studentDao.save(expectedStudent);
@@ -43,14 +44,16 @@ public class StudentDaoImplTest {
     void saveAllShouldInsertListOfStudentsInDB() {
         Student student1 = Student.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("mything@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Alexey")
-                .withCourse(2)
                 .withBirthday(LocalDate.parse("1998-01-01"))
                 .build();
         Student student2 = Student.builder()
                 .withId(UUID.randomUUID().toString())
+                .withEmail("myemail@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Ivan")
-                .withCourse(2)
                 .withBirthday(LocalDate.parse("1999-01-01"))
                 .build();
         List<Student> expectedStudents = new ArrayList<>();
@@ -67,9 +70,10 @@ public class StudentDaoImplTest {
         Student student = studentDao.findById("aabb").get();
         Student expectedStudent = Student.builder()
                 .withId("aabb")
+                .withEmail("myemail@gmail.com")
+                .withPassword("mY.P@$$w0rd")
                 .withName("Konstantine")
                 .withBirthday(LocalDate.parse("2010-01-01"))
-                .withCourse(2)
                 .build();
         assertNotEquals(student.getName(), expectedStudent.getName());
 

@@ -17,7 +17,6 @@ public class Faculty {
     @NonNull
     private final String id;
     private final String name;
-    @Singular
     private final List<Group> groups;
 
     public void addGroup(Group group) {

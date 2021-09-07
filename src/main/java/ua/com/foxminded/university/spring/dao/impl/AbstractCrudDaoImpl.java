@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -38,7 +37,7 @@ public abstract class AbstractCrudDaoImpl<E> implements CrudDao<E> {
         jdbcTemplate.batchUpdate(saveQuery, new BatchPreparedStatementSetter() {
 
             @Override
-            public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
                 insertAll(ps, i, entities);
             }
 

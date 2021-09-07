@@ -10,5 +10,5 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder(setterPrefix = "with")
 public class Teacher extends Person {
-    private final Integer salary;
+
 }

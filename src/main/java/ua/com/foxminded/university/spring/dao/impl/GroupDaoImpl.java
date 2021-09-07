@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
-import lombok.NonNull;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,23 +15,23 @@ import java.util.List;
 @Repository
 public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao {
 
-    private static final String SAVE_QUERY = "INSERT INTO \"group\" (group_id, group_name) VALUES (?,?)";
+    private static final String SAVE_QUERY = "INSERT INTO \"group\" (group_id, group_name, group_course) VALUES (?,?,?)";
     private static final String FIND_BY_ID_QUERY =
-            "SELECT \"group\".group_id, \"group\".group_name, student.student_id, "
-                    + "student.student_name, student.student_birthday, student.student_course "
+            "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
+                    + "student.student_email, student_password, student.student_name, student.student_birthday "
                     + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
                     + "INNER JOIN student ON group_student.student = student.student_id WHERE group_id = ?";
     private static final String FIND_ALL_QUERY =
-            "SELECT \"group\".group_id, \"group\".group_name, student.student_id, "
-                    + "student.student_name, student.student_birthday, student.student_course "
+            "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
+                    + "student.student_email, student_password, student.student_name, student.student_birthday "
                     + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
                     + "INNER JOIN student ON group_student.student = student.student_id ORDER BY group_id";
     private static final String FIND_ALL_PAGED_QUERY =
-            "SELECT \"group\".group_id, \"group\".group_name, student.student_id, "
-                    + "student.student_name, student.student_birthday, student.student_course "
+            "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
+                    + "student.student_email, student_password, student.student_name, student.student_birthday "
                     + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.group "
                     + "INNER JOIN student ON group_student.student = student.student_id ORDER BY group_id LIMIT ? OFFSET ?";
-    private static final String UPDATE_QUERY = "UPDATE \"group\" SET group_name = ? WHERE group_id = ?";
+    private static final String UPDATE_QUERY = "UPDATE \"group\" SET group_name = ?, group_course = ? WHERE group_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM \"group\" WHERE group_id = ?";
 
     private static final String ADD_STUDENT_TO_GROUP_QUERY =
@@ -52,6 +51,7 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
     protected void insert(PreparedStatement preparedStatement, Group entity) throws SQLException {
         preparedStatement.setString(1, entity.getId());
         preparedStatement.setString(2, entity.getName());
+        preparedStatement.setInt(3, entity.getCourse());
     }
 
     @Override
@@ -59,6 +59,7 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
             throws SQLException {
         preparedStatement.setString(1, entities.get(i).getId());
         preparedStatement.setString(2, entities.get(i).getName());
+        preparedStatement.setInt(3, entities.get(i).getCourse());
     }
 
     @Override
@@ -69,7 +70,8 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
     @Override
     protected void update(PreparedStatement preparedStatement, Group entity) throws SQLException {
         preparedStatement.setString(1, entity.getName());
-        preparedStatement.setString(2, entity.getId());
+        preparedStatement.setInt(2, entity.getCourse());
+        preparedStatement.setString(3, entity.getId());
     }
 
     @Override
@@ -85,7 +87,7 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
         jdbcTemplate.batchUpdate(ADD_STUDENT_TO_GROUP_QUERY, new BatchPreparedStatementSetter() {
 
             @Override
-            public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setString(1, group.getId());
                 ps.setString(2, group.getStudents().get(i).getId());
             }

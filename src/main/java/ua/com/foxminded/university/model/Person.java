@@ -15,6 +15,10 @@ import java.time.LocalDate;
 public class Person {
     @NonNull
     private final String id;
+    @NonNull
+    private final String email;
+    @NonNull
+    private final String password;
     private final String name;
     private final LocalDate birthday;
 }

@@ -21,14 +21,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     + "time_start, time_end, \"group\", teacher) VALUES (?,?,?,?,?,?,?,?,?)";
     private static final String FIND_BY_ID_QUERY =
             "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
-                    "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, " +
-                    "teacher.teacher_salary , audience.audience_id, audience.audience_number, audience.audience_floor, " +
+                    "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday, " +
+                    "audience.audience_id, audience.audience_number, audience.audience_floor, " +
                     "lesson.lesson_type, lesson.\"date\", lesson.time_start, " +
-                    "lesson.time_end, \"group\".group_id, \"group\".group_name, " +
-                    "student.student_id, student.student_name, student.student_birthday, " +
-                    "student.student_course, teacher_table.teacher_id AS lesson_teacher_id, " +
-                    "teacher_table.teacher_name AS lesson_teacher_name, teacher_table.teacher_birthday AS lesson_teacher_birthday, " +
-                    "teacher_table.teacher_salary AS lesson_teacher_salary " +
+                    "lesson.time_end, \"group\".group_id, \"group\".group_name, \"group\".group_course, " +
+                    "student.student_id, student.student_email, student.student_password, student.student_name, student.student_birthday, " +
+                    "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
+                    "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
+                    "teacher_table.teacher_birthday AS lesson_teacher_birthday, " +
                     "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
                     "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
                     "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
@@ -40,14 +40,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     "WHERE lesson_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
-                    "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, " +
-                    "teacher.teacher_salary, audience.audience_id, audience.audience_number, audience.audience_floor, " +
+                    "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday, " +
+                    "audience.audience_id, audience.audience_number, audience.audience_floor, " +
                     "lesson.lesson_type, lesson.\"date\", lesson.time_start, " +
-                    "lesson.time_end, \"group\".group_id, \"group\".group_name, " +
-                    "student.student_id, student.student_name, student.student_birthday, " +
-                    "student.student_course, teacher_table.teacher_id AS lesson_teacher_id, " +
-                    "teacher_table.teacher_name AS lesson_teacher_name, teacher_table.teacher_birthday AS lesson_teacher_birthday, " +
-                    "teacher_table.teacher_salary AS lesson_teacher_salary " +
+                    "lesson.time_end, \"group\".group_id, \"group\".group_name, \"group\".group_course, " +
+                    "student.student_id, student.student_email, student.student_password, student.student_name, student.student_birthday, " +
+                    "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
+                    "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
+                    "teacher_table.teacher_birthday AS lesson_teacher_birthday " +
                     "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
                     "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
                     "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
@@ -59,14 +59,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     "ORDER BY lesson_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
-                    "teacher.teacher_id, teacher.teacher_name, teacher.teacher_birthday, " +
-                    "teacher.teacher_salary , audience.audience_id, audience.audience_number, audience.audience_floor, " +
+                    "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday, " +
+                    "audience.audience_id, audience.audience_number, audience.audience_floor, " +
                     "lesson.lesson_type, lesson.\"date\", lesson.time_start, " +
-                    "lesson.time_end, \"group\".group_id, \"group\".group_name, " +
-                    "student.student_id, student.student_name, student.student_birthday, " +
-                    "student.student_course, teacher_table.teacher_id AS lesson_teacher_id, " +
-                    "teacher_table.teacher_name AS lesson_teacher_name, teacher_table.teacher_birthday AS lesson_teacher_birthday, " +
-                    "teacher_table.teacher_salary AS lesson_teacher_salary " +
+                    "lesson.time_end, \"group\".group_id, \"group\".group_name, \"group\".group_course, " +
+                    "student.student_id, student.student_email, student.student_password, student.student_name, student.student_birthday, " +
+                    "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
+                    "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
+                    "teacher_table.teacher_birthday AS lesson_teacher_birthday " +
                     "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
                     "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
                     "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +

@@ -14,9 +14,10 @@ public class TeacherMapper extends AbstractCollectingRowMapper<Teacher> {
         if (partialResult == null) {
             partialResult = Teacher.builder()
                     .withId(rs.getString("teacher_id"))
+                    .withEmail(rs.getString("teacher_email"))
+                    .withPassword(rs.getString("teacher_password"))
                     .withName(rs.getString("teacher_name"))
                     .withBirthday(rs.getDate("teacher_birthday").toLocalDate())
-                    .withSalary(rs.getInt("teacher_salary"))
                     .build();
         }
 
@@ -28,12 +29,13 @@ public class TeacherMapper extends AbstractCollectingRowMapper<Teacher> {
         return partialResult.getId().equals((rs.getString("teacher_id")));
     }
 
-    public Teacher mapTeacherLessonRow(ResultSet rs, int rowNum) throws SQLException {
+    public Teacher mapTeacherLessonRow(ResultSet rs) throws SQLException {
         return Teacher.builder()
                 .withId(rs.getString("lesson_teacher_id"))
+                .withEmail(rs.getString("lesson_teacher_email"))
+                .withPassword(rs.getString("lesson_teacher_password"))
                 .withName(rs.getString("lesson_teacher_name"))
                 .withBirthday(rs.getDate("lesson_teacher_birthday").toLocalDate())
-                .withSalary(rs.getInt("lesson_teacher_salary"))
                 .build();
     }
 }
