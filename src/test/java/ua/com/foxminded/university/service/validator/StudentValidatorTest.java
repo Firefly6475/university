@@ -1,6 +1,5 @@
 package ua.com.foxminded.university.service.validator;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ua.com.foxminded.university.model.Student;
 import ua.com.foxminded.university.service.exception.InvalidBirthdayException;
@@ -11,6 +10,7 @@ import ua.com.foxminded.university.service.exception.InvalidPasswordException;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -26,7 +26,8 @@ public class StudentValidatorTest {
                 .withName("Alexey")
                 .withBirthday(LocalDate.parse("2002-01-01"))
                 .build();
-        Assertions.assertDoesNotThrow(() -> validator.validate(student));
+
+        assertDoesNotThrow(() -> validator.validate(student));
     }
 
     @Test

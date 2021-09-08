@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,7 @@ import ua.com.foxminded.university.spring.dao.mapper.AudienceMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements AudienceDao {
@@ -24,6 +26,8 @@ public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements Au
     private static final String UPDATE_QUERY =
             "UPDATE audience SET audience_number = ?, audience_floor = ? WHERE audience_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM audience WHERE audience_id = ?";
+
+    private static final String FIND_BY_NUMBER_QUERY = "SELECT * FROM audience WHERE audience_number = ?";
 
     public AudienceDaoImpl(JdbcTemplate jdbcTemplate, AudienceMapper audienceMapper) {
         super(jdbcTemplate, SAVE_QUERY, FIND_BY_ID_QUERY, FIND_ALL_QUERY, FIND_ALL_PAGED_QUERY,
@@ -58,5 +62,14 @@ public class AudienceDaoImpl extends AbstractCrudDaoImpl<Audience> implements Au
         preparedStatement.setInt(1, entity.getNumber());
         preparedStatement.setInt(2, entity.getFloor());
         preparedStatement.setString(3, entity.getId());
+    }
+
+    @Override
+    public Optional<Audience> findByNumber(Integer number) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NUMBER_QUERY, rowMapper(), number));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }

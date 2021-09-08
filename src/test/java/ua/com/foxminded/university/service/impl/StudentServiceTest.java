@@ -52,8 +52,7 @@ public class StudentServiceTest {
                 .build();
 
         when(studentDao.findByEmail(expectedStudent.getEmail()))
-                .thenReturn(Optional.empty())
-                .thenReturn(Optional.of(expectedStudent));
+                .thenReturn(Optional.empty());
         doNothing().when(validator).validate(expectedStudent);
         doNothing().when(studentDao).save(expectedStudent);
 
@@ -65,7 +64,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    void showAllStudentsPagedShouldFindFirstPageWith2Students() {
+    void showAllStudentsShouldFindFirstPageWith2Students() {
         List<Student> students = new ArrayList<>();
         Page page = new Page(1, 2);
 
@@ -132,14 +131,14 @@ public class StudentServiceTest {
                 .withBirthday(LocalDate.parse("1997-01-01"))
                 .build();
 
-        when(studentDao.findById(studentToEdit.getId())).thenReturn(Optional.of(studentToEdit));
+        when(studentDao.findById(editedStudent.getId())).thenReturn(Optional.of(studentToEdit));
         when(studentService.isEmailChanged(editedStudent, studentToEdit)).thenReturn(false);
         doNothing().when(validator).validate(editedStudent);
         doNothing().when(studentDao).update(editedStudent);
 
         studentService.editStudent(editedStudent);
 
-        verify(studentDao).findById(studentToEdit.getId());
+        verify(studentDao).findById(editedStudent.getId());
         verify(studentService).isEmailChanged(editedStudent, studentToEdit);
         verify(validator).validate(editedStudent);
         verify(studentDao).update(editedStudent);
@@ -172,7 +171,7 @@ public class StudentServiceTest {
     void findStudentByIdShouldThrowEntityNotFoundExceptionIfNoSuchEntityExists() {
         String studentId = "Alexey";
 
-        doThrow(new EntityNotFoundException("No specified entity found")).when(studentDao).findById(studentId);
+        when(studentDao.findById(studentId)).thenReturn(Optional.empty());
 
         Exception exception = assertThrows(EntityNotFoundException.class, () -> studentService.findStudentById("Alexey"));
 
@@ -272,23 +271,6 @@ public class StudentServiceTest {
     }
 
     @Test
-    void findStudentByIdShouldThrowEntityNotFoundExceptionIfNoStudentWithSpecifiedIdInDb() {
-        String studentId = "Alexey";
-
-        when(studentDao.findById(studentId)).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(EntityNotFoundException.class, () -> studentService.findStudentById(studentId));
-
-        String expectedMessage = "No specified entity found";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-
-        verify(studentDao).findById(studentId);
-        verifyNoMoreInteractions(studentDao);
-    }
-
-    @Test
     void findStudentByEmailShouldThrowEntityNotFoundExceptionIfNoStudentWithSpecifiedEmailInDb() {
         String studentEmail = "world@gmail.com";
 
@@ -323,9 +305,9 @@ public class StudentServiceTest {
                 .withBirthday(LocalDate.parse("1997-01-01"))
                 .build();
 
-        when(studentDao.findById(studentToEdit.getId())).thenReturn(Optional.of(studentToEdit));
+        when(studentDao.findById(editedStudent.getId())).thenReturn(Optional.of(studentToEdit));
         when(studentService.isEmailChanged(editedStudent, studentToEdit)).thenReturn(true);
-        when(studentDao.findByEmail(editedStudent.getEmail())).thenReturn(Optional.of(editedStudent));
+        when(studentDao.findByEmail(editedStudent.getEmail())).thenReturn(Optional.of(studentToEdit));
 
         Exception exception = assertThrows(EntityAlreadyExistException.class, () -> studentService.editStudent(editedStudent));
 
@@ -334,7 +316,7 @@ public class StudentServiceTest {
 
         assertEquals(expectedMessage, actualMessage);
 
-        verify(studentDao).findById(studentToEdit.getId());
+        verify(studentDao).findById(editedStudent.getId());
         verify(studentService).isEmailChanged(editedStudent, studentToEdit);
         verify(studentDao).findByEmail(editedStudent.getEmail());
         verifyNoInteractions(validator);

@@ -95,4 +95,16 @@ public class AudienceDaoImplTest {
 
         assertFalse(audienceDao.findById("ccdd").isPresent());
     }
+
+    @Test
+    void findByNumberShouldReturnAudienceWithSpecifiedNumber() {
+        Audience expectedAudience = Audience.builder()
+                .withId(UUID.randomUUID().toString())
+                .withFloor(1)
+                .withNumber(150)
+                .build();
+        audienceDao.save(expectedAudience);
+        Audience actualAudience = audienceDao.findByNumber(150).get();
+        assertEquals(expectedAudience, actualAudience);
+    }
 }
