@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ua.com.foxminded.university.model.Teacher;
+import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.service.exception.EntityAlreadyExistException;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
 import ua.com.foxminded.university.service.exception.InvalidNameException;
@@ -117,21 +118,33 @@ public class TeacherServiceTest {
 
     @Test
     void editTeacherShouldUpdateTeacher() {
-        Teacher expectedTeacher = Teacher.builder()
-                .withId("ffgg")
-                .withEmail("hello@gmail.com")
+        Teacher teacherToEdit = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
                 .withPassword("mYP@sSw0rd")
-                .withName("hello")
+                .withName("Alexey")
                 .withBirthday(LocalDate.parse("1997-01-01"))
                 .build();
 
-        when(teacherDao.findById(expectedTeacher.getId())).thenReturn(Optional.of(expectedTeacher));
-        doNothing().when(teacherDao).update(expectedTeacher);
+        Teacher editedTeacher = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("wor")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
 
-        teacherService.editTeacher(expectedTeacher);
+        when(teacherDao.findById(teacherToEdit.getId())).thenReturn(Optional.of(teacherToEdit));
+        when(teacherService.isEmailChanged(editedTeacher, teacherToEdit)).thenReturn(false);
+        doNothing().when(validator).validate(editedTeacher);
+        doNothing().when(teacherDao).update(editedTeacher);
 
-        verify(teacherDao).findById(expectedTeacher.getId());
-        verify(teacherDao).update(expectedTeacher);
+        teacherService.editTeacher(editedTeacher);
+
+        verify(teacherDao).findById(teacherToEdit.getId());
+        verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
+        verify(validator).validate(editedTeacher);
+        verify(teacherDao).update(editedTeacher);
     }
 
     @Test
