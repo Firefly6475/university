@@ -119,4 +119,12 @@ public class StudentDaoImplTest {
         Student actualStudent = studentDao.findByEmail("mynameis@gmail.com").get();
         assertEquals(expectedStudent, actualStudent);
     }
+
+    @Test
+    void findByEmailShouldReturnOptionalEmptyIfThereIsNoTeacherWithGivenEmail() {
+        Optional<Student> expectedTeacher = Optional.empty();
+        Optional<Student> actualTeacher = studentDao.findByEmail("some_email@gmail.com");
+
+        assertEquals(expectedTeacher, actualTeacher);
+    }
 }

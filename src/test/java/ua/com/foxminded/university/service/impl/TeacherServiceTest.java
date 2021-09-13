@@ -115,7 +115,7 @@ public class TeacherServiceTest {
     }
 
     @Test
-    void editTeacherShouldUpdateTeacher() {
+    void editTeacherShouldUpdateTeacherIfEmailNotChanged() {
         Teacher teacherToEdit = Teacher.builder()
                 .withId("Alexey")
                 .withEmail("world@gmail.com")
@@ -141,6 +141,39 @@ public class TeacherServiceTest {
 
         verify(teacherDao).findById(editedTeacher.getId());
         verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
+        verify(validator).validate(editedTeacher);
+        verify(teacherDao).update(editedTeacher);
+    }
+
+    @Test
+    void editTeacherShouldUpdateTeacherIfEmailChanged() {
+        Teacher teacherToEdit = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("Alexey")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        Teacher editedTeacher = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("some_email@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("wor")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        when(teacherDao.findById(editedTeacher.getId())).thenReturn(Optional.of(teacherToEdit));
+        when(teacherService.isEmailChanged(editedTeacher, teacherToEdit)).thenReturn(true);
+        when(teacherDao.findByEmail(editedTeacher.getEmail())).thenReturn(Optional.empty());
+        doNothing().when(validator).validate(editedTeacher);
+        doNothing().when(teacherDao).update(editedTeacher);
+
+        teacherService.editTeacher(editedTeacher);
+
+        verify(teacherDao).findById(editedTeacher.getId());
+        verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
+        verify(teacherDao).findByEmail(editedTeacher.getEmail());
         verify(validator).validate(editedTeacher);
         verify(teacherDao).update(editedTeacher);
     }
