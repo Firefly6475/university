@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao {
@@ -19,18 +21,18 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
     private static final String FIND_BY_ID_QUERY =
             "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
                     + "student.student_email, student_password, student.student_name, student.student_birthday "
-                    + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
-                    + "INNER JOIN student ON group_student.student = student.student_id WHERE group_id = ?";
+                    + "FROM \"group\" LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" "
+                    + "LEFT JOIN student ON group_student.student = student.student_id WHERE group_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
                     + "student.student_email, student_password, student.student_name, student.student_birthday "
-                    + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" "
-                    + "INNER JOIN student ON group_student.student = student.student_id ORDER BY group_id";
+                    + "FROM \"group\" LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" "
+                    + "LEFT JOIN student ON group_student.student = student.student_id ORDER BY group_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
                     + "student.student_email, student_password, student.student_name, student.student_birthday "
-                    + "FROM \"group\" INNER JOIN group_student ON \"group\".group_id = group_student.group "
-                    + "INNER JOIN student ON group_student.student = student.student_id ORDER BY group_id LIMIT ? OFFSET ?";
+                    + "FROM \"group\" LEFT JOIN group_student ON \"group\".group_id = group_student.group "
+                    + "LEFT JOIN student ON group_student.student = student.student_id ORDER BY group_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE \"group\" SET group_name = ?, group_course = ? WHERE group_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM \"group\" WHERE group_id = ?";
 
@@ -38,6 +40,11 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
             "INSERT INTO group_student (\"group\", student) VALUES (?,?)";
     private static final String DELETE_STUDENT_FROM_GROUP_QUERY =
             "DELETE FROM group_student WHERE \"group\" = ? AND student = ?";
+    private static final String FIND_BY_NAME_QUERY =
+            "SELECT \"group\".group_id, \"group\".group_name, \"group\".group_course, student.student_id, "
+            + "student.student_email, student_password, student.student_name, student.student_birthday "
+            + "FROM \"group\" LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" "
+            + "LEFT JOIN student ON group_student.student = student.student_id WHERE group_name = ?";
 
     protected final GroupMapper groupMapper;
 
@@ -105,5 +112,14 @@ public class GroupDaoImpl extends AbstractCrudDaoImpl<Group> implements GroupDao
             ps.setString(1, groupId);
             ps.setString(2, studentId);
         });
+    }
+
+    @Override
+    public Optional<Group> findByName(String name) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NAME_QUERY, rowMapper(), name));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }

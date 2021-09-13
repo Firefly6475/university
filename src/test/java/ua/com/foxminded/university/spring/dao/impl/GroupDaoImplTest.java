@@ -10,6 +10,7 @@ import ua.com.foxminded.university.spring.dao.StudentDao;
 import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
 import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -110,6 +111,21 @@ public class GroupDaoImplTest {
         groupDao.removeStudentFromGroup(expectedGroup.getId(), student.getId());
         Group actualGroup = groupDao.findById("aabb").get();
 
+        assertEquals(expectedGroup, actualGroup);
+    }
+
+    @Test
+    void findByNameShouldReturnGroupWithSpecifiedName() {
+        Group expectedGroup = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("hello")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        groupDao.save(expectedGroup);
+
+        Group actualGroup = groupDao.findByName(expectedGroup.getName()).get();
         assertEquals(expectedGroup, actualGroup);
     }
 }
