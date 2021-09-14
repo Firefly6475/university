@@ -13,6 +13,7 @@ import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -126,6 +127,16 @@ public class GroupDaoImplTest {
         groupDao.save(expectedGroup);
 
         Group actualGroup = groupDao.findByName(expectedGroup.getName()).get();
+        assertEquals(expectedGroup, actualGroup);
+    }
+
+    @Test
+    void findByNameShouldReturnOptionalEmptyIfNoGroupWithSpecifiedName() {
+        String groupName = "some name";
+
+        Optional<Group> expectedGroup = Optional.empty();
+        Optional<Group> actualGroup = groupDao.findByName(groupName);
+
         assertEquals(expectedGroup, actualGroup);
     }
 }

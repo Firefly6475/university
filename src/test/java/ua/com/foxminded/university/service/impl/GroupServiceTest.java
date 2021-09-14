@@ -6,10 +6,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ua.com.foxminded.university.model.Audience;
 import ua.com.foxminded.university.model.Group;
 import ua.com.foxminded.university.model.Student;
-import ua.com.foxminded.university.service.GroupService;
 import ua.com.foxminded.university.service.exception.EntityAlreadyExistException;
 import ua.com.foxminded.university.service.exception.EntityIsNotEmptyException;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
@@ -17,14 +15,11 @@ import ua.com.foxminded.university.service.exception.InvalidNameException;
 import ua.com.foxminded.university.service.validator.Validator;
 import ua.com.foxminded.university.spring.dao.GroupDao;
 import ua.com.foxminded.university.spring.dao.Page;
-import ua.com.foxminded.university.spring.dao.impl.GroupDaoImpl;
-import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
-import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
+import ua.com.foxminded.university.spring.dao.StudentDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,6 +36,9 @@ import static org.mockito.Mockito.when;
 public class GroupServiceTest {
     @Mock
     private GroupDao groupDao;
+
+    @Mock
+    private StudentDao studentDao;
 
     @Mock
     private Validator<Group> validator;
@@ -240,16 +238,359 @@ public class GroupServiceTest {
                 .withBirthday(LocalDate.now())
                 .build();
         group.addStudent(student);
+        String groupId = group.getId();
 
-        when(groupDao.findById(group.getId())).thenReturn(Optional.of(group));
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
 
-        Exception exception = assertThrows(EntityIsNotEmptyException.class, () -> groupService.deleteGroup(group.getId()));
+        Exception exception = assertThrows(EntityIsNotEmptyException.class, () -> groupService.deleteGroup(groupId));
 
         String expectedMessage = "Can't delete non-empty entity";
         String actualMessage = exception.getMessage();
 
         assertEquals(expectedMessage, actualMessage);
 
+        verify(groupDao).findById(groupId);
+    }
+
+    @Test
+    void editGroupShouldUpdateGroupInDbIfNameIsNotChanged() {
+        Group groupToEdit = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("PI-16")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        Group editedGroup = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("PI-16")
+                .withCourse(4)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        when(groupDao.findById(editedGroup.getId())).thenReturn(Optional.of(groupToEdit));
+        when(groupService.isNameChanged(editedGroup, groupToEdit)).thenReturn(false);
+        doNothing().when(validator).validate(editedGroup);
+        doNothing().when(groupDao).update(editedGroup);
+
+        groupService.editGroup(editedGroup);
+
+        verify(groupDao).findById(editedGroup.getId());
+        verify(groupService).isNameChanged(editedGroup, groupToEdit);
+        verify(validator).validate(editedGroup);
+        verify(groupDao).update(editedGroup);
+    }
+
+    @Test
+    void editGroupShouldUpdateGroupInDbIfNameIsChanged() {
+        Group groupToEdit = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("PI-16")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        Group editedGroup = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("BI-16")
+                .withCourse(4)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        when(groupDao.findById(editedGroup.getId())).thenReturn(Optional.of(groupToEdit));
+        when(groupService.isNameChanged(editedGroup, groupToEdit)).thenReturn(true);
+        when(groupDao.findByName(editedGroup.getName())).thenReturn(Optional.empty());
+        doNothing().when(validator).validate(editedGroup);
+        doNothing().when(groupDao).update(editedGroup);
+
+        groupService.editGroup(editedGroup);
+
+        verify(groupDao).findById(editedGroup.getId());
+        verify(groupService).isNameChanged(editedGroup, groupToEdit);
+        verify(groupDao).findByName(editedGroup.getName());
+        verify(validator).validate(editedGroup);
+        verify(groupDao).update(editedGroup);
+    }
+
+    @Test
+    void editGroupShouldThrowEntityNotFoundExceptionIfThereIsNoGroupWithSpecifiedId() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("BI-16")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        when(groupDao.findById(group.getId())).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.editGroup(group));
+
+        String expectedMessage = "No specified entity found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
         verify(groupDao).findById(group.getId());
+        verifyNoMoreInteractions(groupDao);
+        verifyNoInteractions(validator);
+    }
+
+    @Test
+    void editGroupShouldThrowEntityAlreadyExistExceptionIfSpecifiedNameAlreadyExists() {
+        Group groupToEdit = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("BI-16")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        Group editedGroup = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("BI-16")
+                .withCourse(4)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        when(groupDao.findById(editedGroup.getId())).thenReturn(Optional.of(groupToEdit));
+        when(groupService.isNameChanged(editedGroup, groupToEdit)).thenReturn(true);
+        when(groupDao.findByName(editedGroup.getName())).thenReturn(Optional.of(groupToEdit));
+
+        Exception exception = assertThrows(EntityAlreadyExistException.class, () -> groupService.editGroup(editedGroup));
+
+        String expectedMessage = "Specified name already exists";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(editedGroup.getId());
+        verify(groupService).isNameChanged(editedGroup, groupToEdit);
+        verify(groupDao).findByName(editedGroup.getName());
+        verifyNoInteractions(validator);
+        verifyNoMoreInteractions(groupDao);
+    }
+
+    @Test
+    void addStudentToGroupShouldAddStudentToGroup() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+        Student student = Student.builder()
+                .withId("hello")
+                .withEmail("world@gmail.com")
+                .withPassword("12345")
+                .withName("Alexey")
+                .withBirthday(LocalDate.now())
+                .build();
+
+        String groupId = group.getId();
+        String studentId = student.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.of(student));
+        doNothing().when(groupDao).addStudentToGroup(groupId, studentId);
+
+        groupService.addStudentToGroup(groupId, studentId);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verify(groupDao).addStudentToGroup(groupId, studentId);
+    }
+
+    @Test
+    void addStudentToGroupShouldThrowEntityNoFoundExceptionIfSpecifiedGroupNotExists() {
+        String groupId = "hello";
+        String studentId = "world";
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.addStudentToGroup(groupId, studentId));
+
+        String expectedMessage = "Specified group not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoInteractions(studentDao);
+    }
+
+    @Test
+    void addStudentToGroupShouldThrowEntityNoFoundExceptionIfSpecifiedStudentNotExists() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        String studentId = "world";
+        String groupId = group.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.addStudentToGroup(groupId, studentId));
+
+        String expectedMessage = "Specified student not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoMoreInteractions(studentDao);
+    }
+
+    @Test
+    void addStudentToGroupShouldThrowEntityAlreadyExistExceptionIfSpecifiedStudentAlreadyInGroup() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+        Student student = Student.builder()
+                .withId("hello")
+                .withEmail("world@gmail.com")
+                .withPassword("12345")
+                .withName("Alexey")
+                .withBirthday(LocalDate.now())
+                .build();
+        group.addStudent(student);
+
+        String groupId = group.getId();
+        String studentId = student.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.of(student));
+
+        Exception exception = assertThrows(EntityAlreadyExistException.class, () -> groupService.addStudentToGroup(groupId, studentId));
+
+        String expectedMessage = "Specified student already in group";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoMoreInteractions(studentDao);
+    }
+
+    @Test
+    void removeStudentFromGroupShouldRemoveStudentFromGroup() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+        Student student = Student.builder()
+                .withId("hello")
+                .withEmail("world@gmail.com")
+                .withPassword("12345")
+                .withName("Alexey")
+                .withBirthday(LocalDate.now())
+                .build();
+        group.addStudent(student);
+
+        String groupId = group.getId();
+        String studentId = student.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.of(student));
+        doNothing().when(groupDao).removeStudentFromGroup(groupId, studentId);
+
+        groupService.removeStudentFromGroup(groupId, studentId);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verify(groupDao).removeStudentFromGroup(groupId, studentId);
+    }
+
+    @Test
+    void removeStudentFromGroupShouldThrowEntityNoFoundExceptionIfSpecifiedGroupNotExists() {
+        String groupId = "hello";
+        String studentId = "world";
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.removeStudentFromGroup(groupId, studentId));
+
+        String expectedMessage = "Specified group not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoInteractions(studentDao);
+    }
+
+    @Test
+    void removeStudentFromGroupShouldThrowEntityNoFoundExceptionIfSpecifiedStudentNotExists() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+        String studentId = "world";
+        String groupId = group.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.empty());
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.removeStudentFromGroup(groupId, studentId));
+
+        String expectedMessage = "Specified student not found";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoMoreInteractions(studentDao);
+    }
+
+    @Test
+    void removeStudentFromGroupShouldThrowEntityAlreadyExistExceptionIfSpecifiedStudentIsNotInAGroup() {
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("someGroup")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+        Student student = Student.builder()
+                .withId("hello")
+                .withEmail("world@gmail.com")
+                .withPassword("12345")
+                .withName("Alexey")
+                .withBirthday(LocalDate.now())
+                .build();
+
+        String groupId = group.getId();
+        String studentId = student.getId();
+
+        when(groupDao.findById(groupId)).thenReturn(Optional.of(group));
+        when(studentDao.findById(studentId)).thenReturn(Optional.of(student));
+
+        Exception exception = assertThrows(EntityNotFoundException.class, () -> groupService.removeStudentFromGroup(groupId, studentId));
+
+        String expectedMessage = "Specified student is not in a group";
+        String actualMessage = exception.getMessage();
+
+        assertEquals(expectedMessage, actualMessage);
+
+        verify(groupDao).findById(groupId);
+        verify(studentDao).findById(studentId);
+        verifyNoMoreInteractions(groupDao);
+        verifyNoMoreInteractions(studentDao);
     }
 }

@@ -21,6 +21,4 @@ public interface GroupService {
     void addStudentToGroup(String groupId, String studentId);
 
     void removeStudentFromGroup(String groupId, String studentId);
-
-    void addAllStudentsToGroup(Group group);
 }

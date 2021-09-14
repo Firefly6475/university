@@ -112,4 +112,18 @@ public class FacultyDaoImplTest {
 
         assertEquals(expectedFaculty, actualFaculty);
     }
+
+    @Test
+    void findByIdShouldReturnFacultyIfThereIsNoGroupsInFaculty() {
+        Faculty expectedFaculty = Faculty.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("new faculty")
+                .withGroups(new ArrayList<>())
+                .build();
+        facultyDao.save(expectedFaculty);
+
+        Faculty actualFaculty = facultyDao.findById(expectedFaculty.getId()).get();
+
+        assertEquals(expectedFaculty, actualFaculty);
+    }
 }

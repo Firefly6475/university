@@ -11,15 +11,11 @@ import java.sql.SQLException;
 public class AudienceMapper extends AbstractCollectingRowMapper<Audience> {
     @Override
     protected Audience mapRow(ResultSet rs, Audience partialResult, int rowNum) throws SQLException {
-        if (partialResult == null) {
-            partialResult = Audience.builder()
-                    .withId(rs.getString("audience_id"))
-                    .withNumber(rs.getInt("audience_number"))
-                    .withFloor(rs.getInt("audience_floor"))
-                    .build();
-        }
-
-        return partialResult;
+        return Audience.builder()
+                .withId(rs.getString("audience_id"))
+                .withNumber(rs.getInt("audience_number"))
+                .withFloor(rs.getInt("audience_floor"))
+                .build();
     }
 
     @Override

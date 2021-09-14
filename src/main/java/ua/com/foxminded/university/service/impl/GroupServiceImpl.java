@@ -77,13 +77,15 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void addStudentToGroup(String groupId, String studentId) {
         Optional<Group> groupInDb = groupDao.findById(groupId);
-        Optional<Student> studentInDb = studentDao.findById(studentId);
         if (!groupInDb.isPresent()) {
             throw new EntityNotFoundException("Specified group not found");
         }
+
+        Optional<Student> studentInDb = studentDao.findById(studentId);
         if (!studentInDb.isPresent()) {
             throw new EntityNotFoundException("Specified student not found");
         }
+
         if (groupInDb.get().getStudents().contains(studentInDb.get())) {
             throw new EntityAlreadyExistException("Specified student already in group");
         }
@@ -93,25 +95,20 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void removeStudentFromGroup(String groupId, String studentId) {
         Optional<Group> groupInDb = groupDao.findById(groupId);
-        Optional<Student> studentInDb = studentDao.findById(studentId);
         if (!groupInDb.isPresent()) {
             throw new EntityNotFoundException("Specified group not found");
         }
+
+        Optional<Student> studentInDb = studentDao.findById(studentId);
         if (!studentInDb.isPresent()) {
             throw new EntityNotFoundException("Specified student not found");
         }
+
         if (!groupInDb.get().getStudents().contains(studentInDb.get())) {
             throw new EntityNotFoundException("Specified student is not in a group");
         }
-        groupDao.removeStudentFromGroup(groupId, studentId);
-    }
 
-    @Override
-    public void addAllStudentsToGroup(Group group) {
-        if (!groupDao.findById(group.getId()).isPresent()) {
-            throw new EntityNotFoundException("Entity do not exists");
-        }
-        groupDao.addAllStudentsToGroup(group);
+        groupDao.removeStudentFromGroup(groupId, studentId);
     }
 
     protected boolean isNameChanged(Group group, Group groupToEdit) {

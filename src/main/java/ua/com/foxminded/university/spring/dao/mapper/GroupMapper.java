@@ -29,7 +29,6 @@ public class GroupMapper extends AbstractCollectingRowMapper<Group> {
         }
         if (rs.getString("student_id") != null) {
             partialResult.addStudent(studentMapper.mapRow(rs, null, rowNum));
-
         }
 
         return partialResult;
