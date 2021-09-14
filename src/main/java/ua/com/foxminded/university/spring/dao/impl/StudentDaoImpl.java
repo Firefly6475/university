@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,7 @@ import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements StudentDao {
@@ -24,6 +26,8 @@ public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements Stud
     private static final String UPDATE_QUERY =
             "UPDATE student SET student_email = ?, student_password = ?, student_name = ?, student_birthday = ? WHERE student_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM student WHERE student_id = ?";
+
+    private static final String FIND_BY_EMAIL_QUERY = "SELECT * FROM student WHERE student_email = ?";
 
     public StudentDaoImpl(JdbcTemplate jdbcTemplate, StudentMapper studentMapper) {
         super(jdbcTemplate, SAVE_QUERY, FIND_BY_ID_QUERY, FIND_ALL_QUERY, FIND_ALL_PAGED_QUERY,
@@ -62,5 +66,14 @@ public class StudentDaoImpl extends AbstractCrudDaoImpl<Student> implements Stud
         preparedStatement.setString(3, entity.getName());
         preparedStatement.setObject(4, entity.getBirthday());
         preparedStatement.setString(5, entity.getId());
+    }
+
+    @Override
+    public Optional<Student> findByEmail(String email) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_EMAIL_QUERY, rowMapper(), email));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }

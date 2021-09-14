@@ -3,6 +3,7 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Student;
+import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.StudentDao;
@@ -103,5 +104,27 @@ public class StudentDaoImplTest {
         studentDao.deleteById("ffgg");
 
         assertFalse(studentDao.findById("ffgg").isPresent());
+    }
+
+    @Test
+    void findByEmailShouldReturnTeacherWithSpecifiedEmail() {
+        Student expectedStudent = Student.builder()
+                .withId(UUID.randomUUID().toString())
+                .withEmail("mynameis@gmail.com")
+                .withPassword("mY.P@$$w0rd")
+                .withName("Nikolay")
+                .withBirthday(LocalDate.parse("2001-04-09"))
+                .build();
+        studentDao.save(expectedStudent);
+        Student actualStudent = studentDao.findByEmail("mynameis@gmail.com").get();
+        assertEquals(expectedStudent, actualStudent);
+    }
+
+    @Test
+    void findByEmailShouldReturnOptionalEmptyIfThereIsNoTeacherWithGivenEmail() {
+        Optional<Student> expectedTeacher = Optional.empty();
+        Optional<Student> actualTeacher = studentDao.findByEmail("some_email@gmail.com");
+
+        assertEquals(expectedTeacher, actualTeacher);
     }
 }

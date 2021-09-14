@@ -3,6 +3,7 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Audience;
+import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.AudienceDao;
 import ua.com.foxminded.university.spring.dao.Page;
@@ -94,5 +95,25 @@ public class AudienceDaoImplTest {
         audienceDao.deleteById("ccdd");
 
         assertFalse(audienceDao.findById("ccdd").isPresent());
+    }
+
+    @Test
+    void findByNumberShouldReturnAudienceWithSpecifiedNumber() {
+        Audience expectedAudience = Audience.builder()
+                .withId(UUID.randomUUID().toString())
+                .withFloor(1)
+                .withNumber(150)
+                .build();
+        audienceDao.save(expectedAudience);
+        Audience actualAudience = audienceDao.findByNumber(150).get();
+        assertEquals(expectedAudience, actualAudience);
+    }
+
+    @Test
+    void findByNumberShouldReturnOptionalEmptyIfThereIsNoAudienceWithGivenNumber() {
+        Optional<Audience> expectedAudience = Optional.empty();
+        Optional<Audience> actualAudience = audienceDao.findByNumber(123456);
+
+        assertEquals(expectedAudience, actualAudience);
     }
 }

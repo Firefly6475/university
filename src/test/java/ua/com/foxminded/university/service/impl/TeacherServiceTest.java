@@ -53,8 +53,7 @@ public class TeacherServiceTest {
                 .build();
 
         when(teacherDao.findByEmail(expectedTeacher.getEmail()))
-                .thenReturn(Optional.empty())
-                .thenReturn(Optional.of(expectedTeacher));
+                .thenReturn(Optional.empty());
         doNothing().when(validator).validate(expectedTeacher);
         doNothing().when(teacherDao).save(expectedTeacher);
 
@@ -66,7 +65,7 @@ public class TeacherServiceTest {
     }
 
     @Test
-    void showAllTeachersPagedShouldFindFirstPageWith2Teachers() {
+    void showAllTeachersShouldFindFirstPageWith2Teachers() {
         List<Teacher> teachers = new ArrayList<>();
         Page page = new Page(1, 2);
 
@@ -116,22 +115,67 @@ public class TeacherServiceTest {
     }
 
     @Test
-    void editTeacherShouldUpdateTeacher() {
-        Teacher expectedTeacher = Teacher.builder()
-                .withId("ffgg")
-                .withEmail("hello@gmail.com")
+    void editTeacherShouldUpdateTeacherIfEmailNotChanged() {
+        Teacher teacherToEdit = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
                 .withPassword("mYP@sSw0rd")
-                .withName("hello")
+                .withName("Alexey")
                 .withBirthday(LocalDate.parse("1997-01-01"))
                 .build();
 
-        when(teacherDao.findById(expectedTeacher.getId())).thenReturn(Optional.of(expectedTeacher));
-        doNothing().when(teacherDao).update(expectedTeacher);
+        Teacher editedTeacher = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("wor")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
 
-        teacherService.editTeacher(expectedTeacher);
+        when(teacherDao.findById(editedTeacher.getId())).thenReturn(Optional.of(teacherToEdit));
+        when(teacherService.isEmailChanged(editedTeacher, teacherToEdit)).thenReturn(false);
+        doNothing().when(validator).validate(editedTeacher);
+        doNothing().when(teacherDao).update(editedTeacher);
 
-        verify(teacherDao).findById(expectedTeacher.getId());
-        verify(teacherDao).update(expectedTeacher);
+        teacherService.editTeacher(editedTeacher);
+
+        verify(teacherDao).findById(editedTeacher.getId());
+        verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
+        verify(validator).validate(editedTeacher);
+        verify(teacherDao).update(editedTeacher);
+    }
+
+    @Test
+    void editTeacherShouldUpdateTeacherIfEmailChanged() {
+        Teacher teacherToEdit = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("Alexey")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        Teacher editedTeacher = Teacher.builder()
+                .withId("Alexey")
+                .withEmail("some_email@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("wor")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        when(teacherDao.findById(editedTeacher.getId())).thenReturn(Optional.of(teacherToEdit));
+        when(teacherService.isEmailChanged(editedTeacher, teacherToEdit)).thenReturn(true);
+        when(teacherDao.findByEmail(editedTeacher.getEmail())).thenReturn(Optional.empty());
+        doNothing().when(validator).validate(editedTeacher);
+        doNothing().when(teacherDao).update(editedTeacher);
+
+        teacherService.editTeacher(editedTeacher);
+
+        verify(teacherDao).findById(editedTeacher.getId());
+        verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
+        verify(teacherDao).findByEmail(editedTeacher.getEmail());
+        verify(validator).validate(editedTeacher);
+        verify(teacherDao).update(editedTeacher);
     }
 
     @Test
@@ -161,7 +205,7 @@ public class TeacherServiceTest {
     void findTeacherByIdShouldThrowEntityNotFoundExceptionIfNoSuchEntityExists() {
         String teacherId = "hello";
 
-        doThrow(new EntityNotFoundException("No specified entity found")).when(teacherDao).findById(teacherId);
+        when(teacherDao.findById(teacherId)).thenReturn(Optional.empty());
 
         Exception exception = assertThrows(EntityNotFoundException.class, () -> teacherService.findTeacherById("hello"));
 
@@ -261,23 +305,6 @@ public class TeacherServiceTest {
     }
 
     @Test
-    void findTeacherByIdShouldThrowEntityNotFoundExceptionIfNoTeacherWithSpecifiedIdInDb() {
-        String teacherId = "hello";
-
-        when(teacherDao.findById(teacherId)).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(EntityNotFoundException.class, () -> teacherService.findTeacherById(teacherId));
-
-        String expectedMessage = "No specified entity found";
-        String actualMessage = exception.getMessage();
-
-        assertEquals(expectedMessage, actualMessage);
-
-        verify(teacherDao).findById(teacherId);
-        verifyNoMoreInteractions(teacherDao);
-    }
-
-    @Test
     void findTeacherByEmailShouldThrowEntityNotFoundExceptionIfNoTeacherWithSpecifiedEmailInDb() {
         String teacherEmail = "hello@gmail.com";
 
@@ -312,9 +339,9 @@ public class TeacherServiceTest {
                 .withBirthday(LocalDate.parse("1997-01-01"))
                 .build();
 
-        when(teacherDao.findById(teacherToEdit.getId())).thenReturn(Optional.of(teacherToEdit));
+        when(teacherDao.findById(editedTeacher.getId())).thenReturn(Optional.of(teacherToEdit));
         when(teacherService.isEmailChanged(editedTeacher, teacherToEdit)).thenReturn(true);
-        when(teacherDao.findByEmail(editedTeacher.getEmail())).thenReturn(Optional.of(editedTeacher));
+        when(teacherDao.findByEmail(editedTeacher.getEmail())).thenReturn(Optional.of(teacherToEdit));
 
         Exception exception = assertThrows(EntityAlreadyExistException.class, () -> teacherService.editTeacher(editedTeacher));
 
@@ -323,7 +350,7 @@ public class TeacherServiceTest {
 
         assertEquals(expectedMessage, actualMessage);
 
-        verify(teacherDao).findById(teacherToEdit.getId());
+        verify(teacherDao).findById(editedTeacher.getId());
         verify(teacherService).isEmailChanged(editedTeacher, teacherToEdit);
         verify(teacherDao).findByEmail(editedTeacher.getEmail());
         verifyNoInteractions(validator);

@@ -117,4 +117,12 @@ public class TeacherDaoImplTest {
         Teacher actualTeacher = teacherDao.findByEmail("mynameis@gmail.com").get();
         assertEquals(expectedTeacher, actualTeacher);
     }
+
+    @Test
+    void findByEmailShouldReturnOptionalEmptyIfThereIsNoTeacherWithGivenEmail() {
+        Optional<Teacher> expectedTeacher = Optional.empty();
+        Optional<Teacher> actualTeacher = teacherDao.findByEmail("some_email@gmail.com");
+
+        assertEquals(expectedTeacher, actualTeacher);
+    }
 }
