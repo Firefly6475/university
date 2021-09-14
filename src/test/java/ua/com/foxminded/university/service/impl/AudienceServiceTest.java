@@ -107,7 +107,34 @@ public class AudienceServiceTest {
     }
 
     @Test
-    void editAudienceShouldUpdateAudience() {
+    void editAudienceShouldUpdateAudienceIfNumberNotChanged() {
+        Audience audienceToEdit = Audience.builder()
+                .withId(UUID.randomUUID().toString())
+                .withNumber(238)
+                .withFloor(2)
+                .build();
+
+        Audience editedAudience = Audience.builder()
+                .withId(UUID.randomUUID().toString())
+                .withNumber(238)
+                .withFloor(2)
+                .build();
+
+        when(audienceDao.findById(editedAudience.getId())).thenReturn(Optional.of(audienceToEdit));
+        when(audienceService.isNumberChanged(editedAudience, audienceToEdit)).thenReturn(false);
+        doNothing().when(validator).validate(editedAudience);
+        doNothing().when(audienceDao).update(editedAudience);
+
+        audienceService.editAudience(editedAudience);
+
+        verify(audienceDao).findById(editedAudience.getId());
+        verify(audienceService).isNumberChanged(editedAudience, audienceToEdit);
+        verify(validator).validate(editedAudience);
+        verify(audienceDao).update(editedAudience);
+    }
+
+    @Test
+    void editAudienceShouldUpdateAudienceIfNumberChanged() {
         Audience audienceToEdit = Audience.builder()
                 .withId(UUID.randomUUID().toString())
                 .withNumber(238)
@@ -121,7 +148,8 @@ public class AudienceServiceTest {
                 .build();
 
         when(audienceDao.findById(editedAudience.getId())).thenReturn(Optional.of(audienceToEdit));
-        when(audienceService.isNumberChanged(editedAudience, audienceToEdit)).thenReturn(false);
+        when(audienceService.isNumberChanged(editedAudience, audienceToEdit)).thenReturn(true);
+        when(audienceDao.findByNumber(editedAudience.getNumber())).thenReturn(Optional.empty());
         doNothing().when(validator).validate(editedAudience);
         doNothing().when(audienceDao).update(editedAudience);
 
@@ -129,6 +157,7 @@ public class AudienceServiceTest {
 
         verify(audienceDao).findById(editedAudience.getId());
         verify(audienceService).isNumberChanged(editedAudience, audienceToEdit);
+        verify(audienceDao).findByNumber(editedAudience.getNumber());
         verify(validator).validate(editedAudience);
         verify(audienceDao).update(editedAudience);
     }

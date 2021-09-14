@@ -114,7 +114,7 @@ public class StudentServiceTest {
     }
 
     @Test
-    void editStudentShouldUpdateStudent() {
+    void editStudentShouldUpdateStudentIfEmailNotChanged() {
         Student studentToEdit = Student.builder()
                 .withId("Alexey")
                 .withEmail("world@gmail.com")
@@ -140,6 +140,39 @@ public class StudentServiceTest {
 
         verify(studentDao).findById(editedStudent.getId());
         verify(studentService).isEmailChanged(editedStudent, studentToEdit);
+        verify(validator).validate(editedStudent);
+        verify(studentDao).update(editedStudent);
+    }
+
+    @Test
+    void editStudentShouldUpdateStudentIfNumberChanged() {
+        Student studentToEdit = Student.builder()
+                .withId("Alexey")
+                .withEmail("world@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("Alexey")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        Student editedStudent = Student.builder()
+                .withId("Alexey")
+                .withEmail("some_email@gmail.com")
+                .withPassword("mYP@sSw0rd")
+                .withName("wor")
+                .withBirthday(LocalDate.parse("1997-01-01"))
+                .build();
+
+        when(studentDao.findById(editedStudent.getId())).thenReturn(Optional.of(studentToEdit));
+        when(studentService.isEmailChanged(editedStudent, studentToEdit)).thenReturn(true);
+        when(studentDao.findByEmail(editedStudent.getEmail())).thenReturn(Optional.empty());
+        doNothing().when(validator).validate(editedStudent);
+        doNothing().when(studentDao).update(editedStudent);
+
+        studentService.editStudent(editedStudent);
+
+        verify(studentDao).findById(editedStudent.getId());
+        verify(studentService).isEmailChanged(editedStudent, studentToEdit);
+        verify(studentDao).findByEmail(editedStudent.getEmail());
         verify(validator).validate(editedStudent);
         verify(studentDao).update(editedStudent);
     }
