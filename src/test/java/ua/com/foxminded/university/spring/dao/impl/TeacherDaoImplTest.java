@@ -2,6 +2,7 @@ package ua.com.foxminded.university.spring.dao.impl;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
+import ua.com.foxminded.university.model.Student;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
@@ -119,10 +120,12 @@ public class TeacherDaoImplTest {
     }
 
     @Test
-    void findByEmailShouldReturnOptionalEmptyIfThereIsNoTeacherWithGivenEmail() {
-        Optional<Teacher> expectedTeacher = Optional.empty();
-        Optional<Teacher> actualTeacher = teacherDao.findByEmail("some_email@gmail.com");
+    void findByEmailShouldReturnOptionalEmptyIfNoTeacherWithSpecifiedEmail() {
+        String email = "some@mail.ru";
 
-        assertEquals(expectedTeacher, actualTeacher);
+        Optional<Teacher> expectedGroup = Optional.empty();
+        Optional<Teacher> actualGroup = teacherDao.findByEmail(email);
+
+        assertEquals(expectedGroup, actualGroup);
     }
 }

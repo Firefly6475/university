@@ -20,20 +20,20 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
             "SELECT discipline.discipline_id, discipline.discipline_name, "
                     + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM discipline "
-                    + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
-                    + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id WHERE discipline.discipline_id = ?";
+                    + "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
+                    + "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id WHERE discipline.discipline_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT discipline.discipline_id, discipline.discipline_name, "
                     + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM discipline "
-                    + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
-                    + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id ORDER BY discipline_id";
+                    + "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
+                    + "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id ORDER BY discipline_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT discipline.discipline_id, discipline.discipline_name, "
                     + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM discipline "
-                    + "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
-                    + "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id LIMIT ? OFFSET ?";
+                    + "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
+                    + "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE discipline SET discipline_name = ? WHERE discipline_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM discipline WHERE discipline_id = ?";
 

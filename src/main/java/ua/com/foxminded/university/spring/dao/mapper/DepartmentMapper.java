@@ -26,7 +26,9 @@ public class DepartmentMapper extends AbstractCollectingRowMapper<Department> {
                     .withTeachers(new ArrayList<>())
                     .build();
         }
-        partialResult.addTeacher(teacherMapper.mapRow(rs, null, rowNum));
+        if (rs.getString("teacher_id") != null) {
+            partialResult.addTeacher(teacherMapper.mapRow(rs, null, rowNum));
+        }
 
         return partialResult;
     }

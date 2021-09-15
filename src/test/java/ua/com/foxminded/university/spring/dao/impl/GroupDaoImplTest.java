@@ -10,8 +10,10 @@ import ua.com.foxminded.university.spring.dao.StudentDao;
 import ua.com.foxminded.university.spring.dao.mapper.GroupMapper;
 import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -109,6 +111,31 @@ public class GroupDaoImplTest {
         expectedGroup.getStudents().remove(student);
         groupDao.removeStudentFromGroup(expectedGroup.getId(), student.getId());
         Group actualGroup = groupDao.findById("aabb").get();
+
+        assertEquals(expectedGroup, actualGroup);
+    }
+
+    @Test
+    void findByNameShouldReturnGroupWithSpecifiedName() {
+        Group expectedGroup = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("hello")
+                .withCourse(3)
+                .withStudents(new ArrayList<>())
+                .build();
+
+        groupDao.save(expectedGroup);
+
+        Group actualGroup = groupDao.findByName(expectedGroup.getName()).get();
+        assertEquals(expectedGroup, actualGroup);
+    }
+
+    @Test
+    void findByNameShouldReturnOptionalEmptyIfNoGroupWithSpecifiedName() {
+        String groupName = "some name";
+
+        Optional<Group> expectedGroup = Optional.empty();
+        Optional<Group> actualGroup = groupDao.findByName(groupName);
 
         assertEquals(expectedGroup, actualGroup);
     }

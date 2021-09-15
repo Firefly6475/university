@@ -12,12 +12,12 @@ public class TeacherMapper extends AbstractCollectingRowMapper<Teacher> {
     @Override
     protected Teacher mapRow(ResultSet rs, Teacher partialResult, int rowNum) throws SQLException {
         return Teacher.builder()
-                    .withId(rs.getString("teacher_id"))
-                    .withEmail(rs.getString("teacher_email"))
-                    .withPassword(rs.getString("teacher_password"))
-                    .withName(rs.getString("teacher_name"))
-                    .withBirthday(rs.getDate("teacher_birthday").toLocalDate())
-                    .build();
+                .withId(rs.getString("teacher_id"))
+                .withEmail(rs.getString("teacher_email"))
+                .withPassword(rs.getString("teacher_password"))
+                .withName(rs.getString("teacher_name"))
+                .withBirthday(rs.getDate("teacher_birthday").toLocalDate())
+                .build();
     }
 
     @Override

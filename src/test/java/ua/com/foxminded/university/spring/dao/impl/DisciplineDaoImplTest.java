@@ -108,4 +108,18 @@ public class DisciplineDaoImplTest {
 
         assertEquals(expectedDiscipline, actualDiscipline);
     }
+
+    @Test
+    void findByIdShouldReturnDisciplineIfThereIsNoTeachersInDiscipline() {
+        Discipline expectedDiscipline = Discipline.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("new Discipline")
+                .withTeachers(new ArrayList<>())
+                .build();
+        disciplineDao.save(expectedDiscipline);
+
+        Discipline actualDiscipline = disciplineDao.findById(expectedDiscipline.getId()).get();
+
+        assertEquals(expectedDiscipline, actualDiscipline);
+    }
 }

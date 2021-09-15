@@ -3,6 +3,7 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Department;
+import ua.com.foxminded.university.model.Discipline;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.DepartmentDao;
@@ -105,6 +106,20 @@ public class DepartmentDaoImplTest {
         expectedDepartment.getTeachers().remove(teacher);
         departmentDao.removeTeacherFromDepartment(expectedDepartment.getId(), teacher.getId());
         Department actualDepartment = departmentDao.findById("aabb").get();
+
+        assertEquals(expectedDepartment, actualDepartment);
+    }
+
+    @Test
+    void findByIdShouldReturnDepartmentIfThereIsNoTeachersInDepartment() {
+        Department expectedDepartment = Department.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("new Department")
+                .withTeachers(new ArrayList<>())
+                .build();
+        departmentDao.save(expectedDepartment);
+
+        Department actualDepartment = departmentDao.findById(expectedDepartment.getId()).get();
 
         assertEquals(expectedDepartment, actualDepartment);
     }
