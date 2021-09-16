@@ -27,7 +27,9 @@ public class GroupMapper extends AbstractCollectingRowMapper<Group> {
                     .withStudents(new ArrayList<>())
                     .build();
         }
-        partialResult.addStudent(studentMapper.mapRow(rs, null, rowNum));
+        if (rs.getString("student_id") != null) {
+            partialResult.addStudent(studentMapper.mapRow(rs, null, rowNum));
+        }
 
         return partialResult;
     }

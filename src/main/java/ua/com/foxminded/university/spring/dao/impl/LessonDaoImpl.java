@@ -29,14 +29,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
                     "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
                     "teacher_table.teacher_birthday AS lesson_teacher_birthday, " +
-                    "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
-                    "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
-                    "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
-                    "INNER JOIN audience ON lesson.audience = audience.audience_id " +
-                    "INNER JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
-                    "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
-                    "INNER JOIN student ON group_student.student = student.student_id " +
-                    "INNER JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
+                    "FROM lesson LEFT JOIN discipline ON lesson.discipline = discipline.discipline_id " +
+                    "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
+                    "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
+                    "LEFT JOIN audience ON lesson.audience = audience.audience_id " +
+                    "LEFT JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
+                    "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
+                    "LEFT JOIN student ON group_student.student = student.student_id " +
+                    "LEFT JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
                     "WHERE lesson_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
@@ -48,14 +48,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
                     "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
                     "teacher_table.teacher_birthday AS lesson_teacher_birthday " +
-                    "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
-                    "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
-                    "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
-                    "INNER JOIN audience ON lesson.audience = audience.audience_id " +
-                    "INNER JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
-                    "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
-                    "INNER JOIN student ON group_student.student = student.student_id " +
-                    "INNER JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
+                    "FROM lesson LEFT JOIN discipline ON lesson.discipline = discipline.discipline_id " +
+                    "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
+                    "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
+                    "LEFT JOIN audience ON lesson.audience = audience.audience_id " +
+                    "LEFT JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
+                    "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
+                    "LEFT JOIN student ON group_student.student = student.student_id " +
+                    "LEFT JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
                     "ORDER BY lesson_id";
     private static final String FIND_ALL_PAGED_QUERY =
             "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
@@ -67,14 +67,14 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
                     "teacher_table.teacher_id AS lesson_teacher_id, teacher_table.teacher_email AS lesson_teacher_email, " +
                     "teacher_table.teacher_password AS lesson_teacher_password, teacher_table.teacher_name AS lesson_teacher_name, " +
                     "teacher_table.teacher_birthday AS lesson_teacher_birthday " +
-                    "FROM lesson INNER JOIN discipline ON lesson.discipline = discipline.discipline_id " +
-                    "INNER JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
-                    "INNER JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
-                    "INNER JOIN audience ON lesson.audience = audience.audience_id " +
-                    "INNER JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
-                    "INNER JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
-                    "INNER JOIN student ON group_student.student = student.student_id " +
-                    "INNER JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
+                    "FROM lesson LEFT JOIN discipline ON lesson.discipline = discipline.discipline_id " +
+                    "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline " +
+                    "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id " +
+                    "LEFT JOIN audience ON lesson.audience = audience.audience_id " +
+                    "LEFT JOIN \"group\" ON lesson.\"group\" = \"group\".group_id " +
+                    "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
+                    "LEFT JOIN student ON group_student.student = student.student_id " +
+                    "LEFT JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
                     "LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY =
             "UPDATE lesson SET discipline = ?, audience = ?, lesson_type = ?, \"date\" = ?, "
