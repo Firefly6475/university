@@ -12,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -119,6 +120,30 @@ public class DisciplineDaoImplTest {
         disciplineDao.save(expectedDiscipline);
 
         Discipline actualDiscipline = disciplineDao.findById(expectedDiscipline.getId()).get();
+
+        assertEquals(expectedDiscipline, actualDiscipline);
+    }
+
+    @Test
+    void findByNameShouldReturnDisciplineWithSpecifiedName() {
+        Discipline expectedDiscipline = Discipline.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("Java")
+                .withTeachers(new ArrayList<>())
+                .build();
+
+        disciplineDao.save(expectedDiscipline);
+
+        Discipline actualDiscipline = disciplineDao.findByName(expectedDiscipline.getName()).get();
+        assertEquals(expectedDiscipline, actualDiscipline);
+    }
+
+    @Test
+    void findByNameShouldReturnOptionalEmptyIfNoDisciplineWithSpecifiedName() {
+        String disciplineName = "Java";
+
+        Optional<Discipline> expectedDiscipline = Optional.empty();
+        Optional<Discipline> actualDiscipline = disciplineDao.findByName(disciplineName);
 
         assertEquals(expectedDiscipline, actualDiscipline);
     }

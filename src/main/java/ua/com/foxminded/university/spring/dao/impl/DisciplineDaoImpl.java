@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.DisciplineMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implements DisciplineDao {
@@ -41,6 +43,12 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
             "INSERT INTO discipline_teacher (discipline, teacher) VALUES (?,?)";
     private static final String DELETE_TEACHER_FROM_DISCIPLINE_QUERY =
             "DELETE FROM discipline_teacher WHERE discipline = ? AND teacher = ?";
+
+    private static final String FIND_BY_NAME_QUERY = "SELECT discipline.discipline_id, discipline.discipline_name, "
+            + "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
+            + "FROM discipline "
+            + "LEFT JOIN discipline_teacher ON discipline.discipline_id = discipline_teacher.discipline "
+            + "LEFT JOIN teacher ON discipline_teacher.teacher = teacher.teacher_id WHERE discipline.discipline_name = ?";
 
     protected final DisciplineMapper disciplineMapper;
 
@@ -108,5 +116,14 @@ public class DisciplineDaoImpl extends AbstractCrudDaoImpl<Discipline> implement
             ps.setString(1, disciplineId);
             ps.setString(2, teacherId);
         });
+    }
+
+    @Override
+    public Optional<Discipline> findByName(String name) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NAME_QUERY, rowMapper(), name));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }
