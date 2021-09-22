@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.FacultyMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements FacultyDao {
@@ -42,10 +44,20 @@ public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements Facu
                     + "LEFT JOIN student ON group_student.student = student.student_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE faculty SET faculty_name = ? WHERE faculty_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM faculty WHERE faculty_id = ?";
+
     private static final String ADD_GROUP_TO_FACULTY_QUERY =
             "INSERT INTO faculty_group (faculty, \"group\") VALUES (?,?)";
     private static final String DELETE_GROUP_FROM_FACULTY_QUERY =
             "DELETE FROM faculty_group WHERE faculty = ? AND \"group\" = ?";
+
+    private static final String FIND_BY_NAME_QUERY = "SELECT faculty.faculty_id, faculty.faculty_name, \"group\".group_id, "
+            + "\"group\".group_name, \"group\".group_course,  student.student_id, student.student_email, "
+            + "student.student_password, student.student_name, student.student_birthday, "
+            + "FROM faculty LEFT JOIN faculty_group ON faculty.faculty_id = faculty_group.faculty "
+            + "LEFT JOIN \"group\" ON faculty_group.\"group\" = \"group\".group_id "
+            + "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" "
+            + "LEFT JOIN student ON group_student.student = student.student_id WHERE faculty_name = ?";
+
     protected final FacultyMapper facultyMapper;
 
     public FacultyDaoImpl(JdbcTemplate jdbcTemplate, FacultyMapper facultyMapper) {
@@ -109,5 +121,14 @@ public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements Facu
             ps.setString(1, facultyId);
             ps.setString(2, groupId);
         });
+    }
+
+    @Override
+    public Optional<Faculty> findByName(String name) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NAME_QUERY, rowMapper(), name));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }
