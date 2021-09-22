@@ -3,7 +3,6 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Department;
-import ua.com.foxminded.university.model.Discipline;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.DepartmentDao;
@@ -13,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.TeacherMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -120,6 +120,30 @@ public class DepartmentDaoImplTest {
         departmentDao.save(expectedDepartment);
 
         Department actualDepartment = departmentDao.findById(expectedDepartment.getId()).get();
+
+        assertEquals(expectedDepartment, actualDepartment);
+    }
+
+    @Test
+    void findByNameShouldReturnDepartmentWithSpecifiedName() {
+        Department expectedDepartment = Department.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("Java")
+                .withTeachers(new ArrayList<>())
+                .build();
+
+        departmentDao.save(expectedDepartment);
+
+        Department actualDepartment = departmentDao.findByName(expectedDepartment.getName()).get();
+        assertEquals(expectedDepartment, actualDepartment);
+    }
+
+    @Test
+    void findByNameShouldReturnOptionalEmptyIfNoDepartmentWithSpecifiedName() {
+        String departmentName = "Java";
+
+        Optional<Department> expectedDepartment = Optional.empty();
+        Optional<Department> actualDepartment = departmentDao.findByName(departmentName);
 
         assertEquals(expectedDepartment, actualDepartment);
     }
