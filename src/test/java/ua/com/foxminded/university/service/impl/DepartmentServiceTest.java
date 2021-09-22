@@ -49,7 +49,7 @@ public class DepartmentServiceTest {
     void addDepartmentShouldSaveDepartment() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .build();
 
         when(departmentDao.findByName(department.getName())).thenReturn(Optional.empty());
@@ -67,7 +67,7 @@ public class DepartmentServiceTest {
     void addDepartmentShouldThrowEntityAlreadyExistExceptionIfEntityWithSpecifiedNameAlreadyExists() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .build();
 
         when(departmentDao.findByName(department.getName())).thenReturn(Optional.of(department));
@@ -110,7 +110,7 @@ public class DepartmentServiceTest {
     void findDepartmentByIdShouldReturnEntityWithSpecifiedId() {
         Department expectedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .build();
 
         when(departmentDao.findById(expectedDepartment.getId())).thenReturn(Optional.of(expectedDepartment));
@@ -141,7 +141,7 @@ public class DepartmentServiceTest {
     void findDepartmentByNameShouldReturnEntityWithSpecifiedId() {
         Department expectedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .build();
 
         when(departmentDao.findByName(expectedDepartment.getName())).thenReturn(Optional.of(expectedDepartment));
@@ -154,7 +154,7 @@ public class DepartmentServiceTest {
 
     @Test
     void findDepartmentByNameShouldThrowEntityNotFoundExceptionIfEntityWithSpecifiedIdIsNotExists() {
-        String departmentName = "Dart";
+        String departmentName = "Programming";
 
         when(departmentDao.findByName(departmentName)).thenReturn(Optional.empty());
 
@@ -184,7 +184,7 @@ public class DepartmentServiceTest {
     void deleteDepartmentShouldRemoveDepartmentFromDB() {
         Department expectedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -218,7 +218,7 @@ public class DepartmentServiceTest {
     void deleteDepartmentShouldThrowEntityIsNotEmptyExceptionIfDepartmentHaveTeachers() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
         Teacher teacher = Teacher.builder()
@@ -247,13 +247,13 @@ public class DepartmentServiceTest {
     void editDepartmentShouldUpdateDepartmentInDb() {
         Department departmentToEdit = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
         Department editedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Python")
+                .withName("Information Security")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -274,7 +274,7 @@ public class DepartmentServiceTest {
     void editDepartmentShouldThrowEntityNotFoundExceptionIfThereIsNoDepartmentWithSpecifiedId() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -296,13 +296,13 @@ public class DepartmentServiceTest {
     void editDepartmentShouldThrowEntityAlreadyExistExceptionIfSpecifiedNameAlreadyExists() {
         Department departmentToEdit = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
         Department editedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Python")
+                .withName("Information Security")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -326,7 +326,7 @@ public class DepartmentServiceTest {
     void addTeacherToDepartmentShouldAddTeacherToDepartment() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
         Teacher teacher = Teacher.builder()
@@ -374,7 +374,7 @@ public class DepartmentServiceTest {
     void addTeacherToDepartmentShouldThrowEntityNoFoundExceptionIfSpecifiedTeacherNotExists() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -401,9 +401,10 @@ public class DepartmentServiceTest {
     void addTeacherToDepartmentShouldThrowEntityAlreadyExistExceptionIfSpecifiedTeacherAlreadyInDepartment() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
+
         Teacher teacher = Teacher.builder()
                 .withId("hello")
                 .withEmail("world@gmail.com")
@@ -436,9 +437,10 @@ public class DepartmentServiceTest {
     void removeTeacherFromDepartmentShouldRemoveTeacherFromDepartment() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
+
         Teacher teacher = Teacher.builder()
                 .withId("hello")
                 .withEmail("world@gmail.com")
@@ -485,9 +487,10 @@ public class DepartmentServiceTest {
     void removeTeacherFromDepartmentShouldThrowEntityNoFoundExceptionIfSpecifiedTeacherNotExists() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
+
         String teacherId = "world";
         String departmentId = department.getId();
 
@@ -511,9 +514,10 @@ public class DepartmentServiceTest {
     void removeTeacherFromDepartmentShouldThrowEntityAlreadyExistExceptionIfSpecifiedTeacherIsNotInADepartment() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("someDepartment")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
+
         Teacher teacher = Teacher.builder()
                 .withId("hello")
                 .withEmail("world@gmail.com")

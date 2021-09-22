@@ -18,7 +18,7 @@ public class DepartmentValidatorTest {
     void validateShouldNotThrowException() {
         Department department = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 

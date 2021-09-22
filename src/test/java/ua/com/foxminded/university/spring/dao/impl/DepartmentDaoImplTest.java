@@ -128,7 +128,7 @@ public class DepartmentDaoImplTest {
     void findByNameShouldReturnDepartmentWithSpecifiedName() {
         Department expectedDepartment = Department.builder()
                 .withId(UUID.randomUUID().toString())
-                .withName("Java")
+                .withName("Programming")
                 .withTeachers(new ArrayList<>())
                 .build();
 
@@ -140,7 +140,7 @@ public class DepartmentDaoImplTest {
 
     @Test
     void findByNameShouldReturnOptionalEmptyIfNoDepartmentWithSpecifiedName() {
-        String departmentName = "Java";
+        String departmentName = "Programming";
 
         Optional<Department> expectedDepartment = Optional.empty();
         Optional<Department> actualDepartment = departmentDao.findByName(departmentName);
