@@ -1,5 +1,6 @@
 package ua.com.foxminded.university.spring.dao.impl;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,6 +12,7 @@ import ua.com.foxminded.university.spring.dao.mapper.DepartmentMapper;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
@@ -39,6 +41,11 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
             "INSERT INTO department_teacher (department, teacher) VALUES (?,?)";
     private static final String DELETE_TEACHER_FROM_DEPARTMENT_QUERY =
             "DELETE FROM department_teacher WHERE department = ? AND teacher = ?";
+
+    private static final String FIND_BY_NAME_QUERY = "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
+            + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
+            + "FROM department LEFT JOIN department_teacher ON department.department_id = department_teacher.department "
+            + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department.department_name = ?";
 
     protected final DepartmentMapper departmentMapper;
 
@@ -106,5 +113,14 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
             ps.setString(1, departmentId);
             ps.setString(2, teacherId);
         });
+    }
+
+    @Override
+    public Optional<Department> findByName(String name) {
+        try {
+            return Optional.ofNullable(jdbcTemplate.queryForObject(FIND_BY_NAME_QUERY, rowMapper(), name));
+        } catch (EmptyResultDataAccessException e) {
+            return Optional.empty();
+        }
     }
 }
