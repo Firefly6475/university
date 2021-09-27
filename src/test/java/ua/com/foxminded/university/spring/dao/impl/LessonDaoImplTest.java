@@ -130,4 +130,14 @@ public class LessonDaoImplTest {
 
         assertEquals(expectedLesson, actualLesson);
     }
+
+    @Test
+    void findLessonByDisciplineNameShouldReturnListWithLessonWithSpecifiedDisciplineName() {
+        Lesson lesson = lessonDao.findById("aabb").get();
+        String disciplineName = lesson.getDiscipline().getName();
+        List<Lesson> lessons = lessonDao.findByDisciplineName(disciplineName);
+
+        assertTrue(lessons.contains(lesson));
+        assertEquals(1, lessons.size());
+    }
 }
