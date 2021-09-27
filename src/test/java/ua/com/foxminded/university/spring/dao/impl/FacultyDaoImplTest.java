@@ -3,6 +3,7 @@ package ua.com.foxminded.university.spring.dao.impl;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 import ua.com.foxminded.university.model.Faculty;
+import ua.com.foxminded.university.model.Faculty;
 import ua.com.foxminded.university.model.Group;
 import ua.com.foxminded.university.spring.config.JdbcConfigTest;
 import ua.com.foxminded.university.spring.dao.FacultyDao;
@@ -13,6 +14,7 @@ import ua.com.foxminded.university.spring.dao.mapper.StudentMapper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -123,6 +125,30 @@ public class FacultyDaoImplTest {
         facultyDao.save(expectedFaculty);
 
         Faculty actualFaculty = facultyDao.findById(expectedFaculty.getId()).get();
+
+        assertEquals(expectedFaculty, actualFaculty);
+    }
+
+    @Test
+    void findByNameShouldReturnFacultyWithSpecifiedName() {
+        Faculty expectedFaculty = Faculty.builder()
+                .withId(UUID.randomUUID().toString())
+                .withName("Programming")
+                .withGroups(new ArrayList<>())
+                .build();
+
+        facultyDao.save(expectedFaculty);
+
+        Faculty actualFaculty = facultyDao.findByName(expectedFaculty.getName()).get();
+        assertEquals(expectedFaculty, actualFaculty);
+    }
+
+    @Test
+    void findByNameShouldReturnOptionalEmptyIfNoFacultyWithSpecifiedName() {
+        String facultyName = "Programming";
+
+        Optional<Faculty> expectedFaculty = Optional.empty();
+        Optional<Faculty> actualFaculty = facultyDao.findByName(facultyName);
 
         assertEquals(expectedFaculty, actualFaculty);
     }
