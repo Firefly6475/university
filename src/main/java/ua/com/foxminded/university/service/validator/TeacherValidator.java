@@ -1,6 +1,6 @@
 package ua.com.foxminded.university.service.validator;
 
-import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.service.exception.InvalidBirthdayException;
 import ua.com.foxminded.university.service.exception.InvalidEmailException;
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.regex.Pattern;
 
-@Component
+@Slf4j
 public class TeacherValidator implements Validator<Teacher> {
 
     private static final Pattern EMAIL_PATTERN =
@@ -29,25 +29,33 @@ public class TeacherValidator implements Validator<Teacher> {
     }
 
     private void validateBirthday(LocalDate birthday) {
+        log.info("Validating teacher birthday");
         if (Period.between(birthday, LocalDate.now()).getYears() < MIN_AGE) {
+            log.error("Teacher birthday validation failed");
             throw new InvalidBirthdayException("Teacher age is lower than minimum of 20");
         }
     }
 
     private void validateEmail(String email) {
-        if(!EMAIL_PATTERN.matcher(email).matches()) {
+        log.info("Validating teacher email");
+        if (!EMAIL_PATTERN.matcher(email).matches()) {
+            log.error("Teacher email validation failed");
             throw new InvalidEmailException("Email invalid");
         }
     }
 
     private void validatePassword(String password) {
+        log.info("Validating teacher password");
         if (!PASSWORD_PATTERN.matcher(password).matches()) {
+            log.error("Teacher password validation failed");
             throw new InvalidPasswordException(("Password must have at least 8 symbols, 1 upper-case symbol, 1 digit and 1 special character"));
         }
     }
 
     private void validateName(String name) {
+        log.info("Validating teacher name");
         if (!NAME_PATTERN.matcher(name).matches()) {
+            log.error("Teacher name validation failed");
             throw new InvalidNameException("Name is less than 2 symbols or contains numbers / non-word symbols");
         }
     }

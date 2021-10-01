@@ -1,0 +1,622 @@
+2021-10-01 12:36:02,485 INFO ua.com.foxminded.university.service.validator.LessonValidator Validating lesson time delta
+2021-10-01 12:36:02,510 INFO ua.com.foxminded.university.service.validator.LessonValidator Validating lesson date
+2021-10-01 12:36:02,533 INFO ua.com.foxminded.university.service.validator.LessonValidator Validating lesson time delta
+2021-10-01 12:36:02,533 ERROR ua.com.foxminded.university.service.validator.LessonValidator Lesson time delta validation failed
+2021-10-01 12:36:02,536 INFO ua.com.foxminded.university.service.validator.LessonValidator Validating lesson time delta
+2021-10-01 12:36:02,537 INFO ua.com.foxminded.university.service.validator.LessonValidator Validating lesson date
+2021-10-01 12:36:02,537 ERROR ua.com.foxminded.university.service.validator.LessonValidator Lesson date validation failed
+2021-10-01 12:36:03,239 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher from discipline removal started
+2021-10-01 12:36:03,240 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,243 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,244 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if teacher is in a discipline
+2021-10-01 12:36:03,244 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl No teacher in specified discipline 
+2021-10-01 12:36:03,256 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher from discipline removal started
+2021-10-01 12:36:03,256 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,257 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline to remove teacher from not found
+2021-10-01 12:36:03,261 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline deletion by id started
+2021-10-01 12:36:03,261 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,261 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teachers existence in discipline
+2021-10-01 12:36:03,261 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline still has teachers
+2021-10-01 12:36:03,263 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Finding discipline by id in database started
+2021-10-01 12:36:03,266 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline by id not found
+2021-10-01 12:36:03,269 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding teacher to discipline started
+2021-10-01 12:36:03,269 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,269 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,269 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher to add not found
+2021-10-01 12:36:03,272 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding teacher to discipline started
+2021-10-01 12:36:03,272 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,272 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,272 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if teacher is already in a discipline
+2021-10-01 12:36:03,272 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher is already in the discipline
+2021-10-01 12:36:03,274 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Getting all disciplines started
+2021-10-01 12:36:03,279 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding discipline started
+2021-10-01 12:36:03,279 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline name existence in database
+2021-10-01 12:36:03,280 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Validating discipline...
+2021-10-01 12:36:03,280 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline successfully added
+2021-10-01 12:36:03,284 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding discipline started
+2021-10-01 12:36:03,284 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline name existence in database
+2021-10-01 12:36:03,284 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline already exists in database
+2021-10-01 12:36:03,286 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Finding discipline by name in database started
+2021-10-01 12:36:03,289 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline editing started
+2021-10-01 12:36:03,289 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,289 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline to edit not found
+2021-10-01 12:36:03,291 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline deletion by id started
+2021-10-01 12:36:03,292 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,292 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl No discipline found for deletion
+2021-10-01 12:36:03,294 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Finding discipline by name in database started
+2021-10-01 12:36:03,294 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline by name not found
+2021-10-01 12:36:03,297 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher from discipline removal started
+2021-10-01 12:36:03,297 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,297 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,297 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if teacher is in a discipline
+2021-10-01 12:36:03,297 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Successfully removed teacher from discipline
+2021-10-01 12:36:03,300 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding teacher to discipline started
+2021-10-01 12:36:03,301 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,301 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline to add teacher in not found
+2021-10-01 12:36:03,305 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding discipline started
+2021-10-01 12:36:03,305 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline name existence in database
+2021-10-01 12:36:03,305 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Validating discipline...
+2021-10-01 12:36:03,307 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Finding discipline by id in database started
+2021-10-01 12:36:03,310 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher from discipline removal started
+2021-10-01 12:36:03,310 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,310 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,310 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Teacher to remove from discipline not found
+2021-10-01 12:36:03,312 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline deletion by id started
+2021-10-01 12:36:03,312 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,313 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teachers existence in discipline
+2021-10-01 12:36:03,313 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Successful discipline deletion
+2021-10-01 12:36:03,315 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline editing started
+2021-10-01 12:36:03,315 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,316 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if the same name already exists
+2021-10-01 12:36:03,317 ERROR ua.com.foxminded.university.service.impl.DisciplineServiceImpl Name already exists
+2021-10-01 12:36:03,319 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Adding teacher to discipline started
+2021-10-01 12:36:03,319 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,319 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking teacher existence
+2021-10-01 12:36:03,319 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if teacher is already in a discipline
+2021-10-01 12:36:03,319 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Successfully added teacher to discipline
+2021-10-01 12:36:03,322 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline editing started
+2021-10-01 12:36:03,322 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking discipline existence
+2021-10-01 12:36:03,322 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Checking if the same name already exists
+2021-10-01 12:36:03,322 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Validating discipline...
+2021-10-01 12:36:03,323 INFO ua.com.foxminded.university.service.impl.DisciplineServiceImpl Discipline successfully edited
+2021-10-01 12:36:03,368 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,691 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,742 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,781 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,812 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,841 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,867 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,891 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:03,967 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Adding audience started
+2021-10-01 12:36:03,969 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience number existence in database
+2021-10-01 12:36:03,969 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience already exists in database
+2021-10-01 12:36:03,972 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Adding audience started
+2021-10-01 12:36:03,973 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience number existence in database
+2021-10-01 12:36:03,973 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Validating audience...
+2021-10-01 12:36:03,975 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Finding audience by number in database started
+2021-10-01 12:36:03,977 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Finding audience by id in database started
+2021-10-01 12:36:03,978 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience by id not found
+2021-10-01 12:36:03,981 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience editing started
+2021-10-01 12:36:03,981 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience existence
+2021-10-01 12:36:03,981 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Number has been changed, checking if same number already exists
+2021-10-01 12:36:03,981 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Validating audience
+2021-10-01 12:36:03,982 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience successfully edited
+2021-10-01 12:36:03,985 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience deletion by id started
+2021-10-01 12:36:03,986 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Successful audience deletion
+2021-10-01 12:36:03,988 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Getting all audience started
+2021-10-01 12:36:03,991 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience editing started
+2021-10-01 12:36:03,992 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience existence
+2021-10-01 12:36:03,992 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience to edit not found
+2021-10-01 12:36:03,993 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Adding audience started
+2021-10-01 12:36:03,993 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience number existence in database
+2021-10-01 12:36:03,993 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Validating audience...
+2021-10-01 12:36:03,994 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience successfully added
+2021-10-01 12:36:03,996 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Finding audience by number in database started
+2021-10-01 12:36:03,997 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience by number not found
+2021-10-01 12:36:04,001 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience editing started
+2021-10-01 12:36:04,001 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience existence
+2021-10-01 12:36:04,001 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Number has been changed, checking if same number already exists
+2021-10-01 12:36:04,001 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl Number already exists
+2021-10-01 12:36:04,004 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience deletion by id started
+2021-10-01 12:36:04,004 ERROR ua.com.foxminded.university.service.impl.AudienceServiceImpl No audience found for deletion
+2021-10-01 12:36:04,007 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience editing started
+2021-10-01 12:36:04,007 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Checking audience existence
+2021-10-01 12:36:04,007 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Validating audience
+2021-10-01 12:36:04,007 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Audience successfully edited
+2021-10-01 12:36:04,011 INFO ua.com.foxminded.university.service.impl.AudienceServiceImpl Finding audience by id in database started
+2021-10-01 12:36:04,029 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department editing started
+2021-10-01 12:36:04,029 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,029 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if the same name already exists
+2021-10-01 12:36:04,031 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Validating department...
+2021-10-01 12:36:04,031 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department successfully edited
+2021-10-01 12:36:04,033 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Getting all departments started
+2021-10-01 12:36:04,035 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding department started
+2021-10-01 12:36:04,036 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department name existence in database
+2021-10-01 12:36:04,036 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Validating department...
+2021-10-01 12:36:04,039 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher from department removal started
+2021-10-01 12:36:04,039 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,039 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,039 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher to remove from department not found
+2021-10-01 12:36:04,041 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding teacher to department started
+2021-10-01 12:36:04,041 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,042 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department to add teacher in not found
+2021-10-01 12:36:04,044 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Finding department by id in database started
+2021-10-01 12:36:04,044 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department by id not found
+2021-10-01 12:36:04,046 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Finding department by name in database started
+2021-10-01 12:36:04,050 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher from department removal started
+2021-10-01 12:36:04,050 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,051 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,051 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if teacher is in a department
+2021-10-01 12:36:04,051 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl No teacher in specified department 
+2021-10-01 12:36:04,053 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding teacher to department started
+2021-10-01 12:36:04,053 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,053 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,053 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if teacher is already in a department
+2021-10-01 12:36:04,053 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Successfully added teacher to department
+2021-10-01 12:36:04,056 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department deletion by id started
+2021-10-01 12:36:04,056 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,056 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl No department found for deletion
+2021-10-01 12:36:04,058 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding department started
+2021-10-01 12:36:04,058 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department name existence in database
+2021-10-01 12:36:04,059 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Validating department...
+2021-10-01 12:36:04,059 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department successfully added
+2021-10-01 12:36:04,061 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding department started
+2021-10-01 12:36:04,061 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department name existence in database
+2021-10-01 12:36:04,062 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department already exists in database
+2021-10-01 12:36:04,063 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department deletion by id started
+2021-10-01 12:36:04,063 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,064 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teachers existence in department
+2021-10-01 12:36:04,064 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Successful department deletion
+2021-10-01 12:36:04,067 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding teacher to department started
+2021-10-01 12:36:04,067 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,067 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,067 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher to add not found
+2021-10-01 12:36:04,069 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Finding department by id in database started
+2021-10-01 12:36:04,072 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department deletion by id started
+2021-10-01 12:36:04,072 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,072 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teachers existence in department
+2021-10-01 12:36:04,072 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department still has teachers
+2021-10-01 12:36:04,075 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department editing started
+2021-10-01 12:36:04,075 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,075 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if the same name already exists
+2021-10-01 12:36:04,076 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Name already exists
+2021-10-01 12:36:04,078 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Finding department by name in database started
+2021-10-01 12:36:04,078 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department by name not found
+2021-10-01 12:36:04,082 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher from department removal started
+2021-10-01 12:36:04,082 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,082 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department to remove teacher from not found
+2021-10-01 12:36:04,085 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher from department removal started
+2021-10-01 12:36:04,085 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,085 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,085 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if teacher is in a department
+2021-10-01 12:36:04,085 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Successfully removed teacher from department
+2021-10-01 12:36:04,088 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department editing started
+2021-10-01 12:36:04,088 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,088 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Department to edit not found
+2021-10-01 12:36:04,092 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Adding teacher to department started
+2021-10-01 12:36:04,092 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking department existence
+2021-10-01 12:36:04,092 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking teacher existence
+2021-10-01 12:36:04,092 INFO ua.com.foxminded.university.service.impl.DepartmentServiceImpl Checking if teacher is already in a department
+2021-10-01 12:36:04,092 ERROR ua.com.foxminded.university.service.impl.DepartmentServiceImpl Teacher is already in the department
+2021-10-01 12:36:04,094 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,127 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,150 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,174 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,192 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,212 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,228 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,244 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,259 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,276 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,293 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,309 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,329 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,349 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,366 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,384 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group name
+2021-10-01 12:36:04,384 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group course
+2021-10-01 12:36:04,385 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group name
+2021-10-01 12:36:04,385 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group course
+2021-10-01 12:36:04,385 ERROR ua.com.foxminded.university.service.validator.GroupValidator Group course validation failed
+2021-10-01 12:36:04,387 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group name
+2021-10-01 12:36:04,387 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group course
+2021-10-01 12:36:04,387 ERROR ua.com.foxminded.university.service.validator.GroupValidator Group course validation failed
+2021-10-01 12:36:04,388 INFO ua.com.foxminded.university.service.validator.GroupValidator Validating group name
+2021-10-01 12:36:04,389 ERROR ua.com.foxminded.university.service.validator.GroupValidator Group name validation failed
+2021-10-01 12:36:04,418 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Finding lessons by discipline name started
+2021-10-01 12:36:04,419 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl No lessons by discipline name found
+2021-10-01 12:36:04,421 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,421 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,421 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,422 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,422 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Audience to edit in lesson not exists
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,425 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking teacher existence
+2021-10-01 12:36:04,426 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Validating lesson...
+2021-10-01 12:36:04,426 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson successfully edited
+2021-10-01 12:36:04,428 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Finding lessons by discipline name started
+2021-10-01 12:36:04,432 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,432 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,432 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,432 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Discipline to edit in lesson not exists
+2021-10-01 12:36:04,435 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,435 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,436 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,436 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,436 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,436 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Group to edit in lesson not exists
+2021-10-01 12:36:04,439 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,439 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,439 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,439 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,444 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,444 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking teacher existence
+2021-10-01 12:36:04,444 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Teacher to edit in lesson not exists
+2021-10-01 12:36:04,446 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson deletion by id started
+2021-10-01 12:36:04,447 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,447 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Successful lesson deletion
+2021-10-01 12:36:04,452 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Getting all lessons started
+2021-10-01 12:36:04,454 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson deletion by id started
+2021-10-01 12:36:04,454 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,454 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl No lesson found for deletion
+2021-10-01 12:36:04,457 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,457 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,457 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,457 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,457 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking teacher existence
+2021-10-01 12:36:04,457 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Teacher is not exists
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking teacher existence
+2021-10-01 12:36:04,461 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Validating lesson...
+2021-10-01 12:36:04,465 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson editing started
+2021-10-01 12:36:04,465 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking lesson existence
+2021-10-01 12:36:04,466 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson to edit not found
+2021-10-01 12:36:04,471 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,471 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,471 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,472 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,472 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking teacher existence
+2021-10-01 12:36:04,472 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Validating lesson...
+2021-10-01 12:36:04,472 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson successfully added
+2021-10-01 12:36:04,474 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,474 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,474 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Discipline is not exists
+2021-10-01 12:36:04,478 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,478 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,478 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,478 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking group existence
+2021-10-01 12:36:04,478 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Group is not exists
+2021-10-01 12:36:04,481 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Finding lesson by id in database started
+2021-10-01 12:36:04,481 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Lesson by id not found
+2021-10-01 12:36:04,484 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Finding lesson by id in database started
+2021-10-01 12:36:04,486 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Adding lesson started
+2021-10-01 12:36:04,486 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking discipline existence
+2021-10-01 12:36:04,486 INFO ua.com.foxminded.university.service.impl.LessonServiceImpl Checking audience existence
+2021-10-01 12:36:04,486 ERROR ua.com.foxminded.university.service.impl.LessonServiceImpl Audience is not exists
+2021-10-01 12:36:04,488 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number
+2021-10-01 12:36:04,488 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience floor
+2021-10-01 12:36:04,488 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number on floor
+2021-10-01 12:36:04,490 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number
+2021-10-01 12:36:04,490 ERROR ua.com.foxminded.university.service.validator.AudienceValidator Audience number validation failed
+2021-10-01 12:36:04,491 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number
+2021-10-01 12:36:04,492 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience floor
+2021-10-01 12:36:04,492 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number on floor
+2021-10-01 12:36:04,492 ERROR ua.com.foxminded.university.service.validator.AudienceValidator Audience number on floor validation failed
+2021-10-01 12:36:04,493 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience number
+2021-10-01 12:36:04,493 INFO ua.com.foxminded.university.service.validator.AudienceValidator Validating audience floor
+2021-10-01 12:36:04,493 ERROR ua.com.foxminded.university.service.validator.AudienceValidator Audience floor validation failed
+2021-10-01 12:36:04,494 INFO ua.com.foxminded.university.service.validator.FacultyValidator Validating faculty name
+2021-10-01 12:36:04,495 INFO ua.com.foxminded.university.service.validator.FacultyValidator Validating faculty name
+2021-10-01 12:36:04,496 ERROR ua.com.foxminded.university.service.validator.FacultyValidator Faculty name validation failed
+2021-10-01 12:36:04,520 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher editing started
+2021-10-01 12:36:04,520 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,520 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher to edit not found
+2021-10-01 12:36:04,523 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Finding teacher by id in database started
+2021-10-01 12:36:04,526 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher deletion by id started
+2021-10-01 12:36:04,526 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,526 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl No teacher found for deletion
+2021-10-01 12:36:04,528 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Finding teacher by email in database started
+2021-10-01 12:36:04,531 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher registration started 
+2021-10-01 12:36:04,532 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher email existence in database
+2021-10-01 12:36:04,532 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Validating teacher...
+2021-10-01 12:36:04,534 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Getting all teachers started
+2021-10-01 12:36:04,536 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Finding teacher by email in database started
+2021-10-01 12:36:04,537 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher by email not found
+2021-10-01 12:36:04,539 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher editing started
+2021-10-01 12:36:04,539 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,539 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Email has been changed, checking if same email already exists
+2021-10-01 12:36:04,539 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Validating teacher
+2021-10-01 12:36:04,539 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher successfully edited
+2021-10-01 12:36:04,542 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher editing started
+2021-10-01 12:36:04,542 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,542 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Validating teacher
+2021-10-01 12:36:04,542 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher successfully edited
+2021-10-01 12:36:04,544 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher registration started 
+2021-10-01 12:36:04,545 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher email existence in database
+2021-10-01 12:36:04,545 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher already exists in database
+2021-10-01 12:36:04,547 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher registration started 
+2021-10-01 12:36:04,547 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher email existence in database
+2021-10-01 12:36:04,547 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Validating teacher...
+2021-10-01 12:36:04,547 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher successfully saved
+2021-10-01 12:36:04,549 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher deletion by id started
+2021-10-01 12:36:04,549 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,549 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Successful teacher deletion
+2021-10-01 12:36:04,551 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Finding teacher by id in database started
+2021-10-01 12:36:04,552 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher by id not found
+2021-10-01 12:36:04,554 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Teacher editing started
+2021-10-01 12:36:04,554 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Checking teacher existence
+2021-10-01 12:36:04,554 INFO ua.com.foxminded.university.service.impl.TeacherServiceImpl Email has been changed, checking if same email already exists
+2021-10-01 12:36:04,554 ERROR ua.com.foxminded.university.service.impl.TeacherServiceImpl Email already exists
+2021-10-01 12:36:04,556 INFO ua.com.foxminded.university.service.validator.DisciplineValidator Validating discipline name
+2021-10-01 12:36:04,557 INFO ua.com.foxminded.university.service.validator.DisciplineValidator Validating discipline name
+2021-10-01 12:36:04,557 ERROR ua.com.foxminded.university.service.validator.DisciplineValidator Discipline name validation failed
+2021-10-01 12:36:04,558 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,572 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,587 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,602 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,616 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,629 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,644 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,657 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,673 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student email
+2021-10-01 12:36:04,673 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student password
+2021-10-01 12:36:04,673 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student name
+2021-10-01 12:36:04,673 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student birthday
+2021-10-01 12:36:04,674 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student email
+2021-10-01 12:36:04,674 ERROR ua.com.foxminded.university.service.validator.StudentValidator Student email validation failed
+2021-10-01 12:36:04,675 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student email
+2021-10-01 12:36:04,675 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student password
+2021-10-01 12:36:04,675 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student name
+2021-10-01 12:36:04,675 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student birthday
+2021-10-01 12:36:04,675 ERROR ua.com.foxminded.university.service.validator.StudentValidator Student birthday validation failed
+2021-10-01 12:36:04,676 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student email
+2021-10-01 12:36:04,677 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student password
+2021-10-01 12:36:04,677 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student name
+2021-10-01 12:36:04,677 ERROR ua.com.foxminded.university.service.validator.StudentValidator Student name validation failed
+2021-10-01 12:36:04,678 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student email
+2021-10-01 12:36:04,678 INFO ua.com.foxminded.university.service.validator.StudentValidator Validating student password
+2021-10-01 12:36:04,678 ERROR ua.com.foxminded.university.service.validator.StudentValidator Student password validation failed
+2021-10-01 12:36:04,712 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding student to group started
+2021-10-01 12:36:04,713 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,713 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,713 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking if student is already in a group
+2021-10-01 12:36:04,713 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Successfully added student to group
+2021-10-01 12:36:04,716 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding group started
+2021-10-01 12:36:04,716 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence in database
+2021-10-01 12:36:04,716 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Validating group...
+2021-10-01 12:36:04,718 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group deletion by id started
+2021-10-01 12:36:04,718 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,718 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking students existence in group
+2021-10-01 12:36:04,718 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Successful group deletion
+2021-10-01 12:36:04,719 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group deletion by id started
+2021-10-01 12:36:04,719 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,720 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl No group found for deletion
+2021-10-01 12:36:04,721 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding group started
+2021-10-01 12:36:04,721 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence in database
+2021-10-01 12:36:04,722 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Validating group...
+2021-10-01 12:36:04,722 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group successfully added
+2021-10-01 12:36:04,724 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Finding group by name in database started
+2021-10-01 12:36:04,724 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group by name not found
+2021-10-01 12:36:04,726 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Student from group removal started
+2021-10-01 12:36:04,726 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,726 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group to remove student from not found
+2021-10-01 12:36:04,728 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Student from group removal started
+2021-10-01 12:36:04,729 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,729 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,729 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking if student is in a group
+2021-10-01 12:36:04,729 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl No student in specified group 
+2021-10-01 12:36:04,731 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Student from group removal started
+2021-10-01 12:36:04,731 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,731 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,731 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking if student is in a group
+2021-10-01 12:36:04,731 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Successfully removed student from group
+2021-10-01 12:36:04,734 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding group started
+2021-10-01 12:36:04,734 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence in database
+2021-10-01 12:36:04,734 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group already exists in database
+2021-10-01 12:36:04,737 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group editing started
+2021-10-01 12:36:04,737 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,737 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Validating group...
+2021-10-01 12:36:04,737 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group successfully edited
+2021-10-01 12:36:04,739 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding student to group started
+2021-10-01 12:36:04,739 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,739 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group to add student in not found
+2021-10-01 12:36:04,742 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group deletion by id started
+2021-10-01 12:36:04,742 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,742 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking students existence in group
+2021-10-01 12:36:04,742 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group still has students
+2021-10-01 12:36:04,744 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group editing started
+2021-10-01 12:36:04,744 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,745 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group name has been changed, checking if same name already exists
+2021-10-01 12:36:04,745 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Name already exists
+2021-10-01 12:36:04,747 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group editing started
+2021-10-01 12:36:04,747 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,747 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group to edit not found
+2021-10-01 12:36:04,751 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Student from group removal started
+2021-10-01 12:36:04,751 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,751 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,751 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Student to remove from group not found
+2021-10-01 12:36:04,753 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Finding group by id in database started
+2021-10-01 12:36:04,755 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Finding group by name in database started
+2021-10-01 12:36:04,757 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Getting all groups started
+2021-10-01 12:36:04,759 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding student to group started
+2021-10-01 12:36:04,759 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,759 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,759 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Student to add not found
+2021-10-01 12:36:04,761 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Finding group by id in database started
+2021-10-01 12:36:04,762 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Group by id not found
+2021-10-01 12:36:04,763 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Adding student to group started
+2021-10-01 12:36:04,763 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,763 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking student existence
+2021-10-01 12:36:04,763 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking if student is already in a group
+2021-10-01 12:36:04,764 ERROR ua.com.foxminded.university.service.impl.GroupServiceImpl Student is already in the group
+2021-10-01 12:36:04,765 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group editing started
+2021-10-01 12:36:04,765 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Checking group existence
+2021-10-01 12:36:04,765 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group name has been changed, checking if same name already exists
+2021-10-01 12:36:04,765 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Validating group...
+2021-10-01 12:36:04,765 INFO ua.com.foxminded.university.service.impl.GroupServiceImpl Group successfully edited
+2021-10-01 12:36:04,768 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher email
+2021-10-01 12:36:04,768 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher password
+2021-10-01 12:36:04,768 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher name
+2021-10-01 12:36:04,768 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher birthday
+2021-10-01 12:36:04,769 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher email
+2021-10-01 12:36:04,770 ERROR ua.com.foxminded.university.service.validator.TeacherValidator Teacher email validation failed
+2021-10-01 12:36:04,771 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher email
+2021-10-01 12:36:04,771 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher password
+2021-10-01 12:36:04,771 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher name
+2021-10-01 12:36:04,771 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher birthday
+2021-10-01 12:36:04,771 ERROR ua.com.foxminded.university.service.validator.TeacherValidator Teacher birthday validation failed
+2021-10-01 12:36:04,772 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher email
+2021-10-01 12:36:04,772 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher password
+2021-10-01 12:36:04,772 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher name
+2021-10-01 12:36:04,772 ERROR ua.com.foxminded.university.service.validator.TeacherValidator Teacher name validation failed
+2021-10-01 12:36:04,773 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher email
+2021-10-01 12:36:04,773 INFO ua.com.foxminded.university.service.validator.TeacherValidator Validating teacher password
+2021-10-01 12:36:04,773 ERROR ua.com.foxminded.university.service.validator.TeacherValidator Teacher password validation failed
+2021-10-01 12:36:04,774 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,785 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,800 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,811 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,835 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,846 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,862 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,879 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,892 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,902 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,914 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,925 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,939 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,953 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,963 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,974 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,984 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:04,996 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,008 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,019 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,046 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,059 INFO ua.com.foxminded.university.service.validator.DepartmentValidator Validating department name
+2021-10-01 12:36:05,060 INFO ua.com.foxminded.university.service.validator.DepartmentValidator Validating department name
+2021-10-01 12:36:05,061 ERROR ua.com.foxminded.university.service.validator.DepartmentValidator Department name validation failed
+2021-10-01 12:36:05,063 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,079 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,097 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,127 INFO org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory Starting embedded database: url='jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2021-10-01 12:36:05,156 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Finding faculty by name in database started
+2021-10-01 12:36:05,159 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Group from faculty removal started
+2021-10-01 12:36:05,159 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,159 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,160 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if group is in a faculty
+2021-10-01 12:36:05,161 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Successfully removed group from faculty
+2021-10-01 12:36:05,163 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding faculty started
+2021-10-01 12:36:05,163 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty name existence in database
+2021-10-01 12:36:05,163 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Validating faculty...
+2021-10-01 12:36:05,163 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty successfully added
+2021-10-01 12:36:05,164 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty editing started
+2021-10-01 12:36:05,164 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,164 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if the same name already exists
+2021-10-01 12:36:05,165 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Validating faculty...
+2021-10-01 12:36:05,165 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty successfully edited
+2021-10-01 12:36:05,168 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Finding faculty by id in database started
+2021-10-01 12:36:05,168 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty by id not found
+2021-10-01 12:36:05,170 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty editing started
+2021-10-01 12:36:05,170 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,170 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if the same name already exists
+2021-10-01 12:36:05,170 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Name already exists
+2021-10-01 12:36:05,172 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty editing started
+2021-10-01 12:36:05,172 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,172 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty to edit not found
+2021-10-01 12:36:05,174 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty deletion by id started
+2021-10-01 12:36:05,174 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,174 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking groups existence in faculty
+2021-10-01 12:36:05,174 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Successful faculty deletion
+2021-10-01 12:36:05,175 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding group to faculty started
+2021-10-01 12:36:05,175 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,175 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,175 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if group is already in a faculty
+2021-10-01 12:36:05,175 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Group is already in the faculty
+2021-10-01 12:36:05,178 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Group from faculty removal started
+2021-10-01 12:36:05,178 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,179 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty to remove group from not found
+2021-10-01 12:36:05,181 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding group to faculty started
+2021-10-01 12:36:05,181 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,181 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,181 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Group to add not found
+2021-10-01 12:36:05,184 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Finding faculty by name in database started
+2021-10-01 12:36:05,185 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty by name not found
+2021-10-01 12:36:05,186 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding faculty started
+2021-10-01 12:36:05,186 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty name existence in database
+2021-10-01 12:36:05,186 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty already exists in database
+2021-10-01 12:36:05,188 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding group to faculty started
+2021-10-01 12:36:05,188 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,189 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty to add group in not found
+2021-10-01 12:36:05,191 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding faculty started
+2021-10-01 12:36:05,191 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty name existence in database
+2021-10-01 12:36:05,191 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Validating faculty...
+2021-10-01 12:36:05,194 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty deletion by id started
+2021-10-01 12:36:05,194 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,194 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl No faculty found for deletion
+2021-10-01 12:36:05,195 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Finding faculty by id in database started
+2021-10-01 12:36:05,198 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Group from faculty removal started
+2021-10-01 12:36:05,198 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,198 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,198 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Group to remove from faculty not found
+2021-10-01 12:36:05,201 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Adding group to faculty started
+2021-10-01 12:36:05,201 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,201 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,201 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if group is already in a faculty
+2021-10-01 12:36:05,201 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Successfully added group to faculty
+2021-10-01 12:36:05,202 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Getting all faculties started
+2021-10-01 12:36:05,204 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Group from faculty removal started
+2021-10-01 12:36:05,204 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,204 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking group existence
+2021-10-01 12:36:05,205 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking if group is in a faculty
+2021-10-01 12:36:05,205 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl No group in specified faculty
+2021-10-01 12:36:05,207 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty deletion by id started
+2021-10-01 12:36:05,207 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking faculty existence
+2021-10-01 12:36:05,207 INFO ua.com.foxminded.university.service.impl.FacultyServiceImpl Checking groups existence in faculty
+2021-10-01 12:36:05,207 ERROR ua.com.foxminded.university.service.impl.FacultyServiceImpl Faculty still has groups
+2021-10-01 12:36:05,229 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Finding student by email in database started
+2021-10-01 12:36:05,232 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student registration started 
+2021-10-01 12:36:05,232 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student email existence in database
+2021-10-01 12:36:05,232 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Validating student...
+2021-10-01 12:36:05,234 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student deletion by id started
+2021-10-01 12:36:05,234 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,234 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Successful student deletion
+2021-10-01 12:36:05,237 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student registration started 
+2021-10-01 12:36:05,237 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student email existence in database
+2021-10-01 12:36:05,237 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Validating student...
+2021-10-01 12:36:05,237 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student successfully saved
+2021-10-01 12:36:05,239 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Getting all students started
+2021-10-01 12:36:05,240 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Finding student by id in database started
+2021-10-01 12:36:05,242 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Finding student by email in database started
+2021-10-01 12:36:05,243 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl Student by email not found
+2021-10-01 12:36:05,245 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student editing started
+2021-10-01 12:36:05,245 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,245 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Email has been changed, checking if same email already exists
+2021-10-01 12:36:05,245 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Validating student
+2021-10-01 12:36:05,245 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student successfully edited
+2021-10-01 12:36:05,247 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student registration started 
+2021-10-01 12:36:05,247 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student email existence in database
+2021-10-01 12:36:05,247 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl Student already exists in database
+2021-10-01 12:36:05,250 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student editing started
+2021-10-01 12:36:05,250 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,250 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl Student to edit not found
+2021-10-01 12:36:05,252 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student editing started
+2021-10-01 12:36:05,252 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,252 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Validating student
+2021-10-01 12:36:05,252 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student successfully edited
+2021-10-01 12:36:05,254 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student deletion by id started
+2021-10-01 12:36:05,254 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,254 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl No student found for deletion
+2021-10-01 12:36:05,256 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Finding student by id in database started
+2021-10-01 12:36:05,256 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl Student by id not found
+2021-10-01 12:36:05,259 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Student editing started
+2021-10-01 12:36:05,259 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Checking student existence
+2021-10-01 12:36:05,259 INFO ua.com.foxminded.university.service.impl.StudentServiceImpl Email has been changed, checking if same email already exists
+2021-10-01 12:36:05,259 ERROR ua.com.foxminded.university.service.impl.StudentServiceImpl Email already exists
