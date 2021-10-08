@@ -2,6 +2,7 @@ package ua.com.foxminded.university.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import ua.com.foxminded.university.model.Department;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.service.DepartmentService;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
     private final DepartmentDao departmentDao;
     private final TeacherDao teacherDao;

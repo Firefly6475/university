@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+  <title>Teachers Status</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand mb-0 h1" href="/university">University</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/university">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Students
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+            <li><a class="dropdown-item" href="/university/students/list">Students List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="teachersDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Teachers
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="teachersDropdown">
+            <li><a class="dropdown-item" href="/university/teachers/list">Teachers List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="groupsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Groups
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
+            <li><a class="dropdown-item" href="/university/groups/list">Groups List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="facultiesDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Faculties
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="facultiesDropdown">
+            <li><a class="dropdown-item" href="/university/faculties/list">Faculties List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="departmentsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Departments
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="departmentsDropdown">
+            <li><a class="dropdown-item" href="/university/departments/list">Departments List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="disciplinesDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Disciplines
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
+            <li><a class="dropdown-item" href="/university/disciplines/list">Disciplines List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="audiencesDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Audiences
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="audiencesDropdown">
+            <li><a class="dropdown-item" href="/university/audiences/list">Audiences List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="lessonsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Lessons
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="lessonsDropdown">
+            <li><a class="dropdown-item" href="/university/lessons/list">Lessons List</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-md">
+  <div>
+    <table id="example" class="table table-hover table-bordered table-striped caption-top" style="width: 100%">
+      <caption class="h4">List of Teachers</caption>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthday</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${teachers.empty}">
+        <td colspan="2" > No teachers available</td>
+      </tr>
+      <tr th:each="teacher : ${teachers}">
+        <td th:text="${teacher.name}">Name</td>
+        <td th:text="${teacher.email}">Email</td>
+        <td th:text="${teacher.birthday}">Birthday</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

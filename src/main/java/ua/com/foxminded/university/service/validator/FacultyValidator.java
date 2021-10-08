@@ -1,12 +1,14 @@
 package ua.com.foxminded.university.service.validator;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import ua.com.foxminded.university.model.Faculty;
 import ua.com.foxminded.university.service.exception.InvalidNameException;
 
 import java.util.regex.Pattern;
 
 @Slf4j
+@Component
 public class FacultyValidator implements Validator<Faculty> {
     private static final Pattern NAME_PATTERN = Pattern.compile("[a-zA-Z ]{4,30}");
 

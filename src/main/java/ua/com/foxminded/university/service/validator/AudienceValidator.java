@@ -1,6 +1,7 @@
 package ua.com.foxminded.university.service.validator;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import ua.com.foxminded.university.model.Audience;
 import ua.com.foxminded.university.service.exception.InvalidAudienceFloorException;
 import ua.com.foxminded.university.service.exception.InvalidAudienceNumberException;
@@ -9,6 +10,7 @@ import ua.com.foxminded.university.service.exception.InvalidNumberOnFloorExcepti
 import java.util.regex.Pattern;
 
 @Slf4j
+@Component
 public class AudienceValidator implements Validator<Audience> {
     private static final Pattern AUDIENCE_NUMBER_PATTERN = Pattern.compile("[1-9][0-9]{2}");
     private static final Pattern AUDIENCE_FLOOR_PATTERN = Pattern.compile("[1-5]");

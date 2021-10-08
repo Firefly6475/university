@@ -2,6 +2,7 @@ package ua.com.foxminded.university.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import ua.com.foxminded.university.model.Lesson;
 import ua.com.foxminded.university.service.LessonService;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class LessonServiceImpl implements LessonService {
     private final LessonDao lessonDao;
     private final DisciplineDao disciplineDao;

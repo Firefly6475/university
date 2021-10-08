@@ -1,6 +1,7 @@
 package ua.com.foxminded.university.service.validator;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import ua.com.foxminded.university.model.Lesson;
 import ua.com.foxminded.university.service.exception.InvalidLessonDateException;
 import ua.com.foxminded.university.service.exception.InvalidLessonDurationException;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Slf4j
+@Component
 public class LessonValidator implements Validator<Lesson> {
     private static final Integer LESSON_DURATION = 90;
 

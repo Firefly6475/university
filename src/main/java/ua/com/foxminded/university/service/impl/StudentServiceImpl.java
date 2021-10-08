@@ -2,6 +2,7 @@ package ua.com.foxminded.university.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import ua.com.foxminded.university.model.Student;
 import ua.com.foxminded.university.service.StudentService;
 import ua.com.foxminded.university.service.exception.EntityAlreadyExistException;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class StudentServiceImpl implements StudentService {
     private final StudentDao studentDao;
     private final Validator<Student> validator;

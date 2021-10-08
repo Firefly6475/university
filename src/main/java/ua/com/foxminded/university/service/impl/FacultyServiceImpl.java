@@ -2,6 +2,7 @@ package ua.com.foxminded.university.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import ua.com.foxminded.university.model.Faculty;
 import ua.com.foxminded.university.model.Group;
 import ua.com.foxminded.university.service.FacultyService;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class FacultyServiceImpl implements FacultyService {
     private final FacultyDao facultyDao;
     private final GroupDao groupDao;

@@ -1,6 +1,7 @@
 package ua.com.foxminded.university.service.validator;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import ua.com.foxminded.university.model.Student;
 import ua.com.foxminded.university.service.exception.InvalidBirthdayException;
 import ua.com.foxminded.university.service.exception.InvalidEmailException;
@@ -12,6 +13,7 @@ import java.time.Period;
 import java.util.regex.Pattern;
 
 @Slf4j
+@Component
 public class StudentValidator implements Validator<Student> {
     private static final Pattern EMAIL_PATTERN =
             Pattern.compile("^[\\w-+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$");

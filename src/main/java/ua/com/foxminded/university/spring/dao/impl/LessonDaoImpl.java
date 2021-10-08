@@ -79,6 +79,7 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
             "UPDATE lesson SET discipline = ?, audience = ?, lesson_type = ?, \"date\" = ?, "
                     + "time_start = ?, time_end = ?, \"group\" = ?, teacher = ? WHERE lesson_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM lesson WHERE lesson_id = ?";
+
     private static final String FIND_BY_DISCIPLINE_NAME_QUERY = "SELECT lesson.lesson_id, discipline.discipline_id, discipline.discipline_name, " +
             "teacher.teacher_id, teacher.teacher_email, teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday, " +
             "audience.audience_id, audience.audience_number, audience.audience_floor, " +
@@ -96,7 +97,8 @@ public class LessonDaoImpl extends AbstractCrudDaoImpl<Lesson> implements Lesson
             "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" " +
             "LEFT JOIN student ON group_student.student = student.student_id " +
             "LEFT JOIN (select * from teacher) AS teacher_table ON lesson.teacher = teacher_table.teacher_id " +
-            "WHERE discipline.discipline_name = ?";
+            "WHERE discipline_name = ?";
+
     protected final LessonMapper lessonMapper;
 
     public LessonDaoImpl(JdbcTemplate jdbcTemplate, LessonMapper lessonMapper) {

@@ -23,7 +23,7 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
             "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
                     + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM department LEFT JOIN department_teacher ON department.department_id = department_teacher.department "
-                    + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department.department_id = ?";
+                    + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department_id = ?";
     private static final String FIND_ALL_QUERY =
             "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
                     + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
@@ -33,7 +33,7 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
             "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
                     + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
                     + "FROM department LEFT JOIN department_teacher ON department.department_id = department_teacher.department "
-                    + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id LIMIT ? OFFSET ?";
+                    + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id ORDER BY department_id LIMIT ? OFFSET ?";
     private static final String UPDATE_QUERY = "UPDATE department SET department_name = ? WHERE department_id = ?";
     private static final String DELETE_BY_ID_QUERY = "DELETE FROM department WHERE department_id = ?";
 
@@ -45,7 +45,7 @@ public class DepartmentDaoImpl extends AbstractCrudDaoImpl<Department>
     private static final String FIND_BY_NAME_QUERY = "SELECT department.department_id, department.department_name, teacher.teacher_id, teacher.teacher_email, "
             + "teacher.teacher_password, teacher.teacher_name, teacher.teacher_birthday "
             + "FROM department LEFT JOIN department_teacher ON department.department_id = department_teacher.department "
-            + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department.department_name = ?";
+            + "LEFT JOIN teacher ON department_teacher.teacher = teacher.teacher_id WHERE department_name = ?";
 
     protected final DepartmentMapper departmentMapper;
 
