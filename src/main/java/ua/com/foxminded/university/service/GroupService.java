@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Group;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface GroupService {
 
     Group findGroupByName(String name);
 
-    List<Group> showAllGroups(Page page);
+    List<Group> showAllGroups();
 
     void deleteGroup(String id);
 

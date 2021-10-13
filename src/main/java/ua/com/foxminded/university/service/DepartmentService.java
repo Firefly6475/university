@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Department;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface DepartmentService {
 
     Department findDepartmentByName(String name);
 
-    List<Department> showAllDepartments(Page page);
+    List<Department> showAllDepartments();
 
     void deleteDepartment(String id);
 

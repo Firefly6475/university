@@ -64,14 +64,28 @@ public class StudentServiceTest {
     }
 
     @Test
-    void showAllStudentsShouldFindFirstPageWith2Students() {
+    void showAllStudentsShouldReturnAllStudents() {
         List<Student> students = new ArrayList<>();
-        Page page = new Page(1, 2);
 
+        when(studentDao.findAll()).thenReturn(students);
+
+        students = studentService.showAllStudents();
+
+        verify(studentDao).findAll();
+    }
+
+    @Test
+    void showAllStudentsShouldFindFirstPageWith10Students() {
+        List<Student> students = new ArrayList<>();
+        int pageNumber = 1;
+        Page page = new Page(pageNumber, 10);
+
+        when(studentService.generatePage(pageNumber)).thenReturn(page);
         when(studentDao.findAll(page)).thenReturn(students);
 
-        students = studentService.showAllStudents(page);
+        students = studentService.showAllStudents(pageNumber);
 
+        verify(studentService).generatePage(pageNumber);
         verify(studentDao).findAll(page);
     }
 

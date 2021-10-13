@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Faculty;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface FacultyService {
 
     Faculty findFacultyByName(String name);
 
-    List<Faculty> showAllFaculties(Page page);
+    List<Faculty> showAllFaculties();
 
     void deleteFaculty(String id);
 

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.internal.invocation.finder.VerifiableInvocationsFinder;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ua.com.foxminded.university.model.Audience;
 import ua.com.foxminded.university.service.exception.EntityAlreadyExistException;
@@ -61,14 +62,28 @@ public class AudienceServiceTest {
     }
 
     @Test
-    void showAllAudiencesShouldFindFirstPageWith2Audiences() {
+    void showAllAudiencesShouldReturnAllAudiences() {
         List<Audience> audiences = new ArrayList<>();
-        Page page = new Page(1, 2);
 
+        when(audienceDao.findAll()).thenReturn(audiences);
+
+        audiences = audienceService.showAllAudiences();
+
+        verify(audienceDao).findAll();
+    }
+
+    @Test
+    void showAllAudiencesShouldFindFirstPageWith10Audiences() {
+        List<Audience> audiences = new ArrayList<>();
+        int pageNumber = 1;
+        Page page = new Page(pageNumber, 10);
+
+        when(audienceService.generatePage(pageNumber)).thenReturn(page);
         when(audienceDao.findAll(page)).thenReturn(audiences);
 
-        audiences = audienceService.showAllAudiences(page);
+        audiences = audienceService.showAllAudiences(pageNumber);
 
+        verify(audienceService).generatePage(pageNumber);
         verify(audienceDao).findAll(page);
     }
 

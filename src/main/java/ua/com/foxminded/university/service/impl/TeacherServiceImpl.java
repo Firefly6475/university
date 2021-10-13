@@ -2,7 +2,6 @@ package ua.com.foxminded.university.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ua.com.foxminded.university.model.Teacher;
 import ua.com.foxminded.university.service.TeacherService;
@@ -20,6 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class TeacherServiceImpl implements TeacherService {
+    private static final Integer ENTITIES_ON_PAGE = 10;
+
     private final TeacherDao teacherDao;
     private final Validator<Teacher> validator;
 
@@ -38,9 +39,15 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> showAllTeachers(Page page) {
+    public List<Teacher> showAllTeachers() {
         log.info("Getting all teachers started");
-        return teacherDao.findAll(page);
+        return teacherDao.findAll();
+    }
+
+    @Override
+    public List<Teacher> showAllTeachers(Integer pageNumber) {
+        log.info("Getting all teachers started");
+        return teacherDao.findAll(generatePage(pageNumber));
     }
 
     @Override
@@ -98,5 +105,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     protected boolean isEmailChanged(Teacher teacher, Teacher teacherToEdit) {
         return !Objects.equals(teacherToEdit.getEmail(), teacher.getEmail());
+    }
+
+    protected Page generatePage(int pageNumber) {
+        return new Page(pageNumber, ENTITIES_ON_PAGE);
     }
 }

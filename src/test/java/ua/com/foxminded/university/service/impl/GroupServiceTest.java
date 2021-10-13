@@ -176,15 +176,14 @@ public class GroupServiceTest {
     }
 
     @Test
-    void showAllGroupsShouldReturnFirstPageWith2Entities() {
+    void showAllGroupsShouldReturnAllGroups() {
         List<Group> groups = new ArrayList<>();
-        Page page = new Page(1, 2);
 
-        when(groupDao.findAll(page)).thenReturn(groups);
+        when(groupDao.findAll()).thenReturn(groups);
 
-        groups = groupService.showAllGroups(page);
+        groups = groupService.showAllGroups();
 
-        verify(groupDao).findAll(page);
+        verify(groupDao).findAll();
     }
 
     @Test

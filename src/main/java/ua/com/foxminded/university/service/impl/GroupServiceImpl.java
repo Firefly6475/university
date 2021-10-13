@@ -11,7 +11,6 @@ import ua.com.foxminded.university.service.exception.EntityIsNotEmptyException;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
 import ua.com.foxminded.university.service.validator.Validator;
 import ua.com.foxminded.university.spring.dao.GroupDao;
-import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.StudentDao;
 
 import java.util.List;
@@ -59,9 +58,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public List<Group> showAllGroups(Page page) {
+    public List<Group> showAllGroups() {
         log.info("Getting all groups started");
-        return groupDao.findAll(page);
+        return groupDao.findAll();
     }
 
     @Override

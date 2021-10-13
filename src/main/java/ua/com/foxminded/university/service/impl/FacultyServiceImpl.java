@@ -12,7 +12,6 @@ import ua.com.foxminded.university.service.exception.EntityNotFoundException;
 import ua.com.foxminded.university.service.validator.Validator;
 import ua.com.foxminded.university.spring.dao.FacultyDao;
 import ua.com.foxminded.university.spring.dao.GroupDao;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -59,9 +58,9 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public List<Faculty> showAllFaculties(Page page) {
+    public List<Faculty> showAllFaculties() {
         log.info("Getting all faculties started");
-        return facultyDao.findAll(page);
+        return facultyDao.findAll();
     }
 
     @Override

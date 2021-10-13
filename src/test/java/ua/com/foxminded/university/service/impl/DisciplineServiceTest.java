@@ -169,15 +169,14 @@ public class DisciplineServiceTest {
     }
 
     @Test
-    void showAllDisciplinesShouldReturnFirstPageWith2Entities() {
+    void showAllDisciplinesShouldReturnAllDisciplines() {
         List<Discipline> disciplines = new ArrayList<>();
-        Page page = new Page(1, 2);
 
-        when(disciplineDao.findAll(page)).thenReturn(disciplines);
+        when(disciplineDao.findAll()).thenReturn(disciplines);
 
-        disciplines = disciplineService.showAllDisciplines(page);
+        disciplines = disciplineService.showAllDisciplines();
 
-        verify(disciplineDao).findAll(page);
+        verify(disciplineDao).findAll();
     }
 
     @Test

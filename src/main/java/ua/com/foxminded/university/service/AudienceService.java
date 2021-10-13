@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Audience;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,9 @@ public interface AudienceService {
 
     Audience findAudienceByNumber(Integer number);
 
-    List<Audience> showAllAudiences(Page page);
+    List<Audience> showAllAudiences();
+
+    List<Audience> showAllAudiences(Integer pageNumber);
 
     void deleteAudience(String id);
 

@@ -11,7 +11,6 @@ import ua.com.foxminded.university.spring.dao.AudienceDao;
 import ua.com.foxminded.university.spring.dao.DisciplineDao;
 import ua.com.foxminded.university.spring.dao.GroupDao;
 import ua.com.foxminded.university.spring.dao.LessonDao;
-import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.TeacherDao;
 
 import java.util.List;
@@ -77,9 +76,9 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public List<Lesson> showAllLessons(Page page) {
+    public List<Lesson> showAllLessons() {
         log.info("Getting all lessons started");
-        return lessonDao.findAll(page);
+        return lessonDao.findAll();
     }
 
     @Override

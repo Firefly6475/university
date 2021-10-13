@@ -168,15 +168,14 @@ public class FacultyServiceTest {
     }
 
     @Test
-    void showAllFacultiesShouldReturnFirstPageWith2Entities() {
-        List<Faculty> facultys = new ArrayList<>();
-        Page page = new Page(1, 2);
+    void showAllFacultiesShouldReturnAllFaculties() {
+        List<Faculty> faculties = new ArrayList<>();
 
-        when(facultyDao.findAll(page)).thenReturn(facultys);
+        when(facultyDao.findAll()).thenReturn(faculties);
 
-        facultys = facultyService.showAllFaculties(page);
+        faculties = facultyService.showAllFaculties();
 
-        verify(facultyDao).findAll(page);
+        verify(facultyDao).findAll();
     }
 
     @Test

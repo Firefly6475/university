@@ -352,15 +352,14 @@ public class LessonServiceTest {
     }
 
     @Test
-    void showAllLessonsShouldReturnFirstPageWith2Entities() {
+    void showAllLessonsShouldReturnAllLessons() {
         List<Lesson> lessons = new ArrayList<>();
-        Page page = new Page(1, 2);
 
-        when(lessonDao.findAll(page)).thenReturn(lessons);
+        when(lessonDao.findAll()).thenReturn(lessons);
 
-        lessons = lessonService.showAllLessons(page);
+        lessons = lessonService.showAllLessons();
 
-        verify(lessonDao).findAll(page);
+        verify(lessonDao).findAll();
     }
 
     @Test

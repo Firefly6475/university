@@ -65,14 +65,28 @@ public class TeacherServiceTest {
     }
 
     @Test
-    void showAllTeachersShouldFindFirstPageWith2Teachers() {
+    void showAllTeachersShouldReturnAllTeachers() {
         List<Teacher> teachers = new ArrayList<>();
-        Page page = new Page(1, 2);
 
+        when(teacherDao.findAll()).thenReturn(teachers);
+
+        teachers = teacherService.showAllTeachers();
+
+        verify(teacherDao).findAll();
+    }
+
+    @Test
+    void showAllTeachersShouldFindFirstPageWith10Teachers() {
+        List<Teacher> teachers = new ArrayList<>();
+        int pageNumber = 1;
+        Page page = new Page(pageNumber, 10);
+
+        when(teacherService.generatePage(pageNumber)).thenReturn(page);
         when(teacherDao.findAll(page)).thenReturn(teachers);
 
-        teachers = teacherService.showAllTeachers(page);
+        teachers = teacherService.showAllTeachers(pageNumber);
 
+        verify(teacherService).generatePage(pageNumber);
         verify(teacherDao).findAll(page);
     }
 

@@ -19,6 +19,8 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class StudentServiceImpl implements StudentService {
+    private static final Integer ENTITIES_ON_PAGE = 10;
+
     private final StudentDao studentDao;
     private final Validator<Student> validator;
 
@@ -37,9 +39,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> showAllStudents(Page page) {
+    public List<Student> showAllStudents() {
         log.info("Getting all students started");
-        return studentDao.findAll(page);
+        return studentDao.findAll();
+    }
+
+    @Override
+    public List<Student> showAllStudents(Integer pageNumber) {
+        log.info("Getting all students started");
+        return studentDao.findAll(generatePage(pageNumber));
     }
 
     @Override
@@ -97,5 +105,9 @@ public class StudentServiceImpl implements StudentService {
 
     protected boolean isEmailChanged(Student student, Student studentToEdit) {
         return !Objects.equals(studentToEdit.getEmail(), student.getEmail());
+    }
+
+    protected Page generatePage(int pageNumber) {
+        return new Page(pageNumber, ENTITIES_ON_PAGE);
     }
 }

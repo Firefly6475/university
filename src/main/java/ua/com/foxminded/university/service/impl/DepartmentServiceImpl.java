@@ -11,7 +11,6 @@ import ua.com.foxminded.university.service.exception.EntityIsNotEmptyException;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
 import ua.com.foxminded.university.service.validator.Validator;
 import ua.com.foxminded.university.spring.dao.DepartmentDao;
-import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.TeacherDao;
 
 import java.util.List;
@@ -59,9 +58,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> showAllDepartments(Page page) {
+    public List<Department> showAllDepartments() {
         log.info("Getting all departments started");
-        return departmentDao.findAll(page);
+        return departmentDao.findAll();
     }
 
     @Override

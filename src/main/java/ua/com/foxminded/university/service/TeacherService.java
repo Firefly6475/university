@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Teacher;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,9 @@ public interface TeacherService {
 
     Teacher findTeacherByEmail(String email);
 
-    List<Teacher> showAllTeachers(Page page);
+    List<Teacher> showAllTeachers();
+
+    List<Teacher> showAllTeachers(Integer pageNumber);
 
     void deleteTeacher(String id);
 

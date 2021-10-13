@@ -11,7 +11,6 @@ import ua.com.foxminded.university.service.exception.EntityIsNotEmptyException;
 import ua.com.foxminded.university.service.exception.EntityNotFoundException;
 import ua.com.foxminded.university.service.validator.Validator;
 import ua.com.foxminded.university.spring.dao.DisciplineDao;
-import ua.com.foxminded.university.spring.dao.Page;
 import ua.com.foxminded.university.spring.dao.TeacherDao;
 
 import java.util.List;
@@ -59,9 +58,9 @@ public class DisciplineServiceImpl implements DisciplineService {
     }
 
     @Override
-    public List<Discipline> showAllDisciplines(Page page) {
+    public List<Discipline> showAllDisciplines() {
         log.info("Getting all disciplines started");
-        return disciplineDao.findAll(page);
+        return disciplineDao.findAll();
     }
 
     @Override

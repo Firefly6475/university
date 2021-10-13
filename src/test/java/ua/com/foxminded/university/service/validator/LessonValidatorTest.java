@@ -20,7 +20,7 @@ public class LessonValidatorTest {
     void validateShouldNotThrowException() {
         Lesson lesson = Lesson.builder()
                 .withId(UUID.randomUUID().toString())
-                .withDate(LocalDate.parse("2021-10-10"))
+                .withDate(LocalDate.parse("2023-10-10"))
                 .withTimeStart(LocalTime.parse("11:30:00"))
                 .withTimeEnd(LocalTime.parse("13:00:00"))
                 .build();

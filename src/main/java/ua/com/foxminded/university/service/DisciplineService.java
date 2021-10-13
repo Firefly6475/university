@@ -1,7 +1,6 @@
 package ua.com.foxminded.university.service;
 
 import ua.com.foxminded.university.model.Discipline;
-import ua.com.foxminded.university.spring.dao.Page;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ public interface DisciplineService {
 
     Discipline findDisciplineByName(String name);
 
-    List<Discipline> showAllDisciplines(Page page);
+    List<Discipline> showAllDisciplines();
 
     void deleteDiscipline(String id);
 

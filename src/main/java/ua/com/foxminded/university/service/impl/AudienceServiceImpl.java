@@ -19,6 +19,8 @@ import java.util.Optional;
 @Slf4j
 @Service
 public class AudienceServiceImpl implements AudienceService {
+    private static final Integer ENTITIES_ON_PAGE = 10;
+
     private final AudienceDao audienceDao;
     private final Validator<Audience> validator;
 
@@ -55,9 +57,15 @@ public class AudienceServiceImpl implements AudienceService {
     }
 
     @Override
-    public List<Audience> showAllAudiences(Page page) {
-        log.info("Getting all audience started");
-        return audienceDao.findAll(page);
+    public List<Audience> showAllAudiences() {
+        log.info("Getting all audiences started");
+        return audienceDao.findAll();
+    }
+
+    @Override
+    public List<Audience> showAllAudiences(Integer pageNumber) {
+        log.info("Getting all audiences started");
+        return audienceDao.findAll(generatePage(pageNumber));
 
     }
 
@@ -97,5 +105,9 @@ public class AudienceServiceImpl implements AudienceService {
 
     protected boolean isNumberChanged(Audience audience, Audience audienceToEdit) {
         return !Objects.equals(audienceToEdit.getNumber(), audience.getNumber());
+    }
+
+    protected Page generatePage(int pageNumber) {
+        return new Page(pageNumber, ENTITIES_ON_PAGE);
     }
 }

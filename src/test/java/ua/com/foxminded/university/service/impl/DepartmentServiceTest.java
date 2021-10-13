@@ -169,15 +169,14 @@ public class DepartmentServiceTest {
     }
 
     @Test
-    void showAllDepartmentsShouldReturnFirstPageWith2Entities() {
+    void showAllDepartmentsShouldReturnAllDepartments() {
         List<Department> departments = new ArrayList<>();
-        Page page = new Page(1, 2);
 
-        when(departmentDao.findAll(page)).thenReturn(departments);
+        when(departmentDao.findAll()).thenReturn(departments);
 
-        departments = departmentService.showAllDepartments(page);
+        departments = departmentService.showAllDepartments();
 
-        verify(departmentDao).findAll(page);
+        verify(departmentDao).findAll();
     }
 
     @Test
