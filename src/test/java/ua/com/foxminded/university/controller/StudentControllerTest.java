@@ -60,42 +60,4 @@ public class StudentControllerTest {
         verify(studentService).showAllStudents();
         verify(studentService).showAllStudents(pageNumber);
     }
-
-    @Test
-    void showAllStudentsShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Student> students = new ArrayList<>();
-        students.add(Student.builder()
-                .withId(UUID.randomUUID().toString())
-                .withEmail("hello@gmail.com")
-                .withPassword("myPass")
-                .build());
-
-        when(studentService.showAllStudents()).thenReturn(students);
-
-        mockMvc.perform(get("/students/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(studentService).showAllStudents();
-        verifyNoMoreInteractions(studentService);
-    }
-
-    @Test
-    void showAllStudentsShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Student> students = new ArrayList<>();
-        students.add(Student.builder()
-                .withId(UUID.randomUUID().toString())
-                .withEmail("hello@gmail.com")
-                .withPassword("myPass")
-                .build());
-
-        when(studentService.showAllStudents()).thenReturn(students);
-
-        mockMvc.perform(get("/students/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(studentService).showAllStudents();
-        verifyNoMoreInteractions(studentService);
-    }
 }

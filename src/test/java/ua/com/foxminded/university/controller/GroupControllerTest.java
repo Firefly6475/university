@@ -99,36 +99,65 @@ public class GroupControllerTest {
     }
 
     @Test
-    void showAllGroupsShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Group> groups = new ArrayList<>();
-        groups.add(Group.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
+    void showAllGroupsShouldShowGroupsOnFirstPageIfPageNumberIsNotANumber() throws Exception {
+        String pageNumber = "blabla";
 
+        List<Group> groups = new ArrayList<>();
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .build();
+        for (int i = 0; i < 12; i++) {
+            groups.add(group);
+        }
         when(groupService.showAllGroups()).thenReturn(groups);
 
         mockMvc.perform(get("/groups/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isOk())
+                .andExpect(view().name("group/groupsList"))
+                .andExpect(model().attribute("groups", hasSize(10)));
 
         verify(groupService).showAllGroups();
-        verifyNoMoreInteractions(groupService);
     }
 
     @Test
-    void showAllGroupsShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Group> groups = new ArrayList<>();
-        groups.add(Group.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
+    void showAllGroupsShouldShowGroupsOnFirstPageIfPageNumberIsAboveTotalPages() throws Exception {
+        Integer pageNumber = 3;
 
+        List<Group> groups = new ArrayList<>();
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .build();
+        for (int i = 0; i < 12; i++) {
+            groups.add(group);
+        }
         when(groupService.showAllGroups()).thenReturn(groups);
 
         mockMvc.perform(get("/groups/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isOk())
+                .andExpect(view().name("group/groupsList"))
+                .andExpect(model().attribute("groups", hasSize(10)));
 
         verify(groupService).showAllGroups();
-        verifyNoMoreInteractions(groupService);
+    }
+
+    @Test
+    void showAllGroupsShouldShowGroupsOnFirstPageIfPageNumberIsZero() throws Exception {
+        Integer pageNumber = 0;
+
+        List<Group> groups = new ArrayList<>();
+        Group group = Group.builder()
+                .withId(UUID.randomUUID().toString())
+                .build();
+        for (int i = 0; i < 12; i++) {
+            groups.add(group);
+        }
+        when(groupService.showAllGroups()).thenReturn(groups);
+
+        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+                .andExpect(status().isOk())
+                .andExpect(view().name("group/groupsList"))
+                .andExpect(model().attribute("groups", hasSize(10)));
+
+        verify(groupService).showAllGroups();
     }
 }

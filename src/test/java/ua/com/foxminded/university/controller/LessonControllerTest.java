@@ -97,38 +97,4 @@ public class LessonControllerTest {
 
         verify(lessonService).showAllLessons();
     }
-
-    @Test
-    void showAllLessonsShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Lesson> lessons = new ArrayList<>();
-        lessons.add(Lesson.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(lessonService.showAllLessons()).thenReturn(lessons);
-
-        mockMvc.perform(get("/lessons/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(lessonService).showAllLessons();
-        verifyNoMoreInteractions(lessonService);
-    }
-
-    @Test
-    void showAllLessonsShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Lesson> lessons = new ArrayList<>();
-        lessons.add(Lesson.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(lessonService.showAllLessons()).thenReturn(lessons);
-
-        mockMvc.perform(get("/lessons/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(lessonService).showAllLessons();
-        verifyNoMoreInteractions(lessonService);
-    }
 }

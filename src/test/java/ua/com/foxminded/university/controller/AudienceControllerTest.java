@@ -58,38 +58,4 @@ public class AudienceControllerTest {
         verify(audienceService).showAllAudiences();
         verify(audienceService).showAllAudiences(pageNumber);
     }
-
-    @Test
-    void showAllAudiencesShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Audience> audiences = new ArrayList<>();
-        audiences.add(Audience.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(audienceService.showAllAudiences()).thenReturn(audiences);
-
-        mockMvc.perform(get("/audiences/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(audienceService).showAllAudiences();
-        verifyNoMoreInteractions(audienceService);
-    }
-
-    @Test
-    void showAllAudiencesShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Audience> audiences = new ArrayList<>();
-        audiences.add(Audience.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(audienceService.showAllAudiences()).thenReturn(audiences);
-
-        mockMvc.perform(get("/audiences/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(audienceService).showAllAudiences();
-        verifyNoMoreInteractions(audienceService);
-    }
 }

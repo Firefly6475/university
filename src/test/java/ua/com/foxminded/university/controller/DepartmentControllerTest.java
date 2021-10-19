@@ -97,38 +97,4 @@ public class DepartmentControllerTest {
 
         verify(departmentService).showAllDepartments();
     }
-
-    @Test
-    void showAllDepartmentsShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Department> departments = new ArrayList<>();
-        departments.add(Department.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(departmentService.showAllDepartments()).thenReturn(departments);
-
-        mockMvc.perform(get("/departments/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(departmentService).showAllDepartments();
-        verifyNoMoreInteractions(departmentService);
-    }
-
-    @Test
-    void showAllDepartmentsShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Department> departments = new ArrayList<>();
-        departments.add(Department.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(departmentService.showAllDepartments()).thenReturn(departments);
-
-        mockMvc.perform(get("/departments/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(departmentService).showAllDepartments();
-        verifyNoMoreInteractions(departmentService);
-    }
 }

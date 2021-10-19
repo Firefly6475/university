@@ -60,42 +60,4 @@ public class TeacherControllerTest {
         verify(teacherService).showAllTeachers();
         verify(teacherService).showAllTeachers(pageNumber);
     }
-
-    @Test
-    void showAllTeachersShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Teacher> teachers = new ArrayList<>();
-        teachers.add(Teacher.builder()
-                .withId(UUID.randomUUID().toString())
-                .withEmail("hello@gmail.com")
-                .withPassword("myPass")
-                .build());
-
-        when(teacherService.showAllTeachers()).thenReturn(teachers);
-
-        mockMvc.perform(get("/teachers/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(teacherService).showAllTeachers();
-        verifyNoMoreInteractions(teacherService);
-    }
-
-    @Test
-    void showAllTeachersShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Teacher> teachers = new ArrayList<>();
-        teachers.add(Teacher.builder()
-                .withId(UUID.randomUUID().toString())
-                .withEmail("hello@gmail.com")
-                .withPassword("myPass")
-                .build());
-
-        when(teacherService.showAllTeachers()).thenReturn(teachers);
-
-        mockMvc.perform(get("/teachers/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(teacherService).showAllTeachers();
-        verifyNoMoreInteractions(teacherService);
-    }
 }

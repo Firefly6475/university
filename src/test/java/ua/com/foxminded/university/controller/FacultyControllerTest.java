@@ -97,38 +97,4 @@ public class FacultyControllerTest {
 
         verify(facultyService).showAllFaculties();
     }
-
-    @Test
-    void showAllFacultiesShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Faculty> faculties = new ArrayList<>();
-        faculties.add(Faculty.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(facultyService.showAllFaculties()).thenReturn(faculties);
-
-        mockMvc.perform(get("/faculties/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(facultyService).showAllFaculties();
-        verifyNoMoreInteractions(facultyService);
-    }
-
-    @Test
-    void showAllFacultiesShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Faculty> faculties = new ArrayList<>();
-        faculties.add(Faculty.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(facultyService.showAllFaculties()).thenReturn(faculties);
-
-        mockMvc.perform(get("/faculties/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(facultyService).showAllFaculties();
-        verifyNoMoreInteractions(facultyService);
-    }
 }

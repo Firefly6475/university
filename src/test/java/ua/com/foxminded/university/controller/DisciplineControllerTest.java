@@ -97,38 +97,4 @@ public class DisciplineControllerTest {
 
         verify(disciplineService).showAllDisciplines();
     }
-
-    @Test
-    void showAllDisciplinesShouldThrowWrongPageNumberExceptionIfPageNumberIsZeroOrLess() throws Exception {
-        int pageNumber = 0;
-        List<Discipline> disciplines = new ArrayList<>();
-        disciplines.add(Discipline.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(disciplineService.showAllDisciplines()).thenReturn(disciplines);
-
-        mockMvc.perform(get("/disciplines/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(disciplineService).showAllDisciplines();
-        verifyNoMoreInteractions(disciplineService);
-    }
-
-    @Test
-    void showAllDisciplinesShouldThrowWrongPageNumberExceptionIfPageNumberIsMoreThanExists() throws Exception {
-        int pageNumber = 2;
-        List<Discipline> disciplines = new ArrayList<>();
-        disciplines.add(Discipline.builder()
-                .withId(UUID.randomUUID().toString())
-                .build());
-
-        when(disciplineService.showAllDisciplines()).thenReturn(disciplines);
-
-        mockMvc.perform(get("/disciplines/list?page=" + pageNumber))
-                .andExpect(status().isNotAcceptable());
-
-        verify(disciplineService).showAllDisciplines();
-        verifyNoMoreInteractions(disciplineService);
-    }
 }
