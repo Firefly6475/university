@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -50,7 +49,7 @@ public class AudienceControllerTest {
         when(audienceService.showAllAudiences()).thenReturn(audiences);
         when(audienceService.showAllAudiences(pageNumber)).thenReturn(audiences);
 
-        mockMvc.perform(get("/audiences/list"))
+        mockMvc.perform(get("/audience/all"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("audience/audiencesList"))
                 .andExpect(model().attribute("audiences", hasSize(1)));

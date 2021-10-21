@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -50,7 +49,7 @@ public class DisciplineControllerTest {
 
         when(disciplineService.showAllDisciplines()).thenReturn(disciplines);
 
-        mockMvc.perform(get("/disciplines/list?page=" + pageNumber))
+        mockMvc.perform(get("/discipline/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("discipline/disciplinesList"))
                 .andExpect(model().attribute("disciplines", hasSize(2)));
@@ -70,7 +69,7 @@ public class DisciplineControllerTest {
         }
         when(disciplineService.showAllDisciplines()).thenReturn(disciplines);
 
-        mockMvc.perform(get("/disciplines/list?page=" + pageNumber))
+        mockMvc.perform(get("/discipline/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("discipline/disciplinesList"))
                 .andExpect(model().attribute("disciplines", hasSize(10)));
@@ -90,7 +89,7 @@ public class DisciplineControllerTest {
         }
         when(disciplineService.showAllDisciplines()).thenReturn(disciplines);
 
-        mockMvc.perform(get("/disciplines/list?page=" + pageNumber))
+        mockMvc.perform(get("/discipline/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("discipline/disciplinesList"))
                 .andExpect(model().attribute("disciplines", hasSize(2)));

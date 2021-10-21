@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -52,7 +51,7 @@ public class TeacherControllerTest {
         when(teacherService.showAllTeachers()).thenReturn(teachers);
         when(teacherService.showAllTeachers(pageNumber)).thenReturn(teachers);
 
-        mockMvc.perform(get("/teachers/list"))
+        mockMvc.perform(get("/teacher/all"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("teacher/teachersList"))
                 .andExpect(model().attribute("teachers", hasSize(1)));

@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -50,7 +49,7 @@ public class DepartmentControllerTest {
 
         when(departmentService.showAllDepartments()).thenReturn(departments);
 
-        mockMvc.perform(get("/departments/list?page=" + pageNumber))
+        mockMvc.perform(get("/department/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("department/departmentsList"))
                 .andExpect(model().attribute("departments", hasSize(2)));
@@ -70,7 +69,7 @@ public class DepartmentControllerTest {
         }
         when(departmentService.showAllDepartments()).thenReturn(departments);
 
-        mockMvc.perform(get("/departments/list?page=" + pageNumber))
+        mockMvc.perform(get("/department/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("department/departmentsList"))
                 .andExpect(model().attribute("departments", hasSize(10)));
@@ -90,7 +89,7 @@ public class DepartmentControllerTest {
         }
         when(departmentService.showAllDepartments()).thenReturn(departments);
 
-        mockMvc.perform(get("/departments/list?page=" + pageNumber))
+        mockMvc.perform(get("/department/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("department/departmentsList"))
                 .andExpect(model().attribute("departments", hasSize(2)));

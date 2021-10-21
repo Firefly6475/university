@@ -3,7 +3,7 @@ package ua.com.foxminded.university.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.foxminded.university.model.Audience;
@@ -12,13 +12,13 @@ import ua.com.foxminded.university.service.AudienceService;
 import java.util.List;
 
 @Controller
-@Validated
+@RequestMapping(value = "/audience")
 public class AudienceController extends GenericController<Audience> {
 
     @Autowired
     AudienceService audienceService;
 
-    @RequestMapping(value = "/audiences/list")
+    @GetMapping(value = "/all")
     public String showAllAudiences(@RequestParam(name = "page", defaultValue = "1") String stringPageNumber, Model model) {
         List<Audience> allAudiences = audienceService.showAllAudiences();
         Integer pageNumber = parsePageNumber(stringPageNumber);

@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -50,7 +49,7 @@ public class LessonControllerTest {
 
         when(lessonService.showAllLessons()).thenReturn(lessons);
 
-        mockMvc.perform(get("/lessons/list?page=" + pageNumber))
+        mockMvc.perform(get("/lesson/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("lesson/lessonsList"))
                 .andExpect(model().attribute("lessons", hasSize(2)));
@@ -70,7 +69,7 @@ public class LessonControllerTest {
         }
         when(lessonService.showAllLessons()).thenReturn(lessons);
 
-        mockMvc.perform(get("/lessons/list?page=" + pageNumber))
+        mockMvc.perform(get("/lesson/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("lesson/lessonsList"))
                 .andExpect(model().attribute("lessons", hasSize(10)));
@@ -90,7 +89,7 @@ public class LessonControllerTest {
         }
         when(lessonService.showAllLessons()).thenReturn(lessons);
 
-        mockMvc.perform(get("/lessons/list?page=" + pageNumber))
+        mockMvc.perform(get("/lesson/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("lesson/lessonsList"))
                 .andExpect(model().attribute("lessons", hasSize(2)));

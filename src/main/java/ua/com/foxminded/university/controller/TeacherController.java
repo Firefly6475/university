@@ -3,6 +3,7 @@ package ua.com.foxminded.university.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.foxminded.university.model.Teacher;
@@ -11,12 +12,13 @@ import ua.com.foxminded.university.service.TeacherService;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/teacher")
 public class TeacherController extends GenericController<Teacher> {
 
     @Autowired
     TeacherService teacherService;
 
-    @RequestMapping(value = "/teachers/list")
+    @GetMapping(value = "/all")
     public String showAllStudents(@RequestParam(name = "page", defaultValue = "1") String stringPageNumber, Model model) {
         List<Teacher> allTeachers = teacherService.showAllTeachers();
         Integer pageNumber = parsePageNumber(stringPageNumber);

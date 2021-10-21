@@ -17,7 +17,6 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -50,7 +49,7 @@ public class GroupControllerTest {
 
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(2)));
@@ -70,7 +69,7 @@ public class GroupControllerTest {
         }
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(10)));
@@ -90,7 +89,7 @@ public class GroupControllerTest {
         }
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(2)));
@@ -111,7 +110,7 @@ public class GroupControllerTest {
         }
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(10)));
@@ -121,7 +120,7 @@ public class GroupControllerTest {
 
     @Test
     void showAllGroupsShouldShowGroupsOnFirstPageIfPageNumberIsAboveTotalPages() throws Exception {
-        Integer pageNumber = 3;
+        int pageNumber = 3;
 
         List<Group> groups = new ArrayList<>();
         Group group = Group.builder()
@@ -132,7 +131,7 @@ public class GroupControllerTest {
         }
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(10)));
@@ -142,7 +141,7 @@ public class GroupControllerTest {
 
     @Test
     void showAllGroupsShouldShowGroupsOnFirstPageIfPageNumberIsZero() throws Exception {
-        Integer pageNumber = 0;
+        int pageNumber = 0;
 
         List<Group> groups = new ArrayList<>();
         Group group = Group.builder()
@@ -153,7 +152,7 @@ public class GroupControllerTest {
         }
         when(groupService.showAllGroups()).thenReturn(groups);
 
-        mockMvc.perform(get("/groups/list?page=" + pageNumber))
+        mockMvc.perform(get("/group/all?page=" + pageNumber))
                 .andExpect(status().isOk())
                 .andExpect(view().name("group/groupsList"))
                 .andExpect(model().attribute("groups", hasSize(10)));
