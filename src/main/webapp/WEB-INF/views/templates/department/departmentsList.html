@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <title>Departments Status</title>
+    <title>All Departments</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -23,96 +23,104 @@
                     <a class="nav-link active" aria-current="page" href="/university">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="studentsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="studentDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Students
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="studentsDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="studentDropdown">
                         <li><a class="dropdown-item" href="/university/student/all">Students List</a></li>
+                        <li><a class="dropdown-item" href="/university/student/create">New Student</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="teachersDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="teacherDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Teachers
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="teachersDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="teacherDropdown">
                         <li><a class="dropdown-item" href="/university/teacher/all">Teachers List</a></li>
+                        <li><a class="dropdown-item" href="/university/teacher/create">New Teacher</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="groupsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="groupDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Groups
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="groupDropdown">
                         <li><a class="dropdown-item" href="/university/group/all">Groups List</a></li>
+                        <li><a class="dropdown-item" href="/university/group/create">New Group</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="facultiesDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="facultyDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Faculties
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="facultiesDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="facultyDropdown">
                         <li><a class="dropdown-item" href="/university/faculty/all">Faculties List</a></li>
+                        <li><a class="dropdown-item" href="/university/faculty/create">New Faculty</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="departmentsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Departments
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="departmentsDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="departmentDropdown">
                         <li><a class="dropdown-item" href="/university/department/all">Departments List</a></li>
+                        <li><a class="dropdown-item" href="/university/department/create">New Department</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="disciplinesDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="disciplineDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Disciplines
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="groupsDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="disciplineDropdown">
                         <li><a class="dropdown-item" href="/university/discipline/all">Disciplines List</a></li>
+                        <li><a class="dropdown-item" href="/university/discipline/create">New Discipline</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="audiencesDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="audienceDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Audiences
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="audiencesDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="audienceDropdown">
                         <li><a class="dropdown-item" href="/university/audience/all">Audiences List</a></li>
+                        <li><a class="dropdown-item" href="/university/audience/create">New Audience</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="lessonsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="lessonDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         Lessons
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="lessonsDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="lessonDropdown">
                         <li><a class="dropdown-item" href="/university/lesson/all">Lessons List</a></li>
+                        <li><a class="dropdown-item" href="/university/lesson/create">New Lesson</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -134,13 +142,13 @@
             </thead>
             <tbody>
             <tr th:if="${departments.empty}">
-                <td colspan="2" > No departments available</td>
+                <td colspan="2"> No departments available</td>
             </tr>
             <tr th:each="department : ${departments}">
-                <td th:text="${department.name}">Name</td>
+                <td> <a th:text="${department.name}" th:href="@{/department/{id}(id=${department.id})}"/></td>
                 <td>
                     <p th:each="teacher : ${department.teachers}">
-                        <a th:text="'[' + ${teacher.name} + ', ' + ${teacher.email} + ']'">Teacher Name</a>
+                        <a th:text="'[' + ${teacher.name} + ', ' + ${teacher.email} + ']'" th:href="@{/teacher/{id}(id=${teacher.id})}">Teacher Name</a>
                     </p>
                 </td>
             </tr>

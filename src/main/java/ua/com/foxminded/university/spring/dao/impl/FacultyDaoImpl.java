@@ -21,7 +21,7 @@ public class FacultyDaoImpl extends AbstractCrudDaoImpl<Faculty> implements Facu
     private static final String FIND_BY_ID_QUERY =
             "SELECT faculty.faculty_id, faculty.faculty_name, \"group\".group_id, "
                     + "\"group\".group_name, \"group\".group_course,  student.student_id, student.student_email, "
-                    + "student.student_password, student.student_name, student.student_birthday, "
+                    + "student.student_password, student.student_name, student.student_birthday "
                     + "FROM faculty LEFT JOIN faculty_group ON faculty.faculty_id = faculty_group.faculty "
                     + "LEFT JOIN \"group\" ON faculty_group.\"group\" = \"group\".group_id "
                     + "LEFT JOIN group_student ON \"group\".group_id = group_student.\"group\" "

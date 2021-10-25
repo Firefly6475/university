@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.foxminded.university.model.Audience;
@@ -26,6 +27,13 @@ public class AudienceController extends GenericController<Audience> {
         pageNumber = validatePageNumber(pageNumber, totalPages);
         List<Audience> pagedAudiences = audienceService.showAllAudiences(pageNumber);
         return showGenericEntities(totalPages, pagedAudiences, model);
+    }
+
+    @GetMapping(value = "/{id}")
+    public String showAudienceDetails(@PathVariable("id") String id, Model model) {
+        Audience audience = audienceService.findAudienceById(id);
+        model.addAttribute("audience", audience);
+        return "audience/audienceDetails";
     }
 
     @Override
